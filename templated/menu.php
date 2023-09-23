@@ -28,7 +28,7 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="../ino/img/002.png" class="img-circle elevation-2" alt="User Image">
+                            <img src="../up/img/002.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
                             <a href="profile.php" class="">Administrator</a><br>
