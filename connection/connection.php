@@ -1,16 +1,8 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "1234"; //ไม่ได้ตั้งรหัสผ่านก็ลบ  yourpassword ออก
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=db_ino", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  //echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
-//Set ว/ด/ป เวลา ให้เป็นของประเทศไทย
-    date_default_timezone_set('Asia/Bangkok');
+<?php 
+      $conn = new mysqli('localhost','root','1234','ino_db'); //ประกาศตัวแปล $conn เก็บค่า การเชื่อมต่อ 
+        if ($conn->connect_error) {  //ตรวจสอบเงื่อนไข ฐานข้อมูลเชื่อมต่อได้หรือไม่ หากไม่ให้แสดง error เป็นตัวเลข ออกมา
+                die("Connection failed: " . $conn->connect_error);
+            } 
+            $conn->Set_charset("utf8");
+          
 ?>

@@ -3,23 +3,23 @@
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="keywords" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!--Meta Responsive tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--Custom style.css-->
-    <link rel="stylesheet" href="assets/css/quicksand.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/quicksand.css">
+        <link rel="stylesheet" href="assets/css/style.css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/fontawesome.css">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -28,33 +28,32 @@
 
 
     <!-- sweetalert -->
-    <?php 
-    echo'
-    <script src="../its/code/plugins/jquery/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
-    ';
-    ?>
+        <?php 
+            echo'
+            <script src="../its/code/plugins/jquery/jquery.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
+            ';
+        ?>
 
     <!----------------------------- start Time ------------------------------->
-    <?php
-    date_default_timezone_set('asia/bangkok');
-    $date = date('d/m/Y');
-    $time = date("H:i:s", "1359780799");
-    ?>
+        <?php
+            date_default_timezone_set('asia/bangkok');
+            $date = date('d/m/Y');
+            $time = date("H:i:s", "1359780799");
+        ?>
     <!----------------------------- start Time ------------------------------->
 
 
-    <title>Registion Form</title>
+<title>Registion Form</title>
 </head>
 
 <body class="login-body">
 
-
     <?php
       //print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
                 //ถ้ามีค่าส่งมาจากฟอร์ม
-                if(isset($_POST['username']) && isset($_POST['user_email']) && isset($_POST['user_tel']) && isset($_POST['user_team']) && isset($_POST['password']) && isset($_POST['user_date'])  ){
+                if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['tel']) && isset($_POST['team']) && isset($_POST['password']) && isset($_POST['user_crt'])  ){
                     // sweet alert 
     
     
@@ -63,14 +62,14 @@
                     include("connection/connection.php"); 
                     //ประกาศตัวแปรรับค่าจากฟอร์ม
                     $username = $_POST['username'];
-                    $user_email = $_POST['user_email'];
-                    $user_tel = $_POST['user_tel'];
-                    $user_team = $_POST['user_team'];
+                    $email = $_POST['email'];
+                    $tel = $_POST['tel'];
+                    $team = $_POST['team'];
                     $password = sha1($_POST['password']);
-                    $user_date = $_POST['user_date']; //เก็บรหัสผ่านในรูปแบบ sha1 
+                    $user_crt = $_POST['user_crt']; //เก็บรหัสผ่านในรูปแบบ sha1 
     
                     //check duplicat
-                        $sql = "SELECT * From tb_user WHERE username = '$username' OR user_email = '$user_email'";
+                        $sql = "SELECT * From user WHERE username = '$username' OR email = '$email'";
                         //$stmt->bindParam(':username', $username , PDO::PARAM_STR);
                         $result = $conn->query($sql);
                         $num = mysqli_num_rows($result);
@@ -88,12 +87,10 @@
                                         }, 1000);
                                 </script>';
                         }else{ 
-                            
-    
                             //ถ้า username ไม่ซ้ำ เก็บข้อมูลลงตาราง
                                 //sql insert
-                                $sql =  "INSERT INTO `tb_user` (`user_id`, `username`, `user_email`, `user_tel`, `user_team`, `password`, `user_date` ) 
-                                VALUES (NULL, '$username', '$user_email', '$user_tel', '$user_team', '$password', '$user_date')";
+                                $sql =  "INSERT INTO `user` (`id`, `username`, `email`, `tel`, `team`, `password`, `user_crt` ) 
+                                VALUES (NULL, '$username', '$email', '$tel', '$team', '$password', '$user_crt')";
                                 $result = $conn->query($sql);
                                 if($result){
                                     echo '<script>
@@ -155,7 +152,7 @@
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
                             </div>
                             <input type="email" class="form-control mt-0" placeholder="johndoe@gmail.com" required
-                                name="user_email" aria-label="email" aria-describedby="basic-addon1">
+                                name="email" aria-label="email" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="input-group mb-3">
@@ -163,14 +160,14 @@
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
                             </div>
                             <input type="text" class="form-control mt-0" placeholder="555-098-444" aria-label="phone"
-                                required name="user_tel" aria-describedby="basic-addon1">
+                                required name="tel" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-users"></i></span>
                             </div>
-                            <select class="form-control" name="user_team" required id="exampleFormControlSelect1">
+                            <select class="form-control" name="team" required id="exampleFormControlSelect1">
                                 <option selected="selected">Select team</option>
                                 <option>Innovation</option>
                                 <option>Service Solution</option>
@@ -192,8 +189,8 @@
 
 
 
-                        <input type="hidden" class="form-control mt-0" placeholder="user_date" aria-label="user_date"
-                            name="user_date" value="<?php echo $date; ?>" aria-describedby="basic-addon1">
+                        <input type="hidden" class="form-control mt-0" placeholder="user_crt" aria-label="user_crt"
+                            name="user_crt" value="<?php echo $user_crt; ?>" aria-describedby="basic-addon1">
 
 
                         <div class="form-group">

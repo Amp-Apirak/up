@@ -264,6 +264,34 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <label>Create Date</label>
+                                                            <select class="custom-select select2" name="date_crt">
+                                                                <option value="">เลือก</option>
+                                                                <?php while ($rl = mysqli_fetch_array($query_createdate)) { ?>
+                                                                <option value="<?php echo $rl["date_crt"]; ?>"
+                                                                    <?php if ($rl['date_crt'] == $tb_createdate) : ?>
+                                                                    selected="selected" <?php endif; ?>>
+                                                                    <?php echo $rl["date_crt"]; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <label>Create Date</label>
+                                                            <select class="custom-select select2" name="date_crt">
+                                                                <option value="">เลือก</option>
+                                                                <?php while ($rl = mysqli_fetch_array($query_createdate)) { ?>
+                                                                <option value="<?php echo $rl["date_crt"]; ?>"
+                                                                    <?php if ($rl['date_crt'] == $tb_createdate) : ?>
+                                                                    selected="selected" <?php endif; ?>>
+                                                                    <?php echo $rl["date_crt"]; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -324,8 +352,7 @@
                                                         class="fas fa-eye"></i></a>
                                                 <a href="#" class="btn btn-info btn-sm"><i
                                                         class="fas fa-pencil-alt"></i></a>
-                                                <a href="employee.php?id=<?php echo $res_search["id_employee"]; ?>" class="btn btn-danger btn-sm"><i
-                                                        class="fas fa-trash"></i></a>
+                                                <a href="employee.php?id=<?php echo $res_search["id_employee"]; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                             </td>
 
                                         </tr>

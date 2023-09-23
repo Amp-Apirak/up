@@ -69,7 +69,7 @@
                             move_uploaded_file($file_tmp, "../its/Km/$upfile");
 
 
-                            
+
 
                             $sql =  "INSERT INTO `tb_km` (`km_id`, `km_date`,`km_type`, `km_subj`, `km_re`, `upfile`, `km_staff`) 
                             VALUES (NULL, '$km_date', '$km_type', '$km_subj', '$km_re', '$upfile', '$km_staff')";

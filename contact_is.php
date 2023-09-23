@@ -54,72 +54,89 @@
                         <!-- เพิ่มข้อมูล -->
                         <?php
 
-if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
+                             if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
+                            $contact_group  = $_POST['contact_group']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+                            $contact_name = $_POST['contact_name'];
+                            $contact_position = $_POST['contact_position'];
+                            $contact_phone = $_POST['contact_phone'];
+                            $contact_email = $_POST['contact_email'];
+                            $contact_company = $_POST['contact_company'];
+                            $contact_address = $_POST['contact_address'];
+                            $contact_date = $_POST['contact_date'];
+                            $contact_team = $_POST['contact_team'];
 
-    $contact_group  = $_POST['contact_group']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
-    $contact_name = $_POST['contact_name'];
-    $contact_position = $_POST['contact_position'];
-    $contact_phone = $_POST['contact_phone'];
-    $contact_email = $_POST['contact_email'];
-    $contact_company = $_POST['contact_company'];
-    $contact_address = $_POST['contact_address'];
-    $contact_date = $_POST['contact_date'];
-    $contact_team = $_POST['contact_team'];
-
-    // print_r($_POST);
-
-    
-    $sql =  "INSERT INTO `tb_contact` (`contact_id`, `contact_group`,`contact_name`, `contact_position`, `contact_phone`, `contact_email`, `contact_address`, `contact_company`, `contact_date`, `contact_team`) 
-    VALUES (NULL, '$contact_group', '$contact_name', '$contact_position', '$contact_phone', '$contact_email', '$contact_address', '$contact_company', '$contact_date', '$contact_team')";
-
-    $result = $conn->query($sql);
-
-    //  print_r($sql);
-     if ($result) {
-        // <!-- sweetalert -->
-        echo '<script>
-                setTimeout(function(){
-                    swal({
-                        title: "Save Successfully!",
-                        text: "Thank You . ",
-                        type:"success"
-                    }, function(){
-                        window.location = "contact.php";
-                    })
-                },1000);
-            </script>';
-        // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-    } else {
-        // <!-- sweetalert -->
-        echo '<script>
-                setTimeout(function(){
-                    swal({
-                        title: "Can Not Save Successfully!",
-                        text: "Checking Your Data",
-                        type:"warning"
-                    }, function(){
-                        window.location = "contact_is.php";
-                    })
-                },1000);
-            </script>';
-        // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-    }
-}
-
-   
+                             // print_r($_POST);
+                            //check duplicat
+                            $sql = "SELECT * From contact WHERE contact_tel = '$contact_tel' OR contact_email = '$contact_email'";
+                            //$stmt->bindParam(':username', $username , PDO::PARAM_STR);
+                            $result = $conn->query($sql);
+                            $num = mysqli_num_rows($result);
+                            //ถ้า username ซ้ำ ให้เด้งกลับไปหน้าสมัครสมาชิก ปล.ข้อความใน sweetalert ปรับแต่งได้ตามความเหมาะสม
+                            if($num > 0){
+                                echo '<script>
+                                            setTimeout(function() {
+                                            swal({
+                                                title: "Username or email ซ้ำ มีผู้ใช้งานอยู่ในระบบแล้ว !! ",  
+                                                text: "กรุณาสมัครใหม่อีกครั้ง",
+                                                type: "warning"
+                                            }, function() {
+                                                window.location = "contact_copy.php?id='.$_GET['id'].'"; //หน้าที่ต้องการให้กระโดดไป
+                                            });
+                                            }, 1000);
+                                    </script>';
+                            }else{ 
 
 
-// echo '<pre>';
-// print_r($_POST);
-// print_r($_FILES);
-// echo '</pre>';
-?>
+                            // print_r($_POST);
+                            $sql =  "INSERT INTO `tb_contact` (`contact_id`, `contact_group`,`contact_name`, `contact_position`, `contact_phone`, `contact_email`, `contact_address`, `contact_company`, `contact_date`, `contact_team`) 
+                            VALUES (NULL, '$contact_group', '$contact_name', '$contact_position', '$contact_phone', '$contact_email', '$contact_address', '$contact_company', '$contact_date', '$contact_team')";
+                            $result = $conn->query($sql);
+
+                            //  print_r($sql);
+                            if ($result) {
+                                // <!-- sweetalert -->
+                                echo '<script>
+                                        setTimeout(function(){
+                                            swal({
+                                                title: "Save Successfully!",
+                                                text: "Thank You . ",
+                                                type:"success"
+                                            }, function(){
+                                                window.location = "contact.php";
+                                            })
+                                        },1000);
+                                    </script>';
+                                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                            } else {
+                                // <!-- sweetalert -->
+                                echo '<script>
+                                        setTimeout(function(){
+                                            swal({
+                                                title: "Can Not Save Successfully!",
+                                                text: "Checking Your Data",
+                                                type:"warning"
+                                            }, function(){
+                                                window.location = "contact_is.php";
+                                            })
+                                        },1000);
+                                    </script>';
+                                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                            }
+                        }
+                    }
+                        // echo '<pre>';
+                        // print_r($_POST);
+                        // print_r($_FILES);
+                        // echo '</pre>';
+                        ?>
+
                         <!-- เพิ่มข้อมูล -->
                         <div class="row">
                             <!-- /.col (left) -->
                             <div class="col-md-12">
                                 <div class="card card-warning">
                                     <div class="card-header">
+                                        
                                         <h3 class="card-title">Custormer Descriptions</h3>
                                     </div>
                                     <div class="card-body">

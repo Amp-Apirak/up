@@ -2,13 +2,6 @@
 <html lang="en">
 <?php $menu = "index"; ?>
 
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="../ino/code/plugins/fontawesome-free/css/all.min.css">
-<!-- Theme style -->
-<link rel="stylesheet" href="../ino/code/dist/css/adminlte.min.css">
-
 
 <head>
     <meta charset="utf-8">
@@ -17,90 +10,87 @@
 
 
     <!----------------------------- start header ------------------------------->
-    <?php include ("../ino/templated/head.php");?>
+        <?php include ("../ino/templated/head.php");?>
     <!----------------------------- end header --------------------------------->
 
     <!----------------------------- start menu ------------------------------->
-    <?php include ("../ino/templated/menu.php");?>
+        <?php include ("../ino/templated/menu.php");?>
     <!----------------------------- end menu --------------------------------->
 
 
-
-
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard </li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard </li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+    <!-- /.content-header -->
 
-        
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
+    <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-lg-3 col-6">
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-info">
+                            <div class="small-box bg-info">
                             <!-- Qeury All Ticket -->
-                            <?php 
-                                $query = "SELECT DISTINCT project_line FROM tb_project WHERE `project_team` = 'Innovation';";
-                                $result = mysqli_query($conn, $query);
-                                $row = mysqli_num_rows($result);                                 
-                             ?>
+                                <?php 
+                                    $query = "SELECT DISTINCT project_line FROM tb_project WHERE `project_team` = 'Innovation';";
+                                    $result = mysqli_query($conn, $query);
+                                    $row = mysqli_num_rows($result);                                 
+                                ?>
 
 
-                            <div class="inner">
-                                <h3><?php  echo $row; ?></h3>
+                                <div class="inner">
+                                    <h3><?php  echo $row; ?></h3>
 
-                                <p>Line Product</p>
+                                    <p>Line Product</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-cog"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
                     <!-- ./col -->
 
-                    <!-- ------------------------------------------------------------------------------------------------------------------ -->
+                    <!-------------------------------------------------------------------------------------------------------------------- -->
 
-                    <div class="col-lg-3 col-6">
+                        <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box bg-success">
+                            <div class="small-box bg-success">
                             <!-- Qeury Count All Knowledge -->
-                            <?php 
-                                
-                                $query = "SELECT project_cate FROM tb_project WHERE `project_team` = 'Innovation' ";
-                                $result = mysqli_query($conn, $query);
-                                $row_ = mysqli_num_rows($result);                                  
-                             ?>
+                                <?php 
+                                    $query = "SELECT project_cate FROM tb_project WHERE `project_team` = 'Innovation' ";
+                                    $result = mysqli_query($conn, $query);
+                                    $row_ = mysqli_num_rows($result);                                  
+                                ?>
 
-                            <div class="inner">
-                                <h3><?php  echo $row_; ?></h3>
+                                <div class="inner">
+                                    <h3><?php  echo $row_; ?></h3>
+                                    <p>Product</p>
+                                </div>
 
-                                <p>Product</p>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+
+                                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
                     <!-- ./col -->
 
                     <!-- ------------------------------------------------------------------------------------------------------------------ -->
@@ -115,14 +105,15 @@
                                 $rs = mysqli_num_rows($result);                                  
                              ?>
 
-                            <div class="inner">
-                                <h3><?php  echo $rs; ?></h3>
+                                <div class="inner">
+                                    <h3><?php  echo $rs; ?></h3>
+                                    <p>Project</p>
+                                </div>
 
-                                <p>Project</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
