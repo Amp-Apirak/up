@@ -1,10 +1,3 @@
-<?php session_start(); ?>
-
-<?php 
-    if(!isset($_SESSION["id"])){
-        Header("Location: login.php");
-    }else{?>
-
 <!-- Start Configrate  -->
     <?php
         include("connection/connection.php"); 
@@ -178,7 +171,7 @@
             
         </nav>
         <!-- /.navbar -->
-        <?php } ?>
+
 
  
 

@@ -1,14 +1,12 @@
 <aside class="main-sidebar elevation-4 sidebar-light-primary">
 
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link bg-dark bg-primary bg-danger">
-        <img src="../ino/img/inoo.png" alt="INO Managemant" class="brand-image img-circle elevation-3"
+    <a href="index.php" class="brand-link bg-primary bg-primary bg-danger">
+        <img src="../up/img/up.png" alt="Uplevel Management" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">INO Management</span>
+        <span class="brand-text font-weight-light">Uplevel Management</span>
     </a>
 
-
-    <?php if (isset($_SESSION['id'])) { ?>
 
     <!-- Sidebar -->
     <div
@@ -33,12 +31,12 @@
                             <img src="../ino/img/002.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class=""><?php echo ($_SESSION['username']);?></a><br>
-                            <a href="profile.php" class=""><?php echo ($_SESSION['email']);?></a><br>
-                            <a href="logout.php" class=""><i class="nav-icon fa fa-sign-in"> Logout</i></a>
+                            <a href="profile.php" class="">Administrator</a><br>
+                            <a href="profile.php" class="">Your Welcome</a><br>
+                            <a href="logout.php" class=""><i class="nav-icon fa fa-sign-in">Work details</i></a>
                         </div>
                     </div>
-                    <?php } ?>
+                    
 
 
                     <!-- Sidebar Menu -->
@@ -48,91 +46,14 @@
                             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-
                             <li class="nav-item">
                                 <a href="index.php" class="nav-link <?php if($menu=="index"){echo "active";} ?>">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Dashboard
-                                    </p>
-                                </a>
-                            </li>
-
-
-                            <?php if ($_SESSION["role"] == "Administrator") { ?>
-                            <li class="nav-item">
-                                <a href="account.php" class="nav-link <?php if($menu=="account"){echo "active";} ?>">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    <p>
-                                        Account
-                                    </p>
-                                </a>
-                            </li>
-                            <?php } ?>
-
-<!-- 
-                            <li class="nav-item">
-                                <a href="remind.php" class="nav-link <?php if($menu=="Remind"){echo "active";} ?>">
-                                    <i class="nav-icon fa fa-bell"></i>
-                                    <p>
-                                        Remind
-                                        <span class="right badge badge-danger">New</span>
-                                    </p>
-                                </a>
-                            </li> -->
-
-                            <li class="nav-item">
-                                <a href="pipeline.php" class="nav-link <?php if($menu=="pipeline"){echo "active";} ?>">
-                                    <i class="nav-icon fa fa-handshake"></i>
-                                    <p>
-                                        Sales Pipeline
-                                        <span class="right badge badge-danger">New</span>
-                                    </p>
-                                </a>
-                            </li>
-
-
-
-                            <!-- <li class="nav-item">
-                                <a href="project.php" class="nav-link <?php if($menu=="project"){echo "active";} ?>">
-                                    <i class="nav-icon fa fa-star"></i>
-                                    <p>
-                                        Project Plan
-                                        
-                                    </p>
-                                </a>
-                            </li> -->
-
-                            <li class="nav-item">
-                                <a href="service.php" class="nav-link <?php if($menu=="service"){echo "active";} ?>">
                                     <i class="nav-icon fa fa-desktop"></i>
                                     <p>
-                                        Service Job
+                                        Work Detail
                                     </p>
                                 </a>
                             </li>
-
-                            <li class="nav-item">
-                                <a href="document.php" class="nav-link <?php if($menu=="document"){echo "active";} ?>">
-                                    <i class="nav-icon fa fa-folder-open"></i>
-                                    <p>
-                                        Document
-                                    </p>
-                                </a>
-                            </li>
-
-
-
-
-                            <li class="nav-item">
-                                <a href="contact.php" class="nav-link <?php if($menu=="contact"){echo "active";} ?>">
-                                    <i class="nav-icon fa fa-book"></i>
-                                    <p>
-                                        Contact
-                                    </p>
-                                </a>
-                            </li>
-
 
 
                         </ul>
