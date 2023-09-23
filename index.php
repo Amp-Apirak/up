@@ -433,6 +433,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Result</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                         </tr>
                                     </thead>
@@ -488,6 +489,7 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["date_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="18000" ><?php echo $res_search["detail"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["result"]; ?></td>
+                                            <td scope="col" class="text-nowrap text-center " height="" width="100">http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?></td>
 
                                             <td>
                                                 <!-- <a href="copy.php?id=<?php echo $res_search["work_id"]; ?>&id_c=<?php echo $res_search["service_id"]; ?>" class="btn btn-success btn-sm "><i class="fas fa-copy"></i></a> -->
@@ -513,6 +515,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Result</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                 </table>
                             </div>
