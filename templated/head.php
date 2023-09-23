@@ -42,50 +42,54 @@
 
 
 <!-- lightbox -->
-<link rel="stylesheet" href="../ino/code/dist/css/lightbox.min.css">
+<link rel="stylesheet" href="../up/code/dist/css/lightbox.min.css">
 <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
-    <link rel="stylesheet" href="../ino/code/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/fontawesome-free/css/all.min.css">
 <!-- Select2 -->
-    <link rel="stylesheet" href="../ino/code/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../ino/code/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <!-- DataTables -->
-    <link rel="stylesheet" href="../ino/code/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../ino/code/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../ino/code/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Theme style -->
-    <link rel="stylesheet" href="../ino/code/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../up/code/dist/css/adminlte.min.css">
 <!-- Toastr -->
-  <link rel="stylesheet" href="../ino/code/plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/toastr/toastr.min.css">
 <!-- sweetalert -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <!-- daterange picker -->
-  <link rel="stylesheet" href="../ino/code/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../up/code/plugins/daterangepicker/daterangepicker.css">
 <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="../ino/code/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 <!-- BS Stepper -->
-    <link rel="stylesheet" href="../ino/code/plugins/bs-stepper/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="../up/code/plugins/bs-stepper/css/bs-stepper.min.css">
 <!-- dropzonejs -->
-  <link rel="stylesheet" href="../ino/code/plugins/dropzone/min/dropzone.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/dropzone/min/dropzone.min.css">
 <!-- Bootstrap Color Picker -->
-   <link rel="stylesheet" href="../ino/code/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+   <link rel="stylesheet" href="../up/code/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
 <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="../ino/code/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="../ino/code/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
 <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- summernote -->
-  <link rel="stylesheet" href="../ino/code/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/summernote/summernote-bs4.min.css">
 <!-- CodeMirror -->
-  <link rel="stylesheet" href="../ino/code/plugins/codemirror/codemirror.css">
-  <link rel="stylesheet" href="../ino/code/plugins/codemirror/theme/monokai.css">
+  <link rel="stylesheet" href="../up/code/plugins/codemirror/codemirror.css">
+  <link rel="stylesheet" href="../up/code/plugins/codemirror/theme/monokai.css">
 <!-- SimpleMDE -->
-  <link rel="stylesheet" href="../ino/code/plugins/simplemde/simplemde.min.css">
+  <link rel="stylesheet" href="../up/code/plugins/simplemde/simplemde.min.css">
+  
+  
 
 
 </head>
+        <link rel="icon" type="image/x-icon" href="../up/img/favicon.ico">
+
     <div class="wrapper">
 
         <!-- Navbar -->
