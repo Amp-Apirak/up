@@ -3,6 +3,71 @@
 <?php $menu = "index"; ?>
 
 <head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+
+//<![CDATA[
+
+$(function(){
+
+ $('.imgx').hover(function(){
+
+  var w = 200;
+
+  var h = 220;
+
+  var d = 600;//duration
+
+  var imgx = $(this);
+
+  $('.imgy').remove();
+
+  var imgy = $('<img class="imgy" src="'+$(this).attr('src')+'"/>').appendTo('body');
+
+  imgy.css({
+
+   position: 'absolute',
+
+   left: imgx.offset().left,
+
+   top: imgx.offset().top,
+
+   width: imgx.width(),
+
+   height: imgx.height()
+
+   }).mouseout(function(){
+
+    $('.imgy').remove();
+
+   }).click(function(){
+
+    $('.imgy').remove();
+
+   });
+
+  imgy.animate({
+
+   left: imgx.offset().left - (w/2),
+
+   top: imgx.offset().top - (h/2),
+
+   width: w+'px',
+
+   height: h+'px'
+
+  },d);
+
+ },function(){});
+
+});
+
+//]]>
+
+</script>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Uplevel | Work Task</title>
@@ -470,13 +535,14 @@
                                                 ?>
                                             </td>
 
-                                            <td scope="col" class="text-nowrap " height="" width="100"><?php echo $res_search["subject"]; ?>
+                                            <td  scope="col" class="text-nowrap " height="" width="100">
+                                                
+                                            
 
-                                            <a href="../up/file/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1"
-                                                data-title="../up/file/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)"
-                                                class="img-fluid">..
-                                                <img width="20" height="15" src="../up/file/<?php echo $res_search["file_upfile"]; ?> ">
+                                            <a href="../up/file/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/file/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
+                                            <?php echo $res_search["subject"]; ?>
                                             </a>
+                                            <img class="imgx"  width="20" height="15" src="../up/file/<?php echo $res_search["file_upfile"]; ?> ">
 
                                             
                                         
