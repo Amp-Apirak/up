@@ -52,7 +52,7 @@
                         <!-- เพิ่มข้อมูล -->
                         <div class="row">
                             <!-- /.col (left) -->
-                            <div class="col-md-12 mx-auto">
+                            <div class="col-md-6 mx-auto">
                                 <div class="card card-primary">
                                     <div class="card-header">
                                         <h3 class="card-title">Task descriptions</h3>
