@@ -23,14 +23,19 @@
         $staff_crt = $_POST['staff_crt'];
 
 
-        $target_dir = "../up/file/";
+
+        $target_dir = "../up/example/";
         $target_file = $target_dir . basename($_FILES["file_upfile"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // printf($imageFileType);
+        $target_dir1 = "../up/test/";
+        $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
+        $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+
+        printf($target_file1);
 
         // Check if $uploadOk is set to 0 by an error
-        if ($imageFileType == " ") {
+        if ($imageFileType == " " ) {
 
             //echo "Sorry, your file was not uploaded.";
             echo '<script>
@@ -59,7 +64,7 @@
                             text: "Please check the file name.",
                             type:"warning"
                         }, function(){
-                            window.location = "doc_add.php";
+                            window.location = "add.php";
                         })
                     },1000);
                 </script>';
@@ -68,16 +73,25 @@
 
             $file_upfile = $_FILES['file_upfile']['name'];
             $file_tmp = $_FILES['file_upfile']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/file/$file_upfile");
+            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+
+            $file_upfile1 = $_FILES['file_test']['name'];
+            $file_tmp1 = $_FILES['file_test']['tmp_name'];
+            move_uploaded_file($file_tmp1, "../up/test/$file_upfile1");
 
 
 
+            $sql = "INSERT INTO `work` (`work_id`, `service_id`,`file_upfile`, `work_type`,
+            `subject`, `status`,  `detail`, `result`,`requester`, `staff_crt`,
+            `file_test`)
+            VALUES (NULL, '$service_id', '$file_upfile', '$work_type', '$subject', '$status',
+             '$detail', '$result', '$requester', '$staff_crt', '$file_test')";
 
-            $sql =  "INSERT INTO `work` ( `work_type`, `status`, `subject`,`detail`, `requester`, `result`, `staff_crt`, `file_upfile`, `service_id`) 
-                            VALUES ( '$work_type', '$status', '$subject', '$detail', '$requester', '$result', '$staff_crt', '$file_upfile', '$service_id')";
+
+
             $result = $conn->query($sql);
 
-            //print_r($sql);
+            print_r($sql);
 
             if ($result) {
                 // <!-- sweetalert -->

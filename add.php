@@ -134,12 +134,24 @@
 
 
                                             <div class="form-group">
-                                                <label for="file_upfile">Image <span class="text-danger"> (Only picture
+                                                <label for="file_upfile">Image Example <span class="text-danger"> (Only picture
                                                         and upload-max-filesize 20M*)</span></label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="file_upfile"
                                                         name="file_upfile">
                                                     <label class="custom-file-label" for="file_upfile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <div class="form-group">
+                                                <label for="file_test">Image Test <span class="text-danger"> (Only picture
+                                                        and upload-max-filesize 20M*)</span></label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="file_test"
+                                                        name="file_test">
+                                                    <label class="custom-file-label" for="file_test">Choose
                                                         file</label>
                                                 </div>
                                             </div>
@@ -153,12 +165,12 @@
                                                     placeholder="remark "></textarea>
                                             </div>
 
+                                            <!-- textarea -->
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Resolve Detail</label>
-                                                <input type="text" name="result" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="">
+                                                <label>Resolve Detail</label>
+                                                <textarea class="form-control" name="result" id="result" rows="6"
+                                                    placeholder=" "></textarea>
                                             </div>
-                                            <!-- /.form-group -->
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Requester<span

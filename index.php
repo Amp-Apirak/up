@@ -462,6 +462,8 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subcategoty</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Status</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subject</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Example</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Test</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Requester</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Date Create</th>
@@ -506,17 +508,23 @@
                                                 ?>
                                             </td>
 
-                                            <td  scope="col" class="text-nowrap " height="" width="100">
-                                                
+                                            <td  scope="col" class="text-nowrap " height="" width="100"><?php echo $res_search["subject"]; ?></td> 
                                             
-
-                                            <a href="../up/file/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/file/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
-                                            <?php echo $res_search["subject"]; ?>
+                                            <td  scope="col" class="text-nowrap text-center" height="" width="100">
+                                            <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
+                                            <img class="imgx"  width="60" height="45" src="../up/example/<?php echo $res_search["file_upfile"]; ?> ">
                                             </a>
-                                            <img class="imgx"  width="20" height="15" src="../up/file/<?php echo $res_search["file_upfile"]; ?> ">
-
+                                            
+                                            </td> 
                                             
                                         
+                                            </td> 
+
+                                            <td  scope="col" class="text-nowrap text-center" height="" width="100">
+                                            <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                            <img class="imgx"  width="60" height="45" src="../up/test/<?php echo $res_search["file_test"]; ?> ">
+                                            </a>
+                                            
                                             </td> 
 
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["requester"]; ?></td>
@@ -545,6 +553,8 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subcategoty</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Status</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subject</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Example</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Test</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Requester</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Date Create</th>
