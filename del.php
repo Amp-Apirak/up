@@ -1,3 +1,11 @@
+
+    <!----------------------------- start header ------------------------------->
+    <?php include("../up/templated/head.php"); ?>
+    <!----------------------------- end header --------------------------------->
+
+    <!----------------------------- start menu ------------------------------->
+    <?php include("../up/templated/menu.php"); ?>
+    <!----------------------------- end menu --------------------------------->
 <!-- Start Configrate  -->
 <?php
         include("connection/connection.php"); 
@@ -7,7 +15,10 @@
         /* การลบข้อมูล */
         if (isset($_GET['id'])) {
 
+            print_r($_GET['id']);
+
             $result = $conn->query("DELETE FROM work WHERE work_id=" . $_GET['id']);
+            print_r($result);
 
             if ($result) {
                 // <!-- sweetalert -->
@@ -42,4 +53,6 @@
         /* การลบข้อมูล */
     ?>
 
-  
+      <!----------------------------- start menu ------------------------------->
+      <?php include("../up/templated/footer.php"); ?>
+    <!----------------------------- end menu --------------------------------->
