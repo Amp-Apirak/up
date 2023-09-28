@@ -153,6 +153,8 @@
                                                         name="file_test">
                                                     <label class="custom-file-label" for="file_test">Choose
                                                         file</label>
+
+                                                        <input type="hidden" name="file_test" id="file_test" value="" class="form-control" id="exampleInputEmail1" placeholder="" >
                                                 </div>
                                             </div>
                                             <!-- /.form-group -->

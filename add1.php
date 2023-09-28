@@ -21,6 +21,7 @@
         $service_id = $_POST['service_id'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
+        $file_test = $_POST['file_test'];
 
 
 
