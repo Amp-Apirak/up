@@ -21,6 +21,15 @@
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt']; 
 
+        $target_dir = "../up/example/";
+        $target_file = $target_dir . basename($_FILES["file_upfile"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        $target_dir1 = "../up/test/";
+        $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
+        $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+        $file_test = $_FILES["file_test"]["name"] ;
+
 
             ini_set('display_errors', 1);
             ini_set('display_startup_errors', 1);
@@ -33,7 +42,15 @@
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
+          
+
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
+            $imageFile = new CURLFile($target_file);
+
+            $data = array(
+                'message' => $sMessage,
+                'imageFile' => $imageFile,
+            );
 
             
             $chOne = curl_init(); 
@@ -41,8 +58,8 @@
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
             curl_setopt( $chOne, CURLOPT_POST, 1); 
-            curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
-            $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+            curl_setopt( $chOne, CURLOPT_POSTFIELDS, $data); 
+            $headers = array( 'Content-type: multipart/form-data', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
             $result1 = curl_exec( $chOne ); 
@@ -50,14 +67,7 @@
 
 
         
-        $target_dir = "../up/example/";
-        $target_file = $target_dir . basename($_FILES["file_upfile"]["name"]);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        $target_dir1 = "../up/test/";
-        $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
-        $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
-        $file_test = $_FILES["file_test"]["name"] ;
+      
 
         //printf($target_file1);
 
