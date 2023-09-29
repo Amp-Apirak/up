@@ -521,7 +521,7 @@
                                             </td> 
 
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                            
+                                                <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
 
                                                     <?php
                                                         if($res_search["file_test"] ==''){
@@ -531,6 +531,7 @@
                                                         }
                                                     ?>
 
+                                                </a>
                                             </td> 
 
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["requester"]; ?></td>
