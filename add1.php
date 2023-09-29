@@ -30,7 +30,7 @@
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
             $sMessage = "Uplevel Job Notification\n\n";
             $sMessage .= "Requeter: ".$work_type." \n";
-            $sMessage .= "Type: ".$requester." \n";
+            $sMessage .= "Requester: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";

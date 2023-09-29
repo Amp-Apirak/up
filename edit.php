@@ -50,8 +50,7 @@
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
             $sMessage = "Uplevel **Update** Job Notification\n\n";
-            $sMessage .= "Requeter: ".$work_type." \n";
-            $sMessage .= "Type: ".$requester." \n";
+            $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
 
