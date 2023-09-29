@@ -41,7 +41,7 @@
 
 
         $file_upfile = $_FILES['file_upfile']['name'];
-        $file_upfile1 = $_FILES['file_test']['name'];
+        $file_test = $_FILES['file_test']['name'];
 
 
 
@@ -49,13 +49,17 @@
             $file_tmp = $_FILES['file_upfile']['tmp_name'];
             move_uploaded_file($file_tmp, "../up/example/$file_upfile");
 
-        }if ($file_upfile1 !=''){
-            $file_tmp1 = $_FILES['file_test']['tmp_name'];
-            move_uploaded_file($file_tmp1, "../up/test/$file_test");
-        
         }else {
 
             $file_upfile = $file_upfile2;
+            
+        }if ($file_test !=''){
+            $file_tmp = $_FILES['file_test']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/test/$file_test");
+        
+        }else {
+
+            
             $file_test = $file_test2;
         }
 
@@ -69,35 +73,7 @@
                             
                             //print_r($_POST);
 
-                            if ($result) {
-                                //     // <!-- sweetalert -->
-                                    echo '<script>
-                                            setTimeout(function(){
-                                                swal({
-                                                    title: "Save Successfully!",
-                                                    text: "Thank You . ",
-                                                    type:"success"
-                                                }, function(){
-                                                    window.location = "index.php";
-                                                })
-                                            },1000);
-                                        </script>';
-                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-                                } else {
-                                //     // <!-- sweetalert -->
-                                    echo '<script>
-                                            setTimeout(function(){
-                                                swal({
-                                                    title: "Can Not Save Successfully!",
-                                                    text: "Checking Your Data",
-                                                    type:"warning"
-                                                }, function(){
-                                                    window.location = "index.php";
-                                                })
-                                            },1000);
-                                        </script>';
-                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-                                }
+                            
         }
     
     // echo '<pre>';
