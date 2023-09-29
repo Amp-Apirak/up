@@ -73,7 +73,35 @@
                             
                             //print_r($_POST);
 
-                            
+                            if ($result) {
+                                //     // <!-- sweetalert -->
+                                    echo '<script>
+                                            setTimeout(function(){
+                                                swal({
+                                                    title: "Save Successfully!",
+                                                    text: "Thank You . ",
+                                                    type:"success"
+                                                }, function(){
+                                                    window.location = "index.php";
+                                                })
+                                            },1000);
+                                        </script>';
+                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                                } else {
+                                //     // <!-- sweetalert -->
+                                    echo '<script>
+                                            setTimeout(function(){
+                                                swal({
+                                                    title: "Can Not Save Successfully!",
+                                                    text: "Checking Your Data",
+                                                    type:"warning"
+                                                }, function(){
+                                                    window.location = "index.php";
+                                                })
+                                            },1000);
+                                        </script>';
+                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                                }
         }
     
     // echo '<pre>';
