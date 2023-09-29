@@ -37,23 +37,31 @@
         $requester = $_POST['requester'];
         $staff_edit = $_POST['staff_edit'];
         $file_upfile2 = $_POST['file_upfile2'];
+        $file_test2 = $_POST['file_test2'];
 
 
         $file_upfile = $_FILES['file_upfile']['name'];
+        $file_upfile1 = $_FILES['file_test']['name'];
 
 
 
         if($file_upfile !=''){
             $file_tmp = $_FILES['file_upfile']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/file/$file_upfile");
+            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+
+        }if ($file_upfile1 !=''){
+            $file_tmp1 = $_FILES['file_test']['tmp_name'];
+            move_uploaded_file($file_tmp1, "../up/test/$file_test");
+        
         }else {
 
             $file_upfile = $file_upfile2;
+            $file_test = $file_test2;
         }
 
 
 
-            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', 
+            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  
                             `detail` = '$detail', `result` = '$result', `service_id` = '$service_id', `requester` = '$requester', 
                             `staff_edit` = '$staff_edit', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
@@ -243,6 +251,19 @@
                                             </div>
                                             <!-- /.form-group -->
 
+                                            <div class="form-group">
+                                                <label for="file_test">Image Test <span class="text-danger"> (Only picture
+                                                        and upload-max-filesize 20M*)</span></label>
+                                                <div class="custom-file">
+
+                                                    <input type="file" class="custom-file-input" id="file_test" name="file_test">
+                                                    <label class="custom-file-label" for="file_test"><?= $rr->file_test; ?></label>
+
+                                                    <input type="hidden" class="custom-file-input" id="file_test2"  value="<?= $rr->file_test; ?>" name="file_test2">
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+
 
                                             <!-- textarea -->
                                             <div class="form-group">
@@ -251,12 +272,12 @@
                                                     placeholder="remark "><?= $rr->detail; ?></textarea>
                                             </div>
 
+                                            <!-- textarea -->
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Resolve Detail</label>
-                                                <input type="text" name="result" class="form-control"  value="<?= $rr->result; ?>"
-                                                    id="exampleInputEmail1" placeholder="">
+                                                <label>Resolve Detail</label>
+                                                <textarea class="form-control" name="result" id="result" rows="6"
+                                                    placeholder="result "><?= $rr->result; ?></textarea>
                                             </div>
-                                            <!-- /.form-group -->
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Requester<span

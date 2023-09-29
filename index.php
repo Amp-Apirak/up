@@ -521,10 +521,16 @@
                                             </td> 
 
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                            <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
-                                            <img class="imgx"  width="60" height="45" src="../up/test/<?php echo $res_search["file_test"]; ?> ">
-                                            </a>
                                             
+
+                                                    <?php
+                                                        if($res_search["file_test"] ==''){
+                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                        }elseif($res_search["file_test"]){
+                                                            echo '<img class="imgx"  width="60" height="45" src="../up/test/'.$res_search["file_test"].'"';
+                                                        }
+                                                    ?>
+
                                             </td> 
 
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["requester"]; ?></td>
@@ -535,8 +541,14 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="18000" ><?php echo $res_search["detail"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["result"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
-                                                http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?><p> |
-                                                http://58.137.58.163/up/<?php echo $res_search["file_test"]; ?>
+
+                                                <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
+                                                    http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?> 
+                                                </a> 
+                                                    |
+                                                <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
+                                                    http://58.137.58.163/up/<?php echo $res_search["file_test"]; ?>
+                                                </a>
                                         
                                             </td>
 

@@ -21,10 +21,10 @@
         $service_id = $_POST['service_id'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
-        $file_test = $_POST['file_test'];
 
 
 
+        
         $target_dir = "../up/example/";
         $target_file = $target_dir . basename($_FILES["file_upfile"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -32,11 +32,12 @@
         $target_dir1 = "../up/test/";
         $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+        $file_test = $_FILES["file_test"]["name"] ;
 
         printf($target_file1);
 
         // Check if $uploadOk is set to 0 by an error
-        if ($imageFileType == " " ) {
+        if ($imageFileType == "" ) {
 
             //echo "Sorry, your file was not uploaded.";
             echo '<script>
