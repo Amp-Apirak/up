@@ -49,14 +49,14 @@
             date_default_timezone_set("Asia/Bangkok");
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel **Update** Job Notification\n";
+            $sMessage = "Uplevel **Update** Job Notification\n\n";
             $sMessage .= "Requeter: ".$work_type." \n";
             $sMessage .= "Type: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
-            $sMessage .= "Subject : ".$subject."\n";
+            $sMessage .= "Subject : ".$subject."\n\n";
 
             $sMessage .= "detail : ".$detail."\n";
-            $sMessage .= "result : ".$result."\n";
+            $sMessage .= "result : ".$result."\n\n";
 
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
@@ -70,18 +70,8 @@
             $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-            $result = curl_exec( $chOne ); 
+            $resultt = curl_exec( $chOne ); 
 
-            //Result error 
-            // if(curl_error($chOne)) 
-            // { 
-            //     echo 'error:' . curl_error($chOne); 
-            // } 
-            // else { 
-            //     $result_ = json_decode($result, true); 
-            //     echo "status : ".$result_['status']; echo "message : ". $result_['message'];
-            // } 
-            // curl_close( $chOne );   
 
 
 
