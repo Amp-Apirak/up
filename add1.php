@@ -29,8 +29,8 @@
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
             $sMessage = "Uplevel Job Notification\n\n";
-            $sMessage .= "Requeter: ".$work_type." \n";
-            $sMessage .= "Type: ".$requester." \n";
+            $sMessage .= "Type: ".$work_type." \n";
+            $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
@@ -45,7 +45,7 @@
             $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-            $result = curl_exec( $chOne ); 
+            $result1 = curl_exec( $chOne ); 
 
 
 

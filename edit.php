@@ -50,8 +50,8 @@
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
             $sMessage = "Uplevel **Update** Job Notification\n\n";
-            $sMessage .= "Requeter: ".$work_type." \n";
-            $sMessage .= "Type: ".$requester." \n";
+            $sMessage .= "Type: ".$work_type." \n";
+            $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
 
@@ -70,7 +70,7 @@
             $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-            $resultt = curl_exec( $chOne ); 
+            $resultt1 = curl_exec( $chOne ); 
 
 
 
