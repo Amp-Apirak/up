@@ -27,6 +27,7 @@
 
     <?php
     if (isset($_POST['submit1'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
+        
 
         $work_type  = $_POST['work_type']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
         $subject = $_POST['subject'];
@@ -39,9 +40,49 @@
         $file_upfile2 = $_POST['file_upfile2'];
         $file_test2 = $_POST['file_test2'];
 
-
         $file_upfile = $_FILES['file_upfile']['name'];
         $file_test = $_FILES['file_test']['name'];
+
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+            date_default_timezone_set("Asia/Bangkok");
+
+            $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
+            $sMessage = "Uplevel **Update** Job Notification\n";
+            $sMessage .= "Requeter: ".$work_type." \n";
+            $sMessage .= "Type: ".$requester." \n";
+            $sMessage .= "Status : ".$status."\n";
+            $sMessage .= "Subject : ".$subject."\n";
+
+            $sMessage .= "detail : ".$detail."\n";
+            $sMessage .= "result : ".$result."\n";
+
+            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
+
+            
+            $chOne = curl_init(); 
+            curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+            curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+            curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+            curl_setopt( $chOne, CURLOPT_POST, 1); 
+            curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+            $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+            curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+            curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+            $result = curl_exec( $chOne ); 
+
+            //Result error 
+            // if(curl_error($chOne)) 
+            // { 
+            //     echo 'error:' . curl_error($chOne); 
+            // } 
+            // else { 
+            //     $result_ = json_decode($result, true); 
+            //     echo "status : ".$result_['status']; echo "message : ". $result_['message'];
+            // } 
+            // curl_close( $chOne );   
+
 
 
 
