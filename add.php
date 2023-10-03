@@ -77,9 +77,47 @@
 
                                             <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
                                             <?php
-                                            $service_id = "";
-                                            $_sql_service_cate = "SELECT DISTINCT * FROM category";
-                                            $query_service_cate = mysqli_query($conn, $_sql_service_cate);
+                                            $service_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM service";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
+
+                                            <div class="row">
+                                                <div class="col col-10">
+                                                    <div class="form-group">
+                                                        <label>Service <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="service_name">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
+                                                            <option value="<?php echo $r["service_name"]; ?>"
+                                                                <?php if ($r['service_name'] == $service_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["service_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col-2">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
+                                            </div>
+
+                                            
+                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $category_name = "";
+                                            $_sql_category = "SELECT DISTINCT * FROM category";
+                                            $query_category = mysqli_query($conn, $_sql_category);
                                             ?>
 
                                             <div class="row">
@@ -87,13 +125,51 @@
                                                     <div class="form-group">
                                                         <label>Category <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
-                                                            name="service_id">
+                                                            name="category_name">
                                                             <option selected="selected"></option>
-                                                            <?php while ($r = mysqli_fetch_array($query_service_cate)) { ?>
-                                                            <option value="<?php echo $r["service_id"]; ?>"
-                                                                <?php if ($r['service_id'] == $service_id) : ?>
+                                                            <?php while ($r = mysqli_fetch_array($query_category)) { ?>
+                                                            <option value="<?php echo $r["category_name"]; ?>"
+                                                                <?php if ($r['category_name'] == $category_name) : ?>
                                                                 selected="selected" <?php endif; ?>>
-                                                                <?php echo $r["service_cate"]; ?>&nbsp;>>&nbsp;<?php echo $r["service_type"]; ?>&nbsp;>>&nbsp;<?php echo $r["service_sup"]; ?>
+                                                                <?php echo $r["category_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col-2">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
+                                            </div>
+
+                                            
+                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $items_name = "";
+                                            $_sql_items = "SELECT DISTINCT * FROM items";
+                                            $query_items = mysqli_query($conn, $_sql_items);
+                                            ?>
+
+                                            <div class="row">
+                                                <div class="col col-10">
+                                                    <div class="form-group">
+                                                        <label>Category <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="items_name">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_items)) { ?>
+                                                            <option value="<?php echo $r["items_name"]; ?>"
+                                                                <?php if ($r['items_name'] == $items_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["items_name"]; ?>
                                                             </option>
                                                             <?php } ?>
                                                         </select>
@@ -162,21 +238,21 @@
                                             <div class="form-group">
                                                 <label>Descriptions</label>
                                                 <textarea class="form-control" name="detail" id="detail" rows="6"
-                                                    placeholder="remark "></textarea>
+                                                    placeholder="รายละเอียด"></textarea>
                                             </div>
 
                                             <!-- textarea -->
                                             <div class="form-group">
                                                 <label>Resolve Detail</label>
                                                 <textarea class="form-control" name="result" id="result" rows="6"
-                                                    placeholder=" "></textarea>
+                                                    placeholder="วิธีดำเนินการ"></textarea>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Requester<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="requester" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="" required>
+                                                    id="exampleInputEmail1" placeholder="ผู้ร้องขอ" required>
                                             </div>
                                             <!-- /.form-group -->
 
@@ -243,37 +319,41 @@
     <?php
      if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
-        $service_cate = $_POST['service_cate'];    /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+
+        if ($service = $_POST['service']){
+            $sql =  "INSERT INTO `category` ( `service`,`service_type`,`service_sup`)  VALUES ('$service', '$service_type', '$service_sup')";
+            $result = $conn->query($sql);
+            if ($result) {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: " Saved successfully.",
+                            text: "",
+                            type: "success"
+                        }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            } else {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: "Please check the input.",
+                            type: "error"
+                    }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            }
+        }
+
         $service_type = $_POST['service_type'];
         $service_sup = $_POST['service_sup'];
 
 
-                $sql =  "INSERT INTO `category` ( `service_cate`,`service_type`,`service_sup`)  VALUES ('$service_cate', '$service_type', '$service_sup')";
-                $result = $conn->query($sql);
-                if ($result) {
-                    echo '<script>
-                        setTimeout(function() {
-                        swal({
-                                title: " Saved successfully.",
-                                text: "",
-                                type: "success"
-                            }, function() {
-                                window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
-                                });
-                                }, 1000);
-                            </script>';
-                } else {
-                    echo '<script>
-                        setTimeout(function() {
-                        swal({
-                                title: "Please check the input.",
-                                type: "error"
-                        }, function() {
-                                window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
-                                });
-                                }, 1000);
-                            </script>';
-                }
+              
             }
             
 
@@ -294,7 +374,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Service Category</label>
-                                <input type="text" name="service_cate" class="form-control" id="service_cate"
+                                <input type="text" name="service" class="form-control" id="service"
                                     placeholder="" required>
                             </div>
                             <!-- /.form-group -->

@@ -91,36 +91,36 @@
                                     $status = "";
                                     $requester = "";
                                     $work_type = "";
-                                    $service_cate = "";
-                                    $service_type = "";
-                                    $service_sup = "";
+                                    $service = "";
+                                    $category = "";
+                                    $items = "";
 
                                     $search_backup = "";
                                     $status_backup = "";
                                     $requester_backup = "";
                                     $work_type_backup = "";
-                                    $service_cate_backup = "";
-                                    $service_type_backup = "";
-                                    $service_sup_backup = "";
+                                    $service_backup = "";
+                                    $category_backup = "";
+                                    $items_backup = "";
                         
-                                    $_sql_status = "SELECT DISTINCT status FROM work INNER JOIN category On (work.service_id = category.service_id)";
-                                    $_sql_requester = "SELECT DISTINCT requester FROM work INNER JOIN category On (work.service_id = category.service_id)";
-                                    $_sql_work_type = "SELECT DISTINCT work_type  FROM work INNER JOIN category On (work.service_id = category.service_id)";
-                                    $_sql_service_cate = "SELECT DISTINCT service_cate  FROM category ";
-                                    $_sql_service_type = "SELECT DISTINCT service_type  FROM category ";
-                                    $_sql_service_sup = "SELECT DISTINCT service_sup   FROM category ";
+                                    $_sql_status = "SELECT DISTINCT status FROM work ";
+                                    $_sql_requester = "SELECT DISTINCT requester FROM work ";
+                                    $_sql_work_type = "SELECT DISTINCT work_type  FROM work ";
+                                    $_sql_service = "SELECT DISTINCT service  FROM work ";
+                                    $_sql_category = "SELECT DISTINCT category  FROM work ";
+                                    $_sql_items = "SELECT DISTINCT items   FROM work ";
 
 
                                     $query_status = mysqli_query($conn, $_sql_status);
                                     $query_requester = mysqli_query($conn, $_sql_requester);
                                     $query_work_type = mysqli_query($conn, $_sql_work_type);
-                                    $query_service_cate = mysqli_query($conn, $_sql_service_cate);
-                                    $query_service_type = mysqli_query($conn, $_sql_service_type);
-                                    $query_service_sup = mysqli_query($conn, $_sql_service_sup);
+                                    $query_service = mysqli_query($conn, $_sql_service);
+                                    $query_category = mysqli_query($conn, $_sql_category);
+                                    $query_items = mysqli_query($conn, $_sql_items);
 
                                     //print_r($query_status);
 
-                                    $_sql = "SELECT * FROM work INNER JOIN category On (work.service_id = category.service_id)";
+                                    $_sql = "SELECT * FROM work ";
                                     $_where = "";
 
                                         if (isset($_POST['search'])) {
@@ -129,25 +129,25 @@
                                             $status = $_POST['status'];
                                             $requester = $_POST['requester'];
                                             $work_type = $_POST['work_type'];
-                                            $service_cate = $_POST['service_cate'];
-                                            $service_type = $_POST['service_type'];
-                                            $service_sup = $_POST['service_sup'];
+                                            $service = $_POST['service'];
+                                            $category = $_POST['category'];
+                                            $items = $_POST['items'];
 
                                             $search_backup = $_POST['search_backup'];
                                             $status_backup = $_POST['status_backup'];
                                             $requester_backup = $_POST['requester_backup'];
                                             $work_type_backup = $_POST['work_type_backup'];
-                                            $service_cate_backup = $_POST['service_cate_backup'];
-                                            $service_type_backup = $_POST['service_type_backup'];
-                                            $service_sup_backup = $_POST['service_sup_backup'];
+                                            $service_backup = $_POST['service_backup'];
+                                            $category_backup = $_POST['category_backup'];
+                                            $items_backup = $_POST['items_backup'];
 
                                         //print_r($_sqlCount);
 
                                             if ($search != $search_backup || $status != $status_backup || $requester != $requester_backup || $work_type  != $work_type_backup 
-                                            || $service_cate  != $service_cate_backup || $service_type  != $service_type_backup || $service_sup  != $service_sup_backup )
+                                            || $service  != $service_backup || $category  != $category_backup || $items  != $items_backup )
                                         
                                             if (!empty($search)) {
-                                                $_where = $_where . " WHERE service_cate LIKE '%$search%' OR service_type LIKE '%$search%' OR service_sup LIKE '%$search%' OR upfile LIKE '%$search%' OR work_type LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
+                                                $_where = $_where . " WHERE service LIKE '%$search%' OR category LIKE '%$search%' OR items LIKE '%$search%' OR upfile LIKE '%$search%' OR work_type LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
                                                 OR result LIKE '%$search%' OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
                                             }
                                             if ($status != "") {
@@ -171,25 +171,25 @@
                                                     $_where = $_where . " AND  work_type = '$work_type'"; 
                                                 }
                                             }
-                                            if ($service_cate != "") {
+                                            if ($service != "") {
                                                 if (empty($_where)) {
-                                                    $_where = $_where . " WHERE service_cate = '$service_cate' ";
+                                                    $_where = $_where . " WHERE service = '$service' ";
                                                 } else {
-                                                    $_where = $_where . " AND  service_cate = '$service_cate'"; 
+                                                    $_where = $_where . " AND  service = '$service'"; 
                                                 }
                                             }
-                                            if ($service_type != "") {
+                                            if ($category != "") {
                                                 if (empty($_where)) {
-                                                    $_where = $_where . " WHERE service_type = '$service_type' ";
+                                                    $_where = $_where . " WHERE category = '$category' ";
                                                 } else {
-                                                    $_where = $_where . " AND  service_type = '$service_type'"; 
+                                                    $_where = $_where . " AND  category = '$category'"; 
                                                 }
                                             }
-                                            if ($service_sup != "") {
+                                            if ($items != "") {
                                                 if (empty($_where)) {
-                                                    $_where = $_where . " WHERE service_sup = '$service_sup' ";
+                                                    $_where = $_where . " WHERE items = '$items' ";
                                                 } else {
-                                                    $_where = $_where . " AND  service_sup = '$service_sup'"; 
+                                                    $_where = $_where . " AND  items = '$items'"; 
                                                 }
                                             }
 
@@ -216,7 +216,7 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work INNER JOIN category On (work.service_id = category.service_id)";
+                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work ";
                                                                 $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC ";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
@@ -245,7 +245,7 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work INNER JOIN category On (work.service_id = category.service_id) WHERE `status` = 'On Process'";
+                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work  WHERE `status` = 'On Process'";
                                                                 $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC ";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
@@ -273,7 +273,7 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work INNER JOIN category On (work.service_id = category.service_id) WHERE `status` = 'Done'";
+                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work  WHERE `status` = 'Done'";
                                                                 $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
@@ -322,9 +322,9 @@
                                                             <input type="hidden" class="form-control " id="status_backup" name="status_backup" value="<?php echo $status; ?>">
                                                             <input type="hidden" class="form-control " id="requester_backup" name="requester_backup" value="<?php echo $requester; ?>">
                                                             <input type="hidden" class="form-control " id="work_type_backup" name="work_type_backup" value="<?php echo $work_type; ?>">
-                                                            <input type="hidden" class="form-control " id="service_cate_backup" name="service_cate_backup" value="<?php echo $service_cate; ?>">
-                                                            <input type="hidden" class="form-control " id="service_type_backup" name="service_type_backup" value="<?php echo $service_type; ?>">
-                                                            <input type="hidden" class="form-control " id="service_sup_backup" name="service_sup_backup" value="<?php echo $service_sup; ?>">
+                                                            <input type="hidden" class="form-control " id="service_backup" name="service_backup" value="<?php echo $service; ?>">
+                                                            <input type="hidden" class="form-control " id="category_backup" name="category_backup" value="<?php echo $category; ?>">
+                                                            <input type="hidden" class="form-control " id="items_backup" name="items_backup" value="<?php echo $items; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -383,13 +383,13 @@
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label>Service Cate</label>
-                                                            <select class="custom-select select2" name="service_cate">
+                                                            <select class="custom-select select2" name="service">
                                                                 <option value="">Select</option>
-                                                                <?php while ($rd = mysqli_fetch_array($query_service_cate)) { ?>
-                                                                <option value="<?php echo $rd["service_cate"]; ?>"
-                                                                    <?php if ($rd['service_cate'] == $service_cate) : ?>
+                                                                <?php while ($rd = mysqli_fetch_array($query_service)) { ?>
+                                                                <option value="<?php echo $rd["service"]; ?>"
+                                                                    <?php if ($rd['service'] == $service) : ?>
                                                                     selected="selected" <?php endif; ?>>
-                                                                    <?php echo $rd["service_cate"]; ?></option>
+                                                                    <?php echo $rd["service"]; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
@@ -397,13 +397,13 @@
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label>Service Type</label>
-                                                            <select class="custom-select select2" name="service_type">
+                                                            <select class="custom-select select2" name="category">
                                                                 <option value="">Select</option>
-                                                                <?php while ($rf = mysqli_fetch_array($query_service_type)) { ?>
-                                                                <option value="<?php echo $rf["service_type"]; ?>"
-                                                                    <?php if ($rf['service_type'] == $service_type) : ?>
+                                                                <?php while ($rf = mysqli_fetch_array($query_category)) { ?>
+                                                                <option value="<?php echo $rf["category"]; ?>"
+                                                                    <?php if ($rf['category'] == $category) : ?>
                                                                     selected="selected" <?php endif; ?>>
-                                                                    <?php echo $rf["service_type"]; ?></option>
+                                                                    <?php echo $rf["category"]; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
@@ -411,13 +411,13 @@
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label>Subcategoty</label>
-                                                            <select class="custom-select select2" name="service_sup">
+                                                            <select class="custom-select select2" name="items">
                                                                 <option value="">Select</option>
-                                                                <?php while ($rh = mysqli_fetch_array($query_service_sup)) { ?>
-                                                                <option value="<?php echo $rh["service_sup"]; ?>"
-                                                                    <?php if ($rh['service_sup'] == $service_sup) : ?>
+                                                                <?php while ($rh = mysqli_fetch_array($query_items)) { ?>
+                                                                <option value="<?php echo $rh["items"]; ?>"
+                                                                    <?php if ($rh['items'] == $items) : ?>
                                                                     selected="selected" <?php endif; ?>>
-                                                                    <?php echo $rh["service_sup"]; ?></option>
+                                                                    <?php echo $rh["items"]; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
@@ -488,9 +488,9 @@
                                                     }
                                                 ?>
                                         </td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["service_cate"]; ?></td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["service_type"]; ?></td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["service_sup"]; ?></td>
+                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["service"]; ?></td>
+                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["category"]; ?></td>
+                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["items"]; ?></td>
                                          
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
                                                 <?php
