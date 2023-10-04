@@ -202,7 +202,7 @@
 
                                  // print_r($query_search);
                                  // print_r($_sql);
-                                 // print_r($_where);
+                                  //print_r($_where);
                                 ?>
 
 
@@ -247,12 +247,13 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work  WHERE `status` = 'On Process'";
-                                                                // $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC ";
-                                                                $result = mysqli_query($conn, $query2);
-                                                                $rs = mysqli_fetch_array($result);
-                                                                $a = $rs['AMP'];
+                                                    $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'On Process'";
+                                                    $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
+                                                    $result = mysqli_query($conn, $query2);
+                                                    $rs = mysqli_fetch_array($result);
+                                                    $a = $rs['AMP'];
                                              ?>
+
 
                                                         
 
@@ -277,8 +278,8 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
-                                                                // $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
+                                                                $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
+                                                                $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
                                                                 $result = mysqli_query($conn, $query2);
                                                                 $rs = mysqli_fetch_array($result);
                                                                 $a = $rs['AMP'];
