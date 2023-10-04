@@ -14,11 +14,14 @@
     if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
         $work_type  = $_POST['work_type']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+        $work_type = $_POST['work_type'];
+        $service = $_POST['service_name'];
+        $category = $_POST['category_name'];
+        $items = $_POST['items_name'];
         $subject = $_POST['subject'];
         $status = $_POST['status'];
         $detail = $_POST['detail'];
         $result = $_POST['result'];
-        $service_id = $_POST['service_id'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
 
@@ -31,6 +34,7 @@
         $target_dir1 = "../up/test/";
         $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+        $file_test = $_FILES["file_test"]["name"] ;
 
         printf($target_file1);
 
@@ -81,11 +85,11 @@
 
 
 
-            $sql = "INSERT INTO `work` (`work_id`, `service_id`,`file_upfile`, `work_type`,
-            `subject`, `status`,  `detail`, `result`,`requester`, `staff_crt`,
+            $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`,
+            `items`, `file_upfile`,  `subject`, `status`,`detail`, `result`,`requester`,`staff_crt`,
             `file_test`)
-            VALUES (NULL, '$service_id', '$file_upfile', '$work_type', '$subject', '$status',
-             '$detail', '$result', '$requester', '$staff_crt', '$file_test')";
+            VALUES (NULL, '$work_type', '$service', '$category', '$items', '$file_upfile',
+             '$subject', '$status', '$detail', '$result', '$requester', '$staff_crt','$file_test')";
 
 
 

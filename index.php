@@ -147,7 +147,7 @@
                                             || $service  != $service_backup || $category  != $category_backup || $items  != $items_backup )
                                         
                                             if (!empty($search)) {
-                                                $_where = $_where . " WHERE service LIKE '%$search%' OR category LIKE '%$search%' OR items LIKE '%$search%' OR upfile LIKE '%$search%' OR work_type LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
+                                                $_where = $_where . " WHERE work_type LIKE '%$search%' OR service LIKE '%$search%' OR category LIKE '%$search%' OR items LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
                                                 OR result LIKE '%$search%' OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
                                             }
                                             if ($status != "") {
@@ -195,12 +195,14 @@
 
                                         }
                                         
-                                    $_sql = $_sql . $_where . "" . " ORDER BY work.work_id desc ";
+                                    $_sql = $_sql . $_where . "" . " ORDER BY work_id desc ";
                                     $query_search = mysqli_query($conn, $_sql ); 
 
-                                // print_r($query_search);
-                                // print_r($_sql);
-                                // print_r($_where);
+                                    
+
+                                 // print_r($query_search);
+                                 // print_r($_sql);
+                                 // print_r($_where);
                                 ?>
 
 
@@ -217,7 +219,7 @@
                                             <!-- Qeury Count All Service -->
                                             <?php 
                                                                 $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work ";
-                                                                $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC ";
+                                                                $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC ";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
                                                                 $a = $rs['AMP'];
@@ -246,11 +248,13 @@
                                             <!-- Qeury Count All Service -->
                                             <?php 
                                                                 $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work  WHERE `status` = 'On Process'";
-                                                                $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC ";
+                                                                $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC ";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
                                                                 $a = $rs['AMP'];
-                                                        ?>
+                                             ?>
+
+                                                        
 
                                             <div class="inner">
                                                 <h3><?php echo number_format( $a, 0 ) ; ?></h3>
@@ -273,8 +277,8 @@
 
                                             <!-- Qeury Count All Service -->
                                             <?php 
-                                                                $query2 = "SELECT DISTINCT COUNT(`work_id`) as AMP FROM work  WHERE `status` = 'Done'";
-                                                                $query1 = $query2 . $_where . "" . " ORDER BY work.work_id DESC";
+                                                                $query2 = "SELECT DISTINCT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
+                                                                $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
                                                                 $result = mysqli_query($conn, $query1);
                                                                 $rs = mysqli_fetch_array($result);
                                                                 $a = $rs['AMP'];
@@ -511,9 +515,15 @@
                                             <td  scope="col" class="text-nowrap " height="" width="100"><?php echo $res_search["subject"]; ?></td> 
                                             
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                            <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
-                                            <img class="imgx"  width="60" height="45" src="../up/example/<?php echo $res_search["file_upfile"]; ?> ">
-                                            </a>
+                                                <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
+                                                            <?php
+                                                                if($res_search["file_upfile"] ==''){
+                                                                    echo "<span class='badge badge-warning'>No Image</span>";
+                                                                }elseif($res_search["file_upfile"]){
+                                                                    echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_upfile"].'"';
+                                                                }
+                                                            ?>
+                                                    </a>
                                             
                                             </td> 
                                             
@@ -521,10 +531,17 @@
                                             </td> 
 
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                            <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
-                                            <img class="imgx"  width="60" height="45" src="../up/test/<?php echo $res_search["file_test"]; ?> ">
-                                            </a>
-                                            
+                                                <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+
+                                                    <?php
+                                                        if($res_search["file_test"] ==''){
+                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                        }elseif($res_search["file_test"]){
+                                                            echo '<img class="imgx"  width="60" height="45" src="../up/test/'.$res_search["file_test"].'"';
+                                                        }
+                                                    ?>
+
+                                                </a>
                                             </td> 
 
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["requester"]; ?></td>
@@ -534,11 +551,21 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["date_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="18000" ><?php echo $res_search["detail"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["result"]; ?></td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width="100">http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?></td>
+                                            <td scope="col" class="text-nowrap text-center " height="" width="100">
+
+                                                <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
+                                                    http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?> 
+                                                </a> 
+                                                    |
+                                                <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
+                                                    http://58.137.58.163/up/<?php echo $res_search["file_test"]; ?>
+                                                </a>
+                                        
+                                            </td>
 
                                             <td>
-                                                <!-- <a href="copy.php?id=<?php echo $res_search["work_id"]; ?>&id_c=<?php echo $res_search["service_id"]; ?>" class="btn btn-success btn-sm "><i class="fas fa-copy"></i></a> -->
-                                                <a href="edit.php?id=<?php echo $res_search["work_id"]; ?>&id_c=<?php echo $res_search["service_id"]; ?>" class="btn btn-info btn-sm " ><i class="fas fa-pencil-alt"></i></a>
+                                                <!-- <a href="copy.php?id=<?php echo $res_search["work_id"]; ?>" class="btn btn-success btn-sm "><i class="fas fa-copy"></i></a> -->
+                                                <a href="edit.php?id=<?php echo $res_search["work_id"]; ?>" class="btn btn-info btn-sm " ><i class="fas fa-pencil-alt"></i></a>
                                                 <a href="del.php?id=<?php echo $res_search["work_id"]; ?>" class="btn btn-danger btn-sm swalDefaultSuccess"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>

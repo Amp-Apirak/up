@@ -1,90 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $menu = "project"; ?>
-
-<style type="text/css">
-a:link {
-    color: black;
-    text-decoration: none;
-}
-
-a:hover {
-    color: palevioletred;
-    text-decoration: none;
-}
-
-a:visited {
-    color: black;
-    text-decoration: none;
-}
-</style>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="../ino/code/dist/css/lightbox.min.css">
+<?php $menu = "index"; ?>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>INOvation | Projects Detail</title>
+    <title>Uplevel | Task update</title>
 
 
     <!----------------------------- start header ------------------------------->
-    <?php include("../ino/templated/head.php"); ?>
+    <?php include("../up/templated/head.php"); ?>
     <!----------------------------- end header --------------------------------->
 
     <!----------------------------- start menu ------------------------------->
-    <?php include("../ino/templated/menu.php"); ?>
+    <?php include("../up/templated/menu.php"); ?>
     <!----------------------------- end menu --------------------------------->
+
+    <!----------------------------- start Time ------------------------------->
+    <?php
+    date_default_timezone_set('asia/bangkok');
+    $date = date('d/m/Y');
+    $time = date("H:i:s", "1359780799");
+    ?>
+    <!----------------------------- start Time ------------------------------->
 
 
     <?php
-/* การลบข้อมูล */
-if (isset($_GET['files_id'])) {
+    if (isset($_POST['submit1'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
-    $result = $conn->query("DELETE FROM tb_files WHERE files_id=" . $_GET['files_id']);
+        $work_type  = $_POST['work_type']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+        $subject = $_POST['subject'];
+        $status = $_POST['status'];
+        $detail = $_POST['detail'];
+        $result = $_POST['result'];
+        $service_id = $_POST['service_id'];
+        $requester = $_POST['requester'];
+        $staff_edit = $_POST['staff_edit'];
+        $file_upfile2 = $_POST['file_upfile2'];
 
-    if ($result) {
-        //     // <!-- sweetalert -->
-            echo '<script>
-                    setTimeout(function(){
-                        swal({
-                            title: "Save Successfully!",
-                            text: "Thank You . ",
-                            type:"success"
-                        }, function(){
-                            window.location = "project_view.php?id='.$_GET['id'].'";
-                        })
-                    },1000);
-                </script>';
-        //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-        } else {
-        //     // <!-- sweetalert -->
-            echo '<script>
-                    setTimeout(function(){
-                        swal({
-                            title: "Can Not Save Successfully!",
-                            text: "Checking Your Data",
-                            type:"warning"
-                        }, function(){
-                            window.location = "project_view.php?id='.$_GET['id'].'";
-                        })
-                    },1000);
-                </script>';
-        //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+
+        $file_upfile = $_FILES['file_upfile']['name'];
+
+
+
+        if($file_upfile !=''){
+            $file_tmp = $_FILES['file_upfile']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/file/$file_upfile");
+        }else {
+
+            $file_upfile = $file_upfile2;
         }
-    }
 
 
-/* การลบข้อมูล */
-?>
 
+            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', 
+                            `detail` = '$detail', `result` = '$result', `service_id` = '$service_id', `requester` = '$requester', 
+                            `staff_edit` = '$staff_edit', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
+                            $result = $conn->query($sql);
+
+                            
+                            //print_r($_POST);
+
+                            if ($result) {
+                                //     // <!-- sweetalert -->
+                                    echo '<script>
+                                            setTimeout(function(){
+                                                swal({
+                                                    title: "Save Successfully!",
+                                                    text: "Thank You . ",
+                                                    type:"success"
+                                                }, function(){
+                                                    window.location = "index.php";
+                                                })
+                                            },1000);
+                                        </script>';
+                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                                } else {
+                                //     // <!-- sweetalert -->
+                                    echo '<script>
+                                            setTimeout(function(){
+                                                swal({
+                                                    title: "Can Not Save Successfully!",
+                                                    text: "Checking Your Data",
+                                                    type:"warning"
+                                                }, function(){
+                                                    window.location = "index.php";
+                                                })
+                                            },1000);
+                                        </script>';
+                                //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                                }
+        }
+    
+    // echo '<pre>';
+    // print_r($_POST);
+    // print_r($_FILES);
+    // echo '</pre>';
+    ?>
+
+    <?php
+     /* แสดงข้อมูล */
+     $rs = $conn->query("SELECT * FROM work WHERE work_id=" . $_GET['id']);
+     $r = $rs->fetch_object()
+     ?>
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -94,330 +112,222 @@ if (isset($_GET['files_id'])) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Projects Detail</h1>
+                        <h1>Update Task</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Projects Detail</li>
+                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item active">Task update</li>
                         </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <?php
 
-if (isset($_GET['id'])) {
-$_sql = "SELECT * FROM tb_project WHERE project_id=" . $_GET['id'];
-$query_search = mysqli_query($conn, $_sql);
- while ($res_search = mysqli_fetch_array($query_search)) { 
-?>
-
-
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Main content -->
-                        <div class="invoice p-3 mb-3">
-                            <!-- title row -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4>
-                                        <i class="image">
-                                            <img src="../ino/img/pit.png" width=“60px” height='50' alt="User Image">
-                                            <!-- class="img-circle elevation-2" -->
-                                        </i> Point IT
-                                        <small class="float-right">Date:
-                                            <?php echo $res_search["project_date"]; ?></small>
-                                    </h4>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <!-- info row -->
-                            <div class="row invoice-info">
-                                <div class="col-sm-5 invoice-col">
-                                    From
-                                    <address>
-                                        <strong><?php echo $res_search["project_staff"]; ?></strong><br>
-                                        19 ซอย สุภาพงษ์ 1 แยก 6 แขวง หนองบอน เขต ประเวศ <br>
-                                        กรุงเทพมหานคร 10250 <br>
-
-                                        Phone: (804) 123-5432<br>
-                                        Email: info@pointit.co.th
-                                    </address>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-5 invoice-col">
-                                    To
-                                    <address>
-                                        <strong><?php echo $res_search["contact_name"]; ?></strong><br>
-                                        <?php echo $res_search["contact_detail"]; ?><br>
-                                        <?php echo $res_search["contact_company"]; ?><br>
-                                        Phone: <?php echo $res_search["contact_phone"]; ?><br>
-                                        Email: <?php echo $res_search["contact_email"]; ?>
-                                    </address>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-2 invoice-col">
-                                    <b>เลขที่สัญญา : <?php echo $res_search["project_in"]; ?></b><br>
-                                    <br>
-                                    <b>สถานะโครงการ : </b><?php echo $res_search["project_status"]; ?><br>
-                                    <b>ระยะเวลาของโครงการ:</b> <?php echo $res_search["project_start"]; ?> TO
-                                    <?php echo $res_search["project_end"]; ?><br>
-
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-
-
-                            <div class="col-md-12 pb-3">
-                                <a href="file_is.php?id=<?php echo $res_search["project_id"]; ?>"
-                                    class="btn btn-success btn-sm float-right">เพิ่มข้อมูล<i class=""></i></a>
-                            </div><br>
-
-
-                            <!-- Table row -->
-                            <div class="card">
-
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>วันที่บันทึกข้อมูล</th>
-                                                <th>ประเภทไฟล์</th>
-                                                <th>รายละเอียดโครงการ</th>
-                                                <th>ผู้บันทึกโครงการ</th>
-                                                <th>ชื่อ Folder</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-
-                                        <!-- ดึงข้อมูลมาแสดง -->
-                                        <?php 
-                                    if (isset($_GET['id'])) {
-                                        $sql = "SELECT * FROM tb_files  WHERE file_pk=" . $_GET['id'] ;
-                                        $_sql = $sql . " ORDER BY  files_id DESC";
-                                        $query_search = mysqli_query($conn, $_sql);
-                                        
-                                ?>
-
-                                        <tbody>
-                                            <?php while ($res = mysqli_fetch_array($query_search)) {  ?>
-                                            <tr id="myTable">
-
-                                                <td><?php echo $res["file_date"]; ?></td>
-                                                <td><?php echo $res["file_type"]; ?></td>
-                                                <td><a target="_blank"
-                                                        href="<?php echo $res["file_link"]; ?>"><?php echo $res["file_name"]; ?></a>
-                                                </td>
-                                                <td><?php echo $res["file_staff"]; ?></td>
-                                                <td><?php echo $res["file_status"]; ?></td>
-
-
-                                                <td>
-                                                    <a href="file_edit.php?files_id=<?php echo $res["files_id"]; ?>&id=<?php echo $res_search["project_id"]; ?>"
-                                                        class="btn btn-info btn-sm"><i
-                                                            class="fas fa-pencil-alt"></i></a>
-                                                    <a href="project_view.php?files_id=<?php echo $res["files_id"]; ?>&id=<?php echo $res_search["project_id"]; ?>"
-                                                        class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                                    <a target="_blank" href="../ino/file/<?php echo $res["file_upfile"]; ?>"
-                                                        class="btn btn-warning btn-sm"><i class="fa fa-file"
-                                                            aria-hidden="true"></i>
-                                                </td>
-
-                                            </tr>
-
-                                            <?php } ?>
-                                            <?php } ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>วันที่บันทึกข้อมูล</th>
-                                                <th>ประเภทไฟล์</th>
-                                                <th>รายละเอียดโครงการ</th>
-                                                <th>ผู้บันทึกโครงการ</th>
-                                                <th>ชื่อ Folder</th>
-                                                <th>Action</th>
-                                            </tr>
-
-
-                                        </tfoot>
-                                    </table>
-
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                            <!-- /.row -->
-
-
-
-                            <div class="row">
-                                <!-- accepted payments column -->
-                                <div class="col-6">
-                                    <p class="lead"><b>Project :</b></p>
-                                    <h6><?php echo $res_search["project_name"]; ?></h6>
-
-                                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                                        <?php echo $res_search["project_name"]; ?>
-                                        <?php $lam = explode(PHP_EOL, $res_search["project_detail"]);
-                                                                        for ($i = 0; $i < count($lam); $i++) { ?>
-                                        <?php echo $lam[$i]; ?></br>
-                                        <?php } ?>
-                                    </p>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-6">
-                                    <p class="lead"><b>Cost :</b></p>
-
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tr>
-                                                <th style="width:50%">Subtotal:</th>
-                                                <td><?php echo number_format(  $res_search["project_cost"], 0 ) ; ?> .-</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total:</th>
-                                                <td> <?php echo number_format(  $res_search["project_cost"], 0 ) ; ?>  .-</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                            <div class="row">
-                                <!-- accepted payments column -->
-                                <div class="col-6">
-                                    <p class="lead"><b>Saler :</b></p>
-                                    <div class="col-sm-5 invoice-col">
-                                        <address>
-                                            <strong>คุณ <?php echo $res_search["sale_name"]; ?> </strong><br>
-                                            <?php echo $res_search["sale_detail"]; ?><br>
-                                            Phone:<?php echo $res_search["sale_phone"]; ?><br>
-                                            Email: <?php echo $res_search["sale_email"]; ?>
-                                        </address>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.col -->
-
-                            </div>
-                            <!-- /.row -->
-
-                            <!-- this row will not appear when printing -->
-                            <div class="row no-print">
-                                <div class="col-12">
-                                    <a href="invoice-print.html" rel="noopener" target="_blank"
-                                        class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                                    <button type="button" class="btn btn-success float-right"><i
-                                            class="far fa-credit-card"></i> Submit
-                                        Payment
-                                    </button>
-                                    <button type="button" class="btn btn-primary float-right"
-                                        style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Generate PDF
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.invoice -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="col-md-12 pb-3">
-                            <a href="upfile_is.php?id=<?php echo $res_search["project_id"]; ?>"
-                                class="btn btn-success btn-sm float-right">เพิ่มรูปภาพโครงการ<i class=""></i></a>
-                        </div><br>
-                    </div>
 
-
-                    <div class="col-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h4 class="card-title">แสดงรูปภาพประกอบโครงการ</h4>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <div class="filter-container p-0 row">
-
-
-
-                                        <?php
-                                        if (isset($_GET['id'])) {
-                                            $result = $conn->query("SELECT * FROM tb_upfile WHERE Project_id=" . $_GET['id']); /*INNER JOIN resolve_cat ON(service_cat.id_sub = resolve_cat.id_sub) */            
-                                            while ($sr = $result->fetch_object()) {  
-                                    ?>
-                                        <div class="mx-auto mb-2">
-                                        <td>
-
-                                            <a href="../ino/image/<?= $sr->upfile; ?>" data-lightbox="image-1"
-                                                data-title="<?= $sr->upfile_sub; ?>  (<?= $sr->upfile_date; ?>)"
-                                                class="img-fluid">
-                                                <img width="200" height="150" src="../ino/image/<?= $sr->upfile; ?>">
-                                            </a>
-                                            </a>
-                                        </td>
+                        <!-- เพิ่มข้อมูล -->
+                        <div class="row">
+                            <!-- /.col (left) -->
+                            <div class="col-md-8 mx-auto">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Task descriptions</h3>
                                     </div>
-                                        <?php } ?>
-                                        <?php } ?>
+
+                                    <form action="#" method="POST" enctype="multipart/form-data">
+
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label>Type<span class="text-danger">*</span></label>
+                                                <select class="form-control select2" name="work_type"
+                                                    style="width: 100%;">
+                                                    <option selected="selected"><?= $r->work_type; ?></option>
+                                                    <option>Incident</option>
+                                                    <option>Service</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.form-group -->
+
+
+
+                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $service_id = "";
+                                            $_sql_service_cate = "SELECT DISTINCT * FROM category";
+                                            $query_service_cate = mysqli_query($conn, $_sql_service_cate);
+                                            ?>
+
+                                            <?php
+                                            /* แสดงข้อมูล */
+                                            $rx = $conn->query("SELECT * FROM category WHERE service_id=" . $_GET['id_c']);
+                                            $rx = $rx->fetch_object()
+                                            ?>
+
+
+                                            <div class="row">
+                                                <div class="col col-10">
+                                                    <div class="form-group">
+                                                        <label>Category <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="service_id">
+                                                            <option value="<?= $rx->service_id; ?>"  selected="selected"><?= $rx->service_cate; ?>&nbsp;>><?= $rx->service_type; ?>&nbsp;&nbsp;>><?= $rx->service_sup; ?>&nbsp;</option> 
+                                                            <?php while ($r = mysqli_fetch_array($query_service_cate)) { ?>
+                                                            <option value="<?php echo $r["service_id"]; ?>" 
+                                                                <?php if ($r['service_id'] == $service_id) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["service_cate"]; ?>&nbsp;>>&nbsp;<?php echo $r["service_type"]; ?>&nbsp;>>&nbsp;<?php echo $r["service_sup"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col-2">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <?php
+                                            /* แสดงข้อมูล */
+                                            $rl = $conn->query("SELECT * FROM work WHERE work_id=" . $_GET['id']);
+                                            $rr = $rl->fetch_object()
+                                            ?>
+
+                                            <div class="form-group">
+                                                <label>Status<span class="text-danger">*</span></label>
+                                                <select class="form-control select2" name="status"
+                                                    style="width: 100%;">
+                                                    <option selected="selected"><?= $rr->status; ?></option>
+                                                        <option>On Process</option>
+                                                        <option>Done</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.form-group -->
+
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Subject<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="subject" class="form-control" value="<?= $rr->subject; ?>"
+                                                    id="exampleInputEmail1" placeholder="Document Name" required>
+                                            </div>
+                                            <!-- /.form-group -->
+
+
+                                            <div class="form-group">
+                                                <label for="file_upfile">Image <span class="text-danger"> (Only picture
+                                                        and upload-max-filesize 20M*)</span></label>
+                                                <div class="custom-file">
+                                                    
+                                                    <input type="file" class="custom-file-input" id="file_upfile" name="file_upfile" >
+                                                    <label class="custom-file-label" for="file_upfile"><?= $rr->file_upfile; ?></label>
+
+                                                    <input type="hidden" class="custom-file-input" id="file_upfile2"  value="<?= $rr->file_upfile; ?>" name="file_upfile2">
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <div class="form-group">
+                                                <label for="file_test">Image Test <span class="text-danger"> (Only picture
+                                                        and upload-max-filesize 20M*)</span></label>
+                                                <div class="custom-file">
+
+                                                    <input type="file" class="custom-file-input" id="file_test" name="file_test">
+                                                    <label class="custom-file-label" for="file_test"><?= $rr->file_test; ?></label>
+
+                                                    <input type="hidden" class="custom-file-input" id="file_test2"  value="<?= $rr->file_test; ?>" name="file_test2">
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+
+
+                                            <!-- textarea -->
+                                            <div class="form-group">
+                                                <label>Descriptions</label>
+                                                <textarea class="form-control" name="detail" id="detail" rows="6"
+                                                    placeholder="remark "><?= $rr->detail; ?></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Resolve Detail</label>
+                                                <input type="text" name="result" class="form-control"  value="<?= $rr->result; ?>"
+                                                    id="exampleInputEmail1" placeholder="">
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Requester<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="requester" class="form-control"  value="<?= $rr->requester; ?>"
+                                                    id="exampleInputEmail1" placeholder="" required>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Staff Update<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="staff_edit" class="form-control"  
+                                                    id="exampleInputEmail1" placeholder="ผู้บันทึก" required>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <!-- Date range -->
+                                            <div class="form-group mt-5">
+                                                <button type="submit1" name="submit1" value="submit1" id="submit1"
+                                                    class="btn btn-success"> Save </button>
+                                            </div>
+                                            <!-- /.form group -->
+
+
+
+                                        </div>
+
+                                    </form>
+
+                                    <div class="card-footer">
+                                        Visit <a href="https://getdatepicker.com/5-4/">tempusdominus </a> for more
+                                        examples and information about
+                                        the plugin.
                                     </div>
+                                    <!-- /.card-body -->
                                 </div>
+                                <!-- /.card -->
+                                <!-- /.card -->
                             </div>
+                            <!-- /.col (right) -->
                         </div>
+                        <!-- /.col (right) -->
                     </div>
+                    <!-- /.row -->
                 </div>
-            </div><!-- /.container-fluid  /*width=200 height="400" -->
+                <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
 
 
     </div>
     <!-- /.content-wrapper -->
-    <!-- /.content -->
 
-    <?php } ?>
-    <?php } ?>
 
     <!----------------------------- start menu ------------------------------->
-    <?php include("../ino/templated/footer.php"); ?>
+    <?php include("../up/templated/footer.php"); ?>
     <!----------------------------- end menu --------------------------------->
-
-    <!-- Ekko Lightbox -->
-    <script src="../ino/code/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
-    <script src="../ino/code/plugins/filterizr/jquery.filterizr.min.js"></script>
-
-    <script>
-    $(function() {
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox({
-                alwaysShowClose: true
-            });
-        });
-
-        $('.filter-container').filterizr({
-            gutterPixels: 3
-        });
-        $('.btn[data-filter]').on('click', function() {
-            $('.btn[data-filter]').removeClass('active');
-            $(this).addClass('active');
-        });
-    })
-    </script>
-
-    <script src="../ino/code/dist/js/lightbox.min.js"></script>
-
 
     <!-- highlight -->
     <script src="code/dist/js/highlight.js"></script>
@@ -426,3 +336,90 @@ $query_search = mysqli_query($conn, $_sql);
     $("#myTable tr").highlight();
     </script>
     <!-- highlight -->
+
+    <!----------------------------- start Modal Add user ------------------------------->
+
+    <?php
+     if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
+
+        $service_cate = $_POST['service_cate'];    /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+        $service_type = $_POST['service_type'];
+        $service_sup = $_POST['service_sup'];
+
+
+                $sql =  "INSERT INTO `category` ( `service_cate`,`service_type`,`service_sup`)  VALUES ('$service_cate', '$service_type', '$service_sup')";
+                $result = $conn->query($sql);
+                if ($result) {
+                    echo '<script>
+                        setTimeout(function() {
+                        swal({
+                                title: " Saved successfully.",
+                                text: "",
+                                type: "success"
+                            }, function() {
+                                window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                                });
+                                }, 1000);
+                            </script>';
+                } else {
+                    echo '<script>
+                        setTimeout(function() {
+                        swal({
+                                title: "Please check the input.",
+                                type: "error"
+                        }, function() {
+                                window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                                });
+                                }, 1000);
+                            </script>';
+                }
+            }
+            
+
+    ?>
+
+
+    <div class="modal fade" id="editbtn">
+        <div class="modal-dialog editbtn">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Service-Cate</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Service Category</label>
+                                <input type="text" name="service_cate" class="form-control" id="service_cate"
+                                    placeholder="" required>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Service Type</label>
+                                <input type="text" name="service_type" class="form-control" id="service_type"
+                                    placeholder="" required>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Subcategoty</label>
+                                <input type="text" name="service_sup" class="form-control" id="service_sup"
+                                    placeholder="" required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!----------------------------- end Modal Add user --------------------------------->

@@ -83,7 +83,7 @@
                                             ?>
 
                                             <div class="row">
-                                                <div class="col col-10">
+                                                <div class="col col-3">
                                                     <div class="form-group">
                                                         <label>Service <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <!-- Dropdown List Folder -->
                                                 </div>
-                                                <div class="col col-2">
+                                                <div class="col col">
                                                     <div class="form-group">
                                                         <label>Add <i class="nav-icon fas fa-plus style=" color:
                                                                 #1f5d09;></i></label><br>
@@ -110,18 +110,18 @@
                                                     </div>
                                                     <!-- Add Folder -->
                                                 </div>
-                                            </div>
+                                            
 
                                             
-                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                            <?php
-                                            $category_name = "";
-                                            $_sql_category = "SELECT DISTINCT * FROM category";
-                                            $query_category = mysqli_query($conn, $_sql_category);
-                                            ?>
+                                                    <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                    <?php
+                                                    $category_name = "";
+                                                    $_sql_category = "SELECT DISTINCT * FROM category ";
+                                                    $query_category = mysqli_query($conn, $_sql_category);
+                                                    ?>
 
-                                            <div class="row">
-                                                <div class="col col-10">
+                                           
+                                                <div class="col col-3">
                                                     <div class="form-group">
                                                         <label>Category <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
@@ -138,30 +138,30 @@
                                                     </div>
                                                     <!-- Dropdown List Folder -->
                                                 </div>
-                                                <div class="col col-2">
+                                                <div class="col col">
                                                     <div class="form-group">
                                                         <label>Add <i class="nav-icon fas fa-plus style=" color:
                                                                 #1f5d09;></i></label><br>
                                                         <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
-                                                            data-target="#editbtn"> <i
+                                                            data-target="#editbtn1"> <i
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
                                                     <!-- Add Folder -->
                                                 </div>
-                                            </div>
+                                            
 
                                             
-                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                            <?php
-                                            $items_name = "";
-                                            $_sql_items = "SELECT DISTINCT * FROM items";
-                                            $query_items = mysqli_query($conn, $_sql_items);
-                                            ?>
+                                                    <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                    <?php
+                                                    $items_name = "";
+                                                    $_sql_items = "SELECT DISTINCT * FROM items";
+                                                    $query_items = mysqli_query($conn, $_sql_items);
+                                                    ?>
 
-                                            <div class="row">
-                                                <div class="col col-10">
+                                            
+                                                <div class="col col-3">
                                                     <div class="form-group">
-                                                        <label>Category <span class="text-danger">*</span></label>
+                                                        <label>Items <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="items_name">
                                                             <option selected="selected"></option>
@@ -176,12 +176,12 @@
                                                     </div>
                                                     <!-- Dropdown List Folder -->
                                                 </div>
-                                                <div class="col col-2">
+                                                <div class="col col">
                                                     <div class="form-group">
                                                         <label>Add <i class="nav-icon fas fa-plus style=" color:
                                                                 #1f5d09;></i></label><br>
                                                         <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
-                                                            data-target="#editbtn"> <i
+                                                            data-target="#editbtn2"> <i
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
                                                     <!-- Add Folder -->
@@ -319,9 +319,12 @@
     <?php
      if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
+        $service_name = "";
+        $category_name = "";
+        $items_name = "";
 
-        if ($service = $_POST['service']){
-            $sql =  "INSERT INTO `category` ( `service`,`service_type`,`service_sup`)  VALUES ('$service', '$service_type', '$service_sup')";
+        if ($service_name = $_POST['service_name']){
+            $sql =  "INSERT INTO `service` ( `service_name`)  VALUES ('$service_name')";
             $result = $conn->query($sql);
             if ($result) {
                 echo '<script>
@@ -347,24 +350,77 @@
                             }, 1000);
                         </script>';
             }
-        }
-
-        $service_type = $_POST['service_type'];
-        $service_sup = $_POST['service_sup'];
-
-
-              
+        }if($category_name = $_POST['category_name']){
+            $sql =  "INSERT INTO `category` ( `category_name`)  VALUES ('$category_name')";
+            $result = $conn->query($sql);
+            if ($result) {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: " Saved successfully.",
+                            text: "",
+                            type: "success"
+                        }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            } else {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: "Please check the input.",
+                            type: "error"
+                    }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
             }
-            
-
+        }if($items_name = $_POST['items_name']){
+            $sql =  "INSERT INTO `items` (`items_name`)  VALUES ('$items_name')";
+            $result = $conn->query($sql);
+            if ($result) {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: " Saved successfully.",
+                            text: "",
+                            type: "success"
+                        }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            } else {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: "Please check the input.",
+                            type: "error"
+                    }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            }
+        }else {
+            echo '<script>
+                    function() {
+                            window.location = "ERRRRR"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                  </script>';
+        }
+    }
+        
     ?>
-
 
     <div class="modal fade" id="editbtn">
         <div class="modal-dialog editbtn">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Service-Cate</h4>
+                    <h4 class="modal-title">Add Service</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -373,20 +429,8 @@
                     <form action="#" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Service Category</label>
-                                <input type="text" name="service" class="form-control" id="service"
-                                    placeholder="" required>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Service Type</label>
-                                <input type="text" name="service_type" class="form-control" id="service_type"
-                                    placeholder="" required>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Subcategoty</label>
-                                <input type="text" name="service_sup" class="form-control" id="service_sup"
+                                <label for="exampleInputEmail1">Service</label>
+                                <input type="text" name="service_name" class="form-control" id="service_name"
                                     placeholder="" required>
                             </div>
                             <!-- /.form-group -->
@@ -404,3 +448,66 @@
     </div>
     <!-- /.modal -->
     <!----------------------------- end Modal Add user --------------------------------->
+    <div class="modal fade" id="editbtn1">
+        <div class="modal-dialog editbtn1">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Category</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Category</label>
+                                <input type="text" name="category_name" class="form-control" id="category_name"
+                                    placeholder="" required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+       <!----------------------------- end Modal Add user --------------------------------->
+       <div class="modal fade" id="editbtn2">
+        <div class="modal-dialog editbtn2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Items</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Items</label>
+                                <input type="text" name="items_name" class="form-control" id="items_name"
+                                    placeholder="" required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
