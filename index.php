@@ -249,12 +249,21 @@
                                              <?php 
                                                 if (isset($_POST['search'])) {
 
+                                                    if (!empty($search) || ($status != "") || ($requester != "") || ($work_type != "") || ($service != "")|| ($category != "")|| ($items != "")) {
+
                                                         $query2 = "SELECT COUNT(`status`) as AMP FROM work";
                                                         $query1 = $query2 . $_where . "AND `status` = 'On Process'" . " ORDER BY work_id DESC";
 
-                                                }else{
+                                                    }else{
+
                                                         $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'On Process'";
                                                         $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
+
+                                                    }
+
+                                                }else{
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'On Process'";
+                                                        $query1 = $query2 . "" . " ORDER BY work_id DESC";
                                                         
                                                     }
 
@@ -283,24 +292,33 @@
                                         <!-- small box -->
                                         <div class="small-box bg-success">
 
-                                            <!-- Qeury Count All Service -->
-                                                    <?php 
+                                             <!-- Qeury Count All Service -->
+                                             <?php 
+                                                if (isset($_POST['search'])) {
 
-                                                        if (isset($_POST['search'])) {
+                                                    if (!empty($search) || ($status != "") || ($requester != "") || ($work_type != "") || ($service != "")|| ($category != "")|| ($items != "")) {
 
-                                                                $query2 = "SELECT COUNT(`status`) as AMP FROM work   ";
-                                                                $query1 = $query2 . $_where . "AND `status` = 'Done'" . " ORDER BY work_id DESC";
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work";
+                                                        $query1 = $query2 . $_where . "AND `status` = 'Done'" . " ORDER BY work_id DESC";
 
-                                                        }else{
-                                                                $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
-                                                                $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
-                                                                
-                                                            }
+                                                    }else{
 
-                                                                $result = mysqli_query($conn, $query1);
-                                                                $rs = mysqli_fetch_array($result);
-                                                                $a = $rs['AMP'];
-                                                    ?>
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
+                                                        $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
+
+                                                    }
+
+                                                }else{
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Done'";
+                                                        $query1 = $query2 . "" . " ORDER BY work_id DESC";
+                                                        
+                                                    }
+
+                                                        $result = mysqli_query($conn, $query1);
+                                                        $rs = mysqli_fetch_array($result);
+                                                        $a = $rs['AMP'];
+                                                ?>
+
                                                         
 
                                             <div class="inner">
