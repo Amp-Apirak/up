@@ -51,7 +51,7 @@
             date_default_timezone_set("Asia/Bangkok");
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel **Update** Job Notification\n\n";
+            $sMessage = "Uplevel ** ".$staff_edit." Update** Job Notification\n\n";
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";

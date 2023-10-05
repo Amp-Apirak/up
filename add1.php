@@ -130,7 +130,7 @@
 
             $result = $conn->query($sql);
 
-            print_r($sql);
+            //print_r($sql);
 
             if ($result) {
                 // <!-- sweetalert -->
