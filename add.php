@@ -110,17 +110,17 @@
                                                     </div>
                                                     <!-- Add Folder -->
                                                 </div>
-                                            
 
-                                            
-                                                    <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                                    <?php
+
+
+                                                <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                <?php
                                                     $category_name = "";
                                                     $_sql_category = "SELECT DISTINCT * FROM category ";
                                                     $query_category = mysqli_query($conn, $_sql_category);
                                                     ?>
 
-                                           
+
                                                 <div class="col col-3">
                                                     <div class="form-group">
                                                         <label>Category <span class="text-danger">*</span></label>
@@ -148,17 +148,17 @@
                                                     </div>
                                                     <!-- Add Folder -->
                                                 </div>
-                                            
 
-                                            
-                                                    <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                                    <?php
+
+
+                                                <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                <?php
                                                     $items_name = "";
                                                     $_sql_items = "SELECT DISTINCT * FROM items";
                                                     $query_items = mysqli_query($conn, $_sql_items);
                                                     ?>
 
-                                            
+
                                                 <div class="col col-3">
                                                     <div class="form-group">
                                                         <label>Items <span class="text-danger">*</span></label>
@@ -190,11 +190,10 @@
 
                                             <div class="form-group">
                                                 <label>Status<span class="text-danger">*</span></label>
-                                                <select class="form-control select2" name="status"
-                                                    style="width: 100%;">
+                                                <select class="form-control select2" name="status" style="width: 100%;">
                                                     <option selected="selected"></option>
-                                                        <option>On Process</option>
-                                                        <option>Done</option>
+                                                    <option>On Process</option>
+                                                    <option>Done</option>
                                                 </select>
                                             </div>
                                             <!-- /.form-group -->
@@ -204,13 +203,14 @@
                                                 <label for="exampleInputEmail1">Subject<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="subject" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="Document Name" required>
+                                                    id="exampleInputEmail1" placeholder="แจ้งปัญหา .... ,ขอบริการ แก้ไข.... ,ขอบริการ ลบ.... ,ขอบริการ เพิ่มเติม...." required>
                                             </div>
                                             <!-- /.form-group -->
 
 
                                             <div class="form-group">
-                                                <label for="file_upfile">Image Example <span class="text-danger"> (Only picture
+                                                <label for="file_upfile">Image Example <span class="text-danger"> (Only
+                                                        picture
                                                         and upload-max-filesize 20M*)</span></label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="file_upfile"
@@ -222,7 +222,8 @@
                                             <!-- /.form-group -->
 
                                             <div class="form-group">
-                                                <label for="file_test">Image Test <span class="text-danger"> (Only picture
+                                                <label for="file_test">Image Test <span class="text-danger"> (Only
+                                                        picture
                                                         and upload-max-filesize 20M*)</span></label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="file_test"
@@ -248,21 +249,78 @@
                                                     placeholder="วิธีดำเนินการ"></textarea>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Requester<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="requester" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="ผู้ร้องขอ" required>
-                                            </div>
-                                            <!-- /.form-group -->
 
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Operation Staff<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="staff_crt" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="ผู้บันทึก" required>
+                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $contact_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM contact";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
+
+                                            <div class="row">
+                                                <div class="col col-5">
+                                                    <div class="form-group">
+                                                        <label>Requester <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="requester">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
+                                                            <option value="<?php echo $r["contact_name"]; ?>"
+                                                                <?php if ($r['contact_name'] == $contact_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["contact_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn3"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
+
+
+                                                 <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $contact_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM contact";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
+                                                <div class="col col-5">
+                                                    <div class="form-group">
+                                                        <label>Operation Staff <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="staff_crt">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
+                                                            <option value="<?php echo $r["contact_name"]; ?>"
+                                                                <?php if ($r['contact_name'] == $contact_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["contact_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn4"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
                                             </div>
-                                            <!-- /.form-group -->
 
                                             <!-- Date range -->
                                             <div class="form-group mt-5">
@@ -322,6 +380,7 @@
         $service_name = "";
         $category_name = "";
         $items_name = "";
+        $contact_name = "";
 
         if ($service_name = $_POST['service_name']){
             $sql =  "INSERT INTO `service` ( `service_name`)  VALUES ('$service_name')";
@@ -379,6 +438,60 @@
             }
         }if($items_name = $_POST['items_name']){
             $sql =  "INSERT INTO `items` (`items_name`)  VALUES ('$items_name')";
+            $result = $conn->query($sql);
+            if ($result) {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: " Saved successfully.",
+                            text: "",
+                            type: "success"
+                        }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            } else {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: "Please check the input.",
+                            type: "error"
+                    }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            }
+        }if($contact_name = $_POST['contact_name']){
+            $sql =  "INSERT INTO `contact` (`contact_name`)  VALUES ('$contact_name')";
+            $result = $conn->query($sql);
+            if ($result) {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: " Saved successfully.",
+                            text: "",
+                            type: "success"
+                        }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            } else {
+                echo '<script>
+                    setTimeout(function() {
+                    swal({
+                            title: "Please check the input.",
+                            type: "error"
+                    }, function() {
+                            window.location = "add.php"; //หน้าที่ต้องการให้กระโดดไป
+                            });
+                            }, 1000);
+                        </script>';
+            }
+        }if($contact_name = $_POST['contact_namee']){
+            $sql =  "INSERT INTO `contact` (`contact_name`)  VALUES ('$contact_name')";
             $result = $conn->query($sql);
             if ($result) {
                 echo '<script>
@@ -479,8 +592,8 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-       <!----------------------------- end Modal Add user --------------------------------->
-       <div class="modal fade" id="editbtn2">
+    <!----------------------------- end Modal Add user --------------------------------->
+    <div class="modal fade" id="editbtn2">
         <div class="modal-dialog editbtn2">
             <div class="modal-content">
                 <div class="modal-header">
@@ -494,8 +607,72 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Items</label>
-                                <input type="text" name="items_name" class="form-control" id="items_name"
-                                    placeholder="" required>
+                                <input type="text" name="items_name" class="form-control" id="items_name" placeholder=""
+                                    required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+     <!----------------------------- end Modal Add user --------------------------------->
+     <div class="modal fade" id="editbtn3">
+        <div class="modal-dialog editbtn3">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Requester</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder=""
+                                    required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+     <!----------------------------- end Modal Add user --------------------------------->
+     <div class="modal fade" id="editbtn4">
+        <div class="modal-dialog editbtn4">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Operation Staff</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="text" name="contact_namee" class="form-control" id="contact_namee" placeholder=""
+                                    required>
                             </div>
                             <!-- /.form-group -->
                         </div>
