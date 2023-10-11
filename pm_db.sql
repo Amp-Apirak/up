@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2023 at 04:52 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 11, 2023 at 12:13 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(500) NOT NULL
+  `category_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -59,9 +59,28 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (44, 'Search'),
 (46, 'Home Team'),
 (47, 'Your Idea'),
-(49, 'test'),
-(50, 'test2'),
-(51, 'Add Friend');
+(51, 'Add Friend'),
+(52, 'Link (URL)');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `contact_id` int(11) NOT NULL,
+  `contact_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `contact_name`) VALUES
+(1, 'คุณอาทิตย์ (พี่เหน่ง)'),
+(2, 'คุณภัทราอร (ซีน)'),
+(3, 'คุณอภิรักษ์ (แอมป์)');
 
 -- --------------------------------------------------------
 
@@ -71,7 +90,7 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 
 CREATE TABLE `items` (
   `items_id` int(11) NOT NULL,
-  `items_name` varchar(500) NOT NULL
+  `items_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -83,10 +102,7 @@ INSERT INTO `items` (`items_id`, `items_name`) VALUES
 (2, 'Edit/Update\r\n'),
 (3, 'New requirement\r\n'),
 (4, 'Delected\r\n'),
-(5, 'Error Application\r\n'),
-(6, 'test'),
-(7, 'test2'),
-(8, 'Edit/Update');
+(5, 'Error Application\r\n');
 
 -- --------------------------------------------------------
 
@@ -96,7 +112,7 @@ INSERT INTO `items` (`items_id`, `items_name`) VALUES
 
 CREATE TABLE `service` (
   `service_id` int(11) NOT NULL,
-  `service_name` varchar(500) NOT NULL
+  `service_name` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -105,8 +121,7 @@ CREATE TABLE `service` (
 
 INSERT INTO `service` (`service_id`, `service_name`) VALUES
 (1, 'Production'),
-(2, 'Dev Test'),
-(6, 'Production');
+(2, 'Dev Test');
 
 -- --------------------------------------------------------
 
@@ -116,21 +131,21 @@ INSERT INTO `service` (`service_id`, `service_name`) VALUES
 
 CREATE TABLE `work` (
   `work_id` int(11) NOT NULL,
-  `work_type` varchar(500) NOT NULL,
-  `service` varchar(500) NOT NULL,
-  `category` varchar(500) NOT NULL,
-  `items` varchar(500) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `detail` varchar(255) NOT NULL,
-  `result` varchar(1000) NOT NULL,
-  `requester` varchar(255) NOT NULL,
+  `work_type` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `service` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `items` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `result` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `requester` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_crt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `staff_crt` varchar(255) NOT NULL,
+  `staff_crt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_edit` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `staff_edit` varchar(255) NOT NULL,
-  `file_upfile` varchar(255) NOT NULL COMMENT 'เก็บรูปภาพ',
-  `file_test` varchar(255) NOT NULL
+  `staff_edit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_upfile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'เก็บรูปภาพ',
+  `file_test` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -146,7 +161,7 @@ INSERT INTO `work` (`work_id`, `work_type`, `service`, `category`, `items`, `sta
 (6, 'Service', 'Production', 'Register', 'Delected', 'Done', 'แจ้งขอ ลบ หน้า Register ออก', 'ตัดหน้าการ Register หน้านี้ออก ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (7, 'Service', 'Production', 'Register', 'Delected', 'Done', 'แจ้งขอ ลบ หน้า Register ให้เอาจังหวัด และ Industry ออก', 'เมื่อกดเข้ามาที่ Application ให้แสดงหน้าการลงทะเบียน แต่เอา จังหวัด และ Industry ออก', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (8, 'Service', 'Production', 'Register', 'Edit/Update', 'Done', 'แจ้งขอ แก้ไข คำอธิบาย Display name', 'เปลี่ยนคำเป็น Your Name and Photo ?   (ตัวใหญ่กว่า)\nYou can always change them later. (ตัวเล็กกว่า)\nและปุ่ม Confirm \nตัดคำว่า Register ข้างบนออก', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
-(9, 'Service', 'Production', 'Register', 'New requirement', 'Done', 'แจ้งขอ เพิ่มเติม กรณีเข้าถึงหน้า Register ได้แต่ยังไม่ได้ลงทะเบียน ในแสดงปุ่น Login และลงทะเบียน', 'แต่ถ้าใครเข้ามาถึงหน้านี้ได้ โดยไม่ได้ Register ก็ให้แสดงหน้านี้  เพียงแต่เอา Let’s Get Started ออก \nเหลือแต่ Welcome to/Logo/และมีปุ่ม Register อยู่ข้างล่าง ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
+(9, 'Service', 'Production', 'Register', 'New requirement', 'Done', 'แจ้งขอ เพิ่มเติม กรณีเข้าถึงหน้า Register ได้แต่ยังไม่ได้ลงทะเบียน ในแสดงปุ่น Login และลงทะเบียน', 'แต่ถ้าใครเข้ามาถึงหน้านี้ได้ โดยไม่ได้ Register ก็ให้แสดงหน้านี้  เพียงแต่เอา Let’s Get Started ออก \r\nเหลือแต่ Welcome to/Logo/และมีปุ่ม Register อยู่ข้างล่าง ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-04 15:01:56', 'คุณภัทราอร (ซีน)', '2023-10-04 15:01:56', 'Apirak', '', ''),
 (10, 'Service', 'Production', 'Register', 'New requirement', 'Done', 'แจ้งขอ เพิ่มเติม กรณีลงทะเบียนเรียบร้อยแล้วข้อความ และเปลี่ยนชื่อปุ่ม', 'หลังจากที่ทำการลงทะเบียนชื่อเรียบร้อยแล้ว ให้แสดงหน้า เขียนเป็น Hello !\nPlease select organization to work on\nและเปลี่ยนชื่อปุ่ม Create เป็น ปุ่ม Create new organization', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (11, 'Service', 'Production', 'Create New Team', 'Edit/Update', 'Done', 'แจ้งขอ แก้ไข คำอธิบาย Display name หน้า Create New Organization ', 'เมื่อกด Create new organization ก็เปิดหน้านี้มา\nเปลี่ยนคำเป็น \nCreate organization profile\nEnter organization name\nSet name and picture.  \nYou will be admin for this organization.\nตามด้วยปุ่ม Confirm', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (12, 'Service', 'Production', 'Create New Team', 'Edit/Update', 'Done', 'แจ้งขอ แก้ไข ไม่สามารถเลื่อนลงล่างได้ กรณีมี Chanel มากกว่า 1', 'หน้าของ Chanel\nสร้างไป 4 channel ดู ปรากฏว่าอันที่สี่ถูกปัดตกไปอยู่ข้างล่าง เข้าไม่ถึง ช่วยปรับให้เลื่อนลงไปให้ถึงได้ และขนาดของรูป เล็กใหญ่ไม่เท่ากัน อยากให้ปรับให้เท่ากันหมดด้วย', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
@@ -166,7 +181,14 @@ INSERT INTO `work` (`work_id`, `work_type`, `service`, `category`, `items`, `sta
 (26, 'Service', 'Production', 'Dashboard', 'Delected', 'Done', 'แจ้งขอ ลบ Link เมื่อกดที่กราฟ แล้ว Link ไปยัง List Idea', 'ตอนนี้ กดไปกราฟ  จะวิ่งไปที่ list ของ idea อันนี้ ไม่จำเป็นครับ เอาออกไปได้เลย ให้กดแล้วก็ไม่ได้วิ่งไปไหน', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (27, 'Service', 'Production', 'Setting Profile', 'Edit/Update', 'Done', 'แจ้งขอ แก้ไข รายละเอียด Profiles ', 'หน้านี้ อยากให้เอาชื่อ user (อาทิตย์) ตัวนั้นออกครับ แล้วเปลี่ยนเป็นชื่อ Organization แทน  เปลี่ยนคำว่า Profile Setting เป็น My profile setting แทน อันถัดไป เป็น Share App (เดิม Share Application Uplevel) ถัดไป ให้เป็น Organization Setting (แทน Channel Se', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
 (28, 'Service', 'Production', 'Setting Profile', 'Edit/Update', 'Done', 'แจ้งขอ แก้ไข รายละเอียด QR Code ของ Share application uplevel ', 'QR code ของ share application uplevel ก็ควรจะเป็นอีกแบบ คือ เป็น QR ที่ใช้ลง App เฉยๆ ไม่ได้เข้า channel ไหน และควร เขียนว่า Uplevel App (บรรทัดใหญ่) และบรรทัดถัดไปเขียนว่า Code generate 27Jul23, 20:48:56.35  เวลาใครลง App ด้วย QR นี้ ก็จะมี Time stamps อ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '0000-00-00 00:00:00', 'คุณภัทราอร (ซีน)', '0000-00-00 00:00:00', '', '', ''),
-(29, 'Incident', 'Production', 'Dashboard', 'Error Application', 'Done', 'แจ้งปัญหา ใส่ตัวเลขเยอะๆ ทำให้ กราฟ benefit', 'ลองใส่ ตัวเลข onhold เยอะๆ กราฟ benefit เลยเพี้ยนไป ฝากแก้ด้วย', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-04 14:50:38', 'คุณภัทราอร (ซีน)', '2023-10-04 14:50:38', '', '', '');
+(29, 'Incident', 'Production', 'Dashboard', 'Error Application', 'Done', 'แจ้งปัญหา ใส่ตัวเลขเยอะๆ ทำให้ กราฟ benefit', 'ลองใส่ ตัวเลข onhold เยอะๆ กราฟ benefit เลยเพี้ยนไป ฝากแก้ด้วย', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-04 14:50:38', 'คุณภัทราอร (ซีน)', '2023-10-04 14:50:38', '', '', ''),
+(43, 'Incident', 'Production', 'Search', 'Error Application', 'On Process', 'แจ้งปัญหา ดู idea ของคนอื่นบ้าง แต่ไม่มีขึ้นมา', 'เข้าไปใน PointIT จะไปดู idea ของคนอื่นบ้าง แต่ไม่มีขึ้นมา ไม่รู้เพราะอะไร ของเดิมก็เคยดูได้อยู่', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-05 08:48:11', 'คุณภัทราอร (ซีน)', '2023-10-05 08:48:11', 'คุณภัทราอร (ซีน)', 'S__42246386.jpg', ''),
+(44, 'Incident', 'Production', 'Search', 'Error Application\r\n', 'On Process', 'แจ้งปัญหา เวลาที่แสดงในหน้า search ยังไม่ได้เป็นเวลาที่ last update', 'เวลาที่แสดงในหน้า search ยังไม่ได้เป็นเวลาที่ last update', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-05 08:47:27', 'คุณภัทราอร (ซีน)', '2023-10-05 08:47:27', '', 'Screenshot 2023-10-05 154441.png', ''),
+(45, 'Incident', 'Production', 'Your Idea', 'Error Application\r\n', 'On Process', 'แจ้งปัญหา เวลา last update ที่หน้าสรุป ยังไม่ได้แก้ไข', ' เวลา last update ที่หน้าสรุป ยังไม่ได้แก้ไข', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-05 08:51:19', 'คุณภัทราอร (ซีน)', '2023-10-05 08:51:19', '', 'Screenshot 2023-10-05 154912.png', ''),
+(46, 'Service', 'Production', 'Add Idea', 'New requirement', 'Done', 'ขอบริการ เพิ่มเติม ใส่ตัวอย่าง 5 (Dummy Idea) ทุกครั้งที่มีการสร้าง Organization', 'อยากให้ใส่ dummy idea สักห้าไอเดีย ทุกครั้งที่มีการสร้าง organization (channel) ใหม่ ทำได้มั้ยครับ ?  เอาแบบ Title เป็น\r\n- (ตัวอย่าง) ไอเดียที่กำลังคิดอยู่ \r\n- (ตัวอย่าง) ไอเดียที่กำลังทำอยู่\r\n- (ตัวอย่าง) ไอเดียที่ทำแล้วและรอการประเมินอยู่\r\n- (ตัวอย่าง) ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-11 02:52:51', 'คุณภัทราอร (ซีน)', '2023-10-11 02:52:51', 'คุณภัทราอร (ซีน)', '', ''),
+(47, 'Service', 'Production', 'My Profile setting', 'Error Application\r\n', 'Done', 'แจ้งปัญหา เปลี่ยนรูป Profile แต่หน้าอื่นๆ ของไอเดียไม่เปลี่ยนไปตาม ', 'ผมลองเปลี่ยนรูป profile ผม แต่รูป profile ในแต่ละไอเดีย ดูจะไม่ได้เปลี่ยนตามไปด้วย ไม่น่าจะถูกนะครับ เปลี่ยนทีเดียว น่าจะเปลี่ยนหมด', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-11 03:00:27', 'คุณภัทราอร (ซีน)', '2023-10-11 03:00:27', '', '', ''),
+(48, 'Service', 'Production', 'Setting', 'Edit/Update\r\n', 'Done', 'ขอบริการ แก้ไข ข้อความส่วนของ QR Code เป็นชื่อ Organization ', 'ขอบริการ แก้ไข ข้อความส่วนของ QR Code เป็นชื่อ Organization ', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-11 03:13:59', 'คุณภัทราอร (ซีน)', '2023-10-11 03:13:59', '', '', ''),
+(49, 'Service', 'Production', 'Link (URL)', 'Edit/Update\r\n', 'Done', 'ขอบริการ แก้ไข Link (URL) ที่แสดงด้านบนออก', 'เอาตัว uplevel-app - uplevel-app ข้างบนสุดนั่นออก และเอา Let’s Get Started ออก \r\n\r\nให้มีแต่ \r\nWelcome to Uplevel ! \r\nตามด้วย \r\nPlease register your details.', '', 'คุณอาทิตย์ (พี่เหน่ง)', '2023-10-11 03:30:57', 'คุณภัทราอร (ซีน)', '2023-10-11 03:30:57', '', '2023-10-11_10-30-30.jpg', '');
 
 --
 -- Indexes for dumped tables
@@ -177,6 +199,12 @@ INSERT INTO `work` (`work_id`, `work_type`, `service`, `category`, `items`, `sta
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_id`);
 
 --
 -- Indexes for table `items`
@@ -204,7 +232,13 @@ ALTER TABLE `work`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `items`
@@ -222,7 +256,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `work`
 --
 ALTER TABLE `work`
-  MODIFY `work_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `work_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
