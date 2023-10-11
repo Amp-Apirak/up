@@ -36,6 +36,7 @@
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
         $file_test = $_FILES["file_test"]["name"] ;
 
+        
             ini_set('display_errors', 1);
             ini_set('display_startup_errors', 1);
             error_reporting(E_ALL);
