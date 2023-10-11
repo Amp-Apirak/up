@@ -38,7 +38,7 @@
 
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel ** ".$staff_staff." Open Ticket** Job Notification\n\n";
+            $sMessage = "Uplevel ** ".$staff_crt." Open Ticket** Job Notification\n\n";
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
@@ -46,13 +46,20 @@
 
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
+            $imageFile = new CURLFile($target_file);
+
+            $data = array(
+                'message' => $sMessage,
+                'imageFile' => $imageFile,
+            );
+
             $chOne = curl_init(); 
             curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
             curl_setopt( $chOne, CURLOPT_POST, 1); 
-            curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
-            $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+            curl_setopt( $chOne, CURLOPT_POSTFIELDS, $data); 
+            $headers = array( 'Content-type: multipart/form-data', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
             $resultt1 = curl_exec( $chOne ); 
