@@ -91,24 +91,24 @@
                     },1000);
                 </script>';
             // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>
-        }
+        //}
 
         // Check if file already exists
-        if (file_exists($target_file)) {
+        // if (file_exists($target_file)) {
 
-            //echo "Sorry, file already exists.";
-            // <!-- sweetalert -->
-            echo '<script>
-                    setTimeout(function(){
-                        swal({
-                            title: "Sorry, file already exists.",
-                            text: "Please check the file name.",
-                            type:"warning"
-                        }, function(){
-                            window.location = "add.php";
-                        })
-                    },1000);
-                </script>';
+        //     //echo "Sorry, file already exists.";
+        //     // <!-- sweetalert -->
+        //     echo '<script>
+        //             setTimeout(function(){
+        //                 swal({
+        //                     title: "Sorry, file already exists.",
+        //                     text: "Please check the file name.",
+        //                     type:"warning"
+        //                 }, function(){
+        //                     window.location = "add.php";
+        //                 })
+        //             },1000);
+        //         </script>';
             // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
         } else {
 
