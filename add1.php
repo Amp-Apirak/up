@@ -38,7 +38,7 @@
 
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel ** ".$staff_edit." Open Ticket** Job Notification\n\n";
+            $sMessage = "Uplevel ** ".$staff_staff." Open Ticket** Job Notification\n\n";
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
@@ -56,8 +56,6 @@
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
             $resultt1 = curl_exec( $chOne ); 
-
-
 
 
         //printf($target_file1);
