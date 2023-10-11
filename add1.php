@@ -36,40 +36,38 @@
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
         $file_test = $_FILES["file_test"]["name"] ;
 
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-        date_default_timezone_set("Asia/Bangkok");
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+            date_default_timezone_set("Asia/Bangkok");
 
-        $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-        $sMessage = "Uplevel Job Notification\n";
-        $sMessage .= "Add Job By: ".$staff_crt." \n\n";
+            $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
+            $sMessage = "".$staff_crt." Open ticket uplevel\n\n";
+            $sMessage .= "Type: ".$work_type." \n";
+            $sMessage .= "Requeter: ".$requester." \n";
+            $sMessage .= "Status : ".$status."\n";
+            $sMessage .= "Subject : ".$subject."\n\n";
+          
 
-        $sMessage .= "Type: ".$work_type." \n";
-        $sMessage .= "Requeter: ".$requester." \n";
-        $sMessage .= "Status : ".$status."\n";
-        $sMessage .= "Subject : ".$subject."\n\n";
-      
+            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
+            $imageFile = new CURLFile($target_file);
 
-        $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
-        $imageFile = new CURLFile($target_file);
+            $data = array(
+                'message' => $sMessage,
+                'imageFile' => $imageFile,
+            );
 
-        $data = array(
-            'message' => $sMessage,
-            'imageFile' => $imageFile,
-        );
-
-        
-        $chOne = curl_init(); 
-        curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-        curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-        curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-        curl_setopt( $chOne, CURLOPT_POST, 1); 
-        curl_setopt( $chOne, CURLOPT_POSTFIELDS, $data); 
-        $headers = array( 'Content-type: multipart/form-data', 'Authorization: Bearer '.$sToken.'', );
-        curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-        curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-        $result1 = curl_exec( $chOne ); 
+            
+            $chOne = curl_init(); 
+            curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+            curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+            curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+            curl_setopt( $chOne, CURLOPT_POST, 1); 
+            curl_setopt( $chOne, CURLOPT_POSTFIELDS, $data); 
+            $headers = array( 'Content-type: multipart/form-data', 'Authorization: Bearer '.$sToken.'', );
+            curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+            curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+            $result1 = curl_exec( $chOne ); 
 
 
 
