@@ -101,10 +101,12 @@
                             <b>Project :</b> <span class='badge  float-right'><a href="edit.php?id=<?php echo $_GET['id']; ?>" class="btn btn-info btn-sm swalDefaultSuccess"><i class="fas fa-pencil-alt"></i></a></span><br>
                             <?php echo $res_search["project_name"]; ?>  
 
-                            <div class="row invoice-info">
+                            <div class="row ">
                                 <div class="col-sm-4 invoice-col">
-                                    <b>Detail :</b><br>
-                                    <?php echo $res_search["detail"]; ?>
+                                <b>Detail :</b><br>
+                                    <address>
+                                        <?php echo $res_search["detail"]; ?>
+                                    </address>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-sm-4 invoice-col">

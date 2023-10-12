@@ -33,7 +33,6 @@
         $subject = $_POST['subject'];
         $status = $_POST['status'];
         $detail = $_POST['detail'];
-        $result = $_POST['result'];
         $requester = $_POST['requester'];
         $staff_edit = $_POST['staff_edit'];
         $file_upfile2 = $_POST['file_upfile2'];
@@ -41,6 +40,7 @@
         $service = $_POST['service_name'];
         $items = $_POST['items_name'];
         $category = $_POST['category_name'];
+        $project_name = $_POST['project_name'];
 
         $file_upfile = $_FILES['file_upfile']['name'];
         $file_test = $_FILES['file_test']['name'];
@@ -99,7 +99,7 @@
 
 
             $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  
-                            `detail` = '$detail', `requester` = '$requester', 
+                            `detail` = '$detail', `requester` = '$requester',`project_name` = '$project_name', 
                             `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
 
@@ -115,7 +115,7 @@
                                                     text: "Thank You . ",
                                                     type:"success"
                                                 }, function(){
-                                                    window.location = ".php?id='.$_GET['id'].'";
+                                                    window.location = "view.php?id='.$_GET['id'].'";
                                                 })
                                             },1000);
                                         </script>';
@@ -129,7 +129,7 @@
                                                     text: "Checking Your Data",
                                                     type:"warning"
                                                 }, function(){
-                                                    window.location = "index.php";
+                                                    window.location = "view.php?id='.$_GET['id'].'";
                                                 })
                                             },1000);
                                         </script>';
@@ -187,6 +187,14 @@
                                     <form action="#" method="POST" enctype="multipart/form-data">
 
                                         <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Project Name<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="project_name" class="form-control" value="<?= $r->project_name; ?>"
+                                                    id="exampleInputEmail1" placeholder="โครกการ" required>
+                                            </div>
+                                            <!-- /.form-group -->
 
                                             <div class="form-group">
                                                 <label>Type<span class="text-danger">*</span></label>
@@ -399,8 +407,8 @@
                                             ?>
                                                     <div class="form-group">
                                                         <label>Operation Staff <span class="text-danger">*</span></label>
-                                                        <select class="custom-select select2 " width=""
-                                                            name="staff_crt">
+                                                        <select class="custom-select select2 " required width=""
+                                                            name="staff_edit">
                                                             <option selected="selected"></option>
                                                             <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                             <option value="<?php echo $r["contact_name"]; ?>"

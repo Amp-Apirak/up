@@ -511,14 +511,16 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Result</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Project Name</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody id="myTable">
+                                        
                                         <?php while ($res_search = mysqli_fetch_array($query_search)) { ?>
+                                            
                                         <tr>
                                         <td scope="col" class="text-nowrap " height="" width="100">
                                         <?php
@@ -587,7 +589,7 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["staff_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["date_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="18000" ><?php echo $res_search["detail"]; ?></td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["result"]; ?></td>
+                                            <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["project_name"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
 
                                                 <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
@@ -625,7 +627,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Result</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Project Name</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                 </table>

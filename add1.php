@@ -23,6 +23,7 @@
         $detail = $_POST['detail'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
+        $project_name = $_POST['project_name'];
 
 
 
@@ -45,7 +46,6 @@
 
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
-            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
             $chOne = curl_init(); 
             curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
@@ -110,9 +110,9 @@
 
             $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`,
             `items`, `file_upfile`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
-            `file_test`)
+            `file_test`,`project_name`)
             VALUES (NULL, '$work_type', '$service', '$category', '$items', '$file_upfile',
-             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_test')";
+             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_test','$project_name')";
 
 
 

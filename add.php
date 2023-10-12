@@ -63,6 +63,14 @@
                                         <div class="card-body">
 
                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Project Name<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="project_name" class="form-control"
+                                                    id="exampleInputEmail1" placeholder="โครกการ" required>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <div class="form-group">
                                                 <label>Type<span class="text-danger">*</span></label>
                                                 <select class="form-control select2" name="work_type"
                                                     style="width: 100%;">
