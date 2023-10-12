@@ -549,7 +549,7 @@
                                                 ?>
                                             </td>
 
-                                            <td  scope="col" class="text-nowrap " height="" width="100"><?php echo $res_search["subject"]; ?></td> 
+                                            <td  scope="col" class="text-nowrap " height="" width="100"> <a href="view.php?id=<?php echo $res_search["work_id"]; ?>" > <?php echo $res_search["subject"]; ?></a></td> 
                                             
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
                                                 <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >

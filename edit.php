@@ -52,14 +52,13 @@
             date_default_timezone_set("Asia/Bangkok");
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel ** ".$staff_edit." Update** Job Notification\n\n";
+            $sMessage = "Uplevel ** ".$staff_edit." **Update Ticket** Job Notification\n\n";
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
             $sMessage .= "Subject : ".$subject."\n\n";
 
-            $sMessage .= "detail : ".$detail."\n";
-            $sMessage .= "result : ".$result."\n\n";
+            $sMessage .= "detail : ".$detail."\n\n";
 
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
@@ -100,7 +99,7 @@
 
 
             $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  
-                            `detail` = '$detail', `result` = '$result', `requester` = '$requester', 
+                            `detail` = '$detail', `requester` = '$requester', 
                             `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
 
@@ -116,7 +115,7 @@
                                                     text: "Thank You . ",
                                                     type:"success"
                                                 }, function(){
-                                                    window.location = "index.php";
+                                                    window.location = ".php?id='.$_GET['id'].'";
                                                 })
                                             },1000);
                                         </script>';
@@ -383,12 +382,6 @@
                                                     placeholder="รายละเอียด"><?= $rr->detail; ?></textarea>
                                             </div>
 
-                                            <!-- textarea -->
-                                            <div class="form-group">
-                                                <label>Resolve Detail</label>
-                                                <textarea class="form-control" name="result" id="result" rows="6"
-                                                    placeholder="วิธีดำเนินการ"><?= $rr->result; ?></textarea>
-                                            </div>
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Requester<span
@@ -398,13 +391,26 @@
                                             </div>
                                             <!-- /.form-group -->
 
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Operation Staff<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="staff_edit" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="ผู้บันทึก" required>
-                                            </div>
-                                            <!-- /.form-group -->
+                                                 <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                             <?php
+                                            $contact_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM contact";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
+                                                    <div class="form-group">
+                                                        <label>Operation Staff <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="staff_crt">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
+                                                            <option value="<?php echo $r["contact_name"]; ?>"
+                                                                <?php if ($r['contact_name'] == $contact_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["contact_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                </div>
 
                                             <!-- Date range -->
                                             <div class="form-group mt-5">

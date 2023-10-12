@@ -21,7 +21,6 @@
         $subject = $_POST['subject'];
         $status = $_POST['status'];
         $detail = $_POST['detail'];
-        $result = $_POST['result'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
 
@@ -38,7 +37,7 @@
 
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel ** ".$staff_crt." Open Ticket** Job Notification\n\n";
+            $sMessage = "Uplevel ** ".$staff_crt." **Open Ticket** Job Notification\n\n";
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
             $sMessage .= "Status : ".$status."\n";
@@ -110,10 +109,10 @@
 
 
             $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`,
-            `items`, `file_upfile`,  `subject`, `status`,`detail`, `result`,`requester`,`staff_crt`,
+            `items`, `file_upfile`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
             `file_test`)
             VALUES (NULL, '$work_type', '$service', '$category', '$items', '$file_upfile',
-             '$subject', '$status', '$detail', '$result', '$requester', '$staff_crt','$file_test')";
+             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_test')";
 
 
 

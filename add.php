@@ -156,7 +156,7 @@
                                                     $items_name = "";
                                                     $_sql_items = "SELECT DISTINCT * FROM items";
                                                     $query_items = mysqli_query($conn, $_sql_items);
-                                                    ?>
+                                                ?>
 
 
                                                 <div class="col col-3">
@@ -240,13 +240,6 @@
                                                 <label>Descriptions</label>
                                                 <textarea class="form-control" name="detail" id="detail" rows="6"
                                                     placeholder="รายละเอียด"></textarea>
-                                            </div>
-
-                                            <!-- textarea -->
-                                            <div class="form-group">
-                                                <label>Resolve Detail</label>
-                                                <textarea class="form-control" name="result" id="result" rows="6"
-                                                    placeholder="วิธีดำเนินการ"></textarea>
                                             </div>
 
 
