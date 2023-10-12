@@ -46,20 +46,15 @@
 
             $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
-            $imageFile = new CURLFile($target_file);
-
-            $data = array(
-                'message' => $sMessage,
-                'imageFile' => $imageFile,
-            );
+            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
 
             $chOne = curl_init(); 
             curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
             curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
             curl_setopt( $chOne, CURLOPT_POST, 1); 
-            curl_setopt( $chOne, CURLOPT_POSTFIELDS, $data); 
-            $headers = array( 'Content-type: multipart/form-data', 'Authorization: Bearer '.$sToken.'', );
+            curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+            $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
             curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
             curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
             $resultt1 = curl_exec( $chOne ); 
