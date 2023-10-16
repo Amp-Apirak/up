@@ -148,7 +148,7 @@
                                         
                                             if (!empty($search)) {
                                                 $_where = $_where . " WHERE work_type LIKE '%$search%' OR service LIKE '%$search%' OR category LIKE '%$search%' OR items LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
-                                                OR result LIKE '%$search%' OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
+                                                OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
                                             }
                                             if ($status != "") {
                                                 if (empty($_where)) {
