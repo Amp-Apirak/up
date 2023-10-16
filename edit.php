@@ -189,10 +189,9 @@
                                         <div class="card-body">
 
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Project Name<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="exampleInputEmail1">Project Name</label>
                                                 <input type="text" name="project_name" class="form-control" value="<?= $r->project_name; ?>"
-                                                    id="exampleInputEmail1" placeholder="โครกการ" required>
+                                                    id="exampleInputEmail1" placeholder="โครกการ" >
                                             </div>
                                             <!-- /.form-group -->
 
