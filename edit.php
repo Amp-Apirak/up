@@ -42,6 +42,12 @@
         $category = $_POST['category_name'];
         $project_name = $_POST['project_name'];
 
+        $add_task = $_POST['add_task'];
+        $work_id = $_POST['work_id'];
+
+
+
+
         $file_upfile = $_FILES['file_upfile']['name'];
         $file_test = $_FILES['file_test']['name'];
         
@@ -52,15 +58,20 @@
             date_default_timezone_set("Asia/Bangkok");
 
             $sToken = "8CyHEXNouMVT3mgLFBb8sw74DbEwkZ5lN6oabOQ0vk9";
-            $sMessage = "Uplevel ** ".$staff_edit." **Update Ticket** Job Notification\n\n";
+            $sMessage = "LAOS PMS ** ".$staff_edit." **Update Ticket**\n\n";
+
+            $sMessage .= "<*>Status : ".$status."<*>\n\n";
+
             $sMessage .= "Type: ".$work_type." \n";
             $sMessage .= "Requeter: ".$requester." \n";
-            $sMessage .= "Status : ".$status."\n";
-            $sMessage .= "Subject : ".$subject."\n\n";
+            
+            $sMessage .= "เรื่อง : ".$subject."\n\n";
 
-            $sMessage .= "detail : ".$detail."\n\n";
+            $sMessage .= "รายละเอียด : ".$detail."\n";
+            $sMessage .= "------------------------------ \n";
+            $sMessage .= "คำแนะนำ : ".$add_task."\n\n";
 
-            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
+            $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/pms/view.php?id=$_GET[id] \n";
 
             
             $chOne = curl_init(); 
@@ -98,10 +109,14 @@
 
 
 
-            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  
+            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  `add_task` = '$add_task',
                             `detail` = '$detail', `requester` = '$requester',`project_name` = '$project_name', 
                             `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
+
+            $sqll =   "INSERT INTO `tb_log` (`work_id`, `add_task`,`staff_edit`,`v_status`)
+                            VALUES ($work_id, '$add_task', '$staff_edit', '$status')";
+                            $resultt = $conn->query($sqll);
 
                             
                             //print_r($_POST);
@@ -189,10 +204,9 @@
                                         <div class="card-body">
 
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Project Name<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="exampleInputEmail1">Project Name</label>
                                                 <input type="text" name="project_name" class="form-control" value="<?= $r->project_name; ?>"
-                                                    id="exampleInputEmail1" placeholder="โครกการ" required>
+                                                    id="exampleInputEmail1" placeholder="โครกการ" >
                                             </div>
                                             <!-- /.form-group -->
 
@@ -335,17 +349,6 @@
                                             $rr = $rl->fetch_object()
                                             ?>
 
-                                            <div class="form-group">
-                                                <label>Status<span class="text-danger">*</span></label>
-                                                <select class="form-control select2" name="status"
-                                                    style="width: 100%;">
-                                                    <option selected="selected"><?= $rr->status; ?></option>
-                                                        <option>On Process</option>
-                                                        <option>Done</option>
-                                                </select>
-                                            </div>
-                                            <!-- /.form-group -->
-
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Subject<span
@@ -357,8 +360,7 @@
 
 
                                             <div class="form-group">
-                                                <label for="file_upfile">Image <span class="text-danger"> (Only picture
-                                                        and upload-max-filesize 20M*)</span></label>
+                                                <label for="file_upfile">Image <span class="text-danger"></span></label>
                                                 <div class="custom-file">
                                                     
                                                     <input type="file" class="custom-file-input" id="file_upfile" name="file_upfile" >
@@ -369,20 +371,6 @@
                                             </div>
                                             <!-- /.form-group -->
 
-                                            <div class="form-group">
-                                                <label for="file_test">Image Test <span class="text-danger"> (Only picture
-                                                        and upload-max-filesize 20M*)</span></label>
-                                                <div class="custom-file">
-
-                                                    <input type="file" class="custom-file-input" id="file_test" name="file_test">
-                                                    <label class="custom-file-label" for="file_test"><?= $rr->file_test; ?></label>
-
-                                                    <input type="hidden" class="custom-file-input" id="file_test2"  value="<?= $rr->file_test; ?>" name="file_test2">
-                                                </div>
-                                            </div>
-                                            <!-- /.form-group -->
-
-
                                             <!-- textarea -->
                                             <div class="form-group">
                                                 <label>Descriptions</label>
@@ -390,7 +378,7 @@
                                                     placeholder="รายละเอียด"><?= $rr->detail; ?></textarea>
                                             </div>
 
-
+                                            
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Requester<span
                                                         class="text-danger">*</span></label>
@@ -399,6 +387,39 @@
                                             </div>
                                             <!-- /.form-group -->
 
+                                            <div class="form-group">
+                                                <label for="file_test">Image Test <span class="text-danger"> (แนบไฟล์ภาพผลการดำเนินการ >หากมี<)</span></label>
+                                                <div class="custom-file">
+
+                                                    <input type="file" class="custom-file-input" id="file_test" name="file_test">
+                                                    <label class="custom-file-label" for="file_test"><?= $rr->file_test; ?></label>
+
+                                                    <input type="hidden" class="custom-file-input" id="file_test2"  value="<?= $rr->file_test; ?>" name="file_test2">
+                                                    <input type="hidden" class="custom-file-input" id="work_id"  value="<?= $rr->work_id; ?>" name="work_id">
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                            <!-- textarea -->
+                                            <div class="form-group">
+                                                <label>Update/Commect (Add Task)</label>
+                                                <textarea class="form-control" name="add_task" id="add_task" rows="6"
+                                                    placeholder=""></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Status<span class="text-danger"> (กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</span></label>
+                                                <select class="form-control select2" name="status"
+                                                    style="width: 100%;">
+                                                    <option selected="selected"><?= $rr->status; ?></option>
+                                                        <option>On Process</option>
+                                                        <option>Done</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.form-group -->
+
+
+
                                                  <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
                                              <?php
                                             $contact_name = "";
@@ -406,7 +427,7 @@
                                             $query_service = mysqli_query($conn, $_sql_service);
                                             ?>
                                                     <div class="form-group">
-                                                        <label>Operation Staff <span class="text-danger">*</span></label>
+                                                        <label>Operation Staff <span class="text-danger"> (บังคับเลือกชื่อ)*</span></label>
                                                         <select class="custom-select select2 " required width=""
                                                             name="staff_edit">
                                                             <option selected="selected"></option>

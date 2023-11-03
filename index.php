@@ -41,7 +41,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Uplevel | Work Task</title>
+    <title>Innovation | Work Task</title>
 
     <!-- highlight -->
     <style>
@@ -148,7 +148,7 @@
                                         
                                             if (!empty($search)) {
                                                 $_where = $_where . " WHERE work_type LIKE '%$search%' OR service LIKE '%$search%' OR category LIKE '%$search%' OR items LIKE '%$search%' OR subject LIKE '%$search%' OR status LIKE '%$search%' OR detail LIKE '%$search%' 
-                                                OR result LIKE '%$search%' OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
+                                                OR requester LIKE '%$search%' OR staff_crt LIKE '%$search%' OR staff_edit LIKE '%$search%' ";
                                             }
                                             if ($status != "") {
                                                 if (empty($_where)) {
@@ -203,6 +203,9 @@
                                   //print_r($query1);
                                   //print_r($_where);
                                 ?>
+
+
+
 
 
                         <!-- Main content -->
@@ -482,15 +485,16 @@
                             <a href="add.php" class="btn btn-success btn-sm float-right"> Add <i class=""></i></a>
                         </div><br>
 
-
-
-
+             
                         <div class="card">
                             <div class="card-header">
                                 <div class="container-fluid">
                                     <h3 class="card-title">Task Management</h3>
                                 </div>
                             </div>
+
+
+
 
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -520,9 +524,9 @@
                                     <tbody id="myTable">
                                         
                                         <?php while ($res_search = mysqli_fetch_array($query_search)) { ?>
-                                            
+                                                  
                                         <tr>
-                                        <td scope="col" class="text-nowrap " height="" width="100">
+                                        <td scope="col" class="text-nowrap text-center" height="" width="100">
                                         <?php
                                                     if($res_search["work_type"] =='Service'){
                                                         echo "<i class='badge badge-success nav-icon '>{$res_search["work_type"]}</i></a></i>";
@@ -531,9 +535,9 @@
                                                     }
                                                 ?>
                                         </td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["service"]; ?></td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["category"]; ?></td>
-                                        <td scope="col" class="text-nowrap  " height="" width="100"><?php echo $res_search["items"]; ?></td>
+                                        <td scope="col" class="text-nowrap  text-center" height="" width="100"><?php echo $res_search["service"]; ?></td>
+                                        <td scope="col" class="text-nowrap  text-center " height="" width="100"><?php echo $res_search["category"]; ?></td>
+                                        <td scope="col" class="text-nowrap  text-center" height="" width="100"><?php echo $res_search["items"]; ?></td>
                                          
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
                                                 <?php
@@ -551,7 +555,22 @@
                                                 ?>
                                             </td>
 
-                                            <td  scope="col" class="text-nowrap " height="" width="100"> <a href="view.php?id=<?php echo $res_search["work_id"]; ?>" > <?php echo $res_search["subject"]; ?></a></td> 
+                                            <td  scope="col" class="text-nowrap " height="" width="100"> 
+                                                    <a href="view.php?id=<?php echo $res_search["work_id"]; ?>" > <?php echo $res_search["subject"]; ?></a> <p>
+
+                                                    <?php
+                                                    if($res_search["add_task"] ==''){
+                                                        echo " ";
+                                                    }else{
+                                                        echo "<span class='badge badge-warning'>Comment: {$res_search["add_task"]}</span> <br>
+                                                        <span class='badge badge-info'>{$res_search["staff_edit"]} | {$res_search["date_edit"]}</span>";
+                                                    }
+                                                    ?>
+
+
+                                                    
+
+                                            </td> 
                                             
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
                                                 <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
@@ -588,16 +607,24 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["date_crt"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["staff_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["date_edit"]; ?></td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width="18000" ><?php echo $res_search["detail"]; ?></td>
+                                            <td scope="col" class="text-nowrap text-center " height="" width="18000" >
+                                                <p>
+                                                    <?php $lam = explode(PHP_EOL, $res_search["detail"]);
+                                                        for ($i = 0; $i < count($lam); $i++) { ?>
+                                                        <?php echo $lam[$i]; ?></br>
+                                                    <?php } ?>
+                                                </p>
+                                        
+                                            </td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["project_name"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
 
-                                                <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
-                                                    http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?> 
+                                                <a href="http://58.137.58.163/pms/example/<?php echo $res_search["file_upfile"]; ?>">
+                                                    http://58.137.58.163/pms/<?php echo $res_search["file_upfile"]; ?> 
                                                 </a> 
                                                     |
-                                                <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
-                                                    http://58.137.58.163/up/<?php echo $res_search["file_test"]; ?>
+                                                <a href="http://58.137.58.163/pms/test/<?php echo $res_search["file_test"]; ?>">
+                                                    http://58.137.58.163/pms/<?php echo $res_search["file_test"]; ?>
                                                 </a>
                                         
                                             </td>
@@ -609,6 +636,7 @@
                                             </td>
                                         </tr>
                                         <?php } ?>
+                                        
                                     </tbody>
 
                                     <tfoot>
