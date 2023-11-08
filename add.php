@@ -73,7 +73,7 @@
                                                 <label>Type<span class="text-danger">*</span></label>
                                                 <select class="form-control select2" name="work_type"
                                                     style="width: 100%;">
-                                                    <option selected="selected"></option>
+                                                    <option selected="selected">Incident</option>
                                                     <option>Incident</option>
                                                     <option>Service</option>
                                                 </select>
