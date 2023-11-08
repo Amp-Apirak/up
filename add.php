@@ -198,7 +198,7 @@
                                             <div class="form-group">
                                                 <label>Status<span class="text-danger">*</span></label>
                                                 <select class="form-control select2" name="status" style="width: 100%;">
-                                                    <option selected="selected"></option>
+                                                    <option selected="selected">On Process</option>
                                                     <option>On Process</option>
                                                     <option>Done</option>
                                                     <option>Pending</option>
@@ -265,7 +265,7 @@
                                                         <label>Owner <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="requester">
-                                                            <option selected="selected"></option>
+                                                            <option selected="selected">คุณยุทธนา (พี่ตำรวจ)</option>
                                                             <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                             <option value="<?php echo $r["contact_name"]; ?>"
                                                                 <?php if ($r['contact_name'] == $contact_name) : ?>
@@ -300,7 +300,7 @@
                                                         <label>Operation Staff <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="staff_crt">
-                                                            <option selected="selected"></option>
+                                                            <option selected="selected">คุณภัทราอร (ซีน)</option>
                                                             <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                             <option value="<?php echo $r["contact_name"]; ?>"
                                                                 <?php if ($r['contact_name'] == $contact_name) : ?>
