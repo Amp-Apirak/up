@@ -95,7 +95,7 @@
                                                         <label>Service <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="service_name">
-                                                            <option selected="selected"></option>
+                                                            <option selected="selected">Dev Test</option>
                                                             <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                             <option value="<?php echo $r["service_name"]; ?>"
                                                                 <?php if ($r['service_name'] == $service_name) : ?>
