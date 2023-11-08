@@ -65,7 +65,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Project Name</label>
                                                 <input type="text" name="project_name" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="โครกการ" >
+                                                    id="exampleInputEmail1" placeholder="โครกการ" value="Uplevel Application" >
                                             </div>
                                             <!-- /.form-group -->
 
