@@ -115,11 +115,18 @@
                    </script>';
 
                    $sToken = "K3zECl4gnTcqiFN5M6R2njKZROGcaYXKr3X8iHloa7A";
-                   $sMessage = "Uplevel ** ".$staff_crt." **Open Ticket** Job Notification\n\n";
+                   $sMessage = "".$staff_crt." **Open Ticket** \n\n";
+
+                   $sMessage .= "Category: ".$category." \n";
                    $sMessage .= "Type: ".$work_type." \n";
-                   $sMessage .= "Owner: ".$requester." \n";
+                   $sMessage .= "Type: ".$work_type." \n\n";
+                   $sMessage .= "----------------------------------- \n";
                    $sMessage .= "Status : ".$status."\n";
+                   $sMessage .= "----------------------------------- \n";
+                   $sMessage .= "Owner: ".$requester." \n";
                    $sMessage .= "Subject : ".$subject."\n\n";
+
+                   
        
                    $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
        

@@ -109,13 +109,18 @@
                                         date_default_timezone_set("Asia/Bangkok");
                             
                                         $sToken = "K3zECl4gnTcqiFN5M6R2njKZROGcaYXKr3X8iHloa7A";
-                                        $sMessage = "LAOS PMS ** ".$staff_edit." **Update Ticket**\n\n";
-                                        $sMessage .= "<*■■■ Status : ".$status." ■■■*>\n\n";
+
+                                        $sMessage = "".$staff_edit." **Update Ticket**\n\n";
+
+                                        $sMessage .= "Category: ".$category." \n";
                                         $sMessage .= "Type: ".$work_type." \n";
+                                        $sMessage .= "Type: ".$work_type." \n\n";
+                                        $sMessage .= "----------------------------------- \n";
+                                        $sMessage .= "Status : ".$status."\n";
+                                        $sMessage .= "----------------------------------- \n";
                                         $sMessage .= "Owner: ".$requester." \n";
-                                        $sMessage .= "เรื่อง : ".$subject."\n\n";
-                                        $sMessage .= "รายละเอียด : ".$detail."\n";
-                                        $sMessage .= "------------------------------ \n";
+                                        $sMessage .= "Subject : ".$subject."\n\n";
+                                        $sMessage .= "------------------------------ \n\n";
                                         $sMessage .= "คำแนะนำ : ".$add_task."\n\n";
                                         $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/pms/view.php?id=$_GET[id] \n";
                             
