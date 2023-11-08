@@ -212,7 +212,7 @@
                                                 <label for="exampleInputEmail1">Subject<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="subject" class="form-control"
-                                                    id="exampleInputEmail1" placeholder="แจ้งปัญหา .... ,ขอบริการ แก้ไข.... ,ขอบริการ ลบ.... ,ขอบริการ เพิ่มเติม...." required>
+                                                    id="exampleInputEmail1" placeholder="" required>
                                             </div>
                                             <!-- /.form-group -->
 
