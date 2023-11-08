@@ -119,10 +119,10 @@
 
                    $sMessage .= "Category: ".$category." \n";
                    $sMessage .= "Type: ".$work_type." \n";
-                   $sMessage .= "Type: ".$work_type." \n\n";
-                   $sMessage .= "----------------------------------- \n";
+                   $sMessage .= "Items: ".$tems." \n\n";
+                   $sMessage .= "-------------------------- \n";
                    $sMessage .= "Status : ".$status."\n";
-                   $sMessage .= "----------------------------------- \n";
+                   $sMessage .= "-------------------------- \n";
                    $sMessage .= "Owner: ".$requester." \n";
                    $sMessage .= "Subject : ".$subject."\n\n";
 

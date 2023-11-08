@@ -114,14 +114,14 @@
 
                                         $sMessage .= "Category: ".$category." \n";
                                         $sMessage .= "Type: ".$work_type." \n";
-                                        $sMessage .= "Type: ".$work_type." \n\n";
-                                        $sMessage .= "----------------------------------- \n";
+                                        $sMessage .= "Items: ".$tems." \n\n";
+                                        $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Status : ".$status."\n";
-                                        $sMessage .= "----------------------------------- \n";
+                                        $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Owner: ".$requester." \n";
                                         $sMessage .= "Subject : ".$subject."\n\n";
-                                        $sMessage .= "------------------------------ \n\n";
-                                        $sMessage .= "คำแนะนำ : ".$add_task."\n\n";
+                                        $sMessage .= "-------------------------- \n";
+                                        $sMessage .= "คำแนะ/แก้ไข : ".$add_task."\n\n";
                                         $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/pms/view.php?id=$_GET[id] \n";
                             
                                         
