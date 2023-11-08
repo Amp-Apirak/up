@@ -112,7 +112,7 @@
                                         $sMessage = "LAOS PMS ** ".$staff_edit." **Update Ticket**\n\n";
                                         $sMessage .= "<*■■■ Status : ".$status." ■■■*>\n\n";
                                         $sMessage .= "Type: ".$work_type." \n";
-                                        $sMessage .= "Requeter: ".$requester." \n";
+                                        $sMessage .= "Owner: ".$requester." \n";
                                         $sMessage .= "เรื่อง : ".$subject."\n\n";
                                         $sMessage .= "รายละเอียด : ".$detail."\n";
                                         $sMessage .= "------------------------------ \n";
