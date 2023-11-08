@@ -85,7 +85,7 @@
   <link rel="stylesheet" href="../up/code/plugins/simplemde/simplemde.min.css">
   
   <style type="text/css">
-td#mylayout_1{
+.mylayout_1{
     display:block;
     width:100px;
     word-wrap:break-word;
