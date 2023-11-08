@@ -668,11 +668,11 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
 
                                                 <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
-                                                    http://58.137.58.163/up/<?php echo $res_search["file_upfile"]; ?> 
+                                                    http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?> 
                                                 </a> 
                                                     |
                                                 <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
-                                                    http://58.137.58.163/up/<?php echo $res_search["file_test"]; ?>
+                                                    http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>
                                                 </a>
                                         
                                             </td>
