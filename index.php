@@ -289,6 +289,54 @@
                                     </div>
                                     <!-- ./col -->
 
+                                        <!-- ------------------------------------------------------------------------------------------------------------------ -->
+
+                                        <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-denger">
+
+                                             <!-- Qeury Count All Service -->
+                                             <?php 
+                                                if (isset($_POST['search'])) {
+
+                                                    if (!empty($search) || ($status != "") || ($requester != "") || ($work_type != "") || ($service != "")|| ($category != "")|| ($items != "")) {
+
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work";
+                                                        $query1 = $query2 . $_where . "AND `status` = 'Pending'" . " ORDER BY work_id DESC";
+
+                                                    }else{
+
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Pending'";
+                                                        $query1 = $query2 . $_where . "" . " ORDER BY work_id DESC";
+
+                                                    }
+
+                                                }else{
+                                                        $query2 = "SELECT COUNT(`status`) as AMP FROM work  WHERE `status` = 'Pending'";
+                                                        $query1 = $query2 . "" . " ORDER BY work_id DESC";
+                                                        
+                                                    }
+
+                                                        $result = mysqli_query($conn, $query1);
+                                                        $rs = mysqli_fetch_array($result);
+                                                        $a = $rs['AMP'];
+                                                ?>
+
+                                                        
+
+                                            <div class="inner">
+                                                <h3><?php echo number_format( $a, 0 ) ; ?></h3>
+
+                                                <p>Pending</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+
                                     <!-- ------------------------------------------------------------------------------------------------------------------ -->
 
                                     <div class="col-lg-3 col-6">
@@ -509,7 +557,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subject</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Example</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Test</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Requester</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Date Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Update</th>
@@ -545,14 +593,14 @@
                                                         echo "<span class='badge badge-primary'>{$res_search["status"]}</span>";
                                                     }elseif($res_search["status"] =='On Process'){
                                                         echo "<span class='badge badge-warning'>{$res_search["status"]}</span>";
-                                                    }elseif($res_search["status"] =='On-Hold'){
+                                                    }elseif($res_search["status"] =='Pending'){
                                                         echo "<span class='badge badge-info'>{$res_search["status"]}</span>";
                                                     }elseif($res_search["status"] =='Done'){
                                                         echo "<span class='badge badge-success'>{$res_search["status"]}</span>";
-                                                    }elseif($res_search["status"] =='Loss'){
+                                                    }elseif($res_search["status"] =='Cancel'){
                                                         echo "<span class='badge badge-danger'>{$res_search["status"]}</span>";
                                                     }
-                                                ?>
+                                                    ?>
                                             </td>
 
                                             <td  scope="col" class="text-nowrap " height="" width="100"> 
@@ -649,7 +697,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Subject</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Example</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Test</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Requester</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Date Create</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Staff Update</th>

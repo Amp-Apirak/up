@@ -202,6 +202,8 @@
                                                     <option selected="selected"></option>
                                                     <option>On Process</option>
                                                     <option>Done</option>
+                                                    <option>Pending</option>
+                                                    <option>Cancel</option>
                                                 </select>
                                             </div>
                                             <!-- /.form-group -->
@@ -261,7 +263,7 @@
                                             <div class="row">
                                                 <div class="col col-5">
                                                     <div class="form-group">
-                                                        <label>Requester <span class="text-danger">*</span></label>
+                                                        <label>Owner <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="requester">
                                                             <option selected="selected"></option>
@@ -630,7 +632,7 @@
         <div class="modal-dialog editbtn3">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Requester</h4>
+                    <h4 class="modal-title">Add Owner</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
