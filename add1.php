@@ -119,7 +119,7 @@
 
                    $sMessage .= "Category: ".$category." \n";
                    $sMessage .= "Type: ".$work_type." \n";
-                   $sMessage .= "Items: ".$items." \n\n";
+                   $sMessage .= "Items: ".$items." \n";
                    $sMessage .= "-------------------------- \n";
                    $sMessage .= "Status : ".$status."\n";
                    $sMessage .= "-------------------------- \n";
