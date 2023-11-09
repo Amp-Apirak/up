@@ -391,18 +391,19 @@
                                             ?>
 
                                             <div class="form-group">
-                                                <label>Owner<span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
-                                                <select class="form-control select2" name="requester"
-                                                    style="width: 100%;">
-                                                    <option selected="selected"><?= $rr->requester; ?></option>
-                                                    <option>On Process</option>
-                                                    <option>Done</option>
-                                                    <option>Pending</option>
-                                                    <option>Cancel</option>
-                                                    <option>Approve</option>
-                                                </select>
-                                            </div>
-                                            <!-- /.form-group -->
+                                                        <label>Owner <span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
+                                                        <select class="custom-select select2 " required width=""
+                                                            name="requester">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
+                                                            <option value="<?php echo $r["contact_name"]; ?>"
+                                                                <?php if ($r['contact_name'] == $contact_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["contact_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                </div>
 
                                             <div class="form-group">
                                                 <label for="file_test">Image Test <span class="text-danger"> <small>(แนบไฟล์ภาพผลการดำเนินการ >หากมี<)</small></span></label>
