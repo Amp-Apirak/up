@@ -445,7 +445,7 @@
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
-                                                            <label>Requester</label>
+                                                            <label>Owner</label>
                                                             <select class="custom-select select2"
                                                                 name="requester">
                                                                 <option value="">Select</option>
