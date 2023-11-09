@@ -219,7 +219,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Operator</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Date/Time</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="">Action</th>
+                                            
                                         </tr>
                                     </thead>
 
@@ -258,7 +258,7 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["date_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="">
                                                 
-                                                <a href="view_del.php?id=<?php echo $res_search["log_id"]; ?>&log_id=<?php echo $_GET['id']; ?>" class="btn btn-danger btn-sm swalDefaultSuccess"><i class="fas fa-trash"></i></a>
+                                                <!-- <a href="view_del.php?id=<?php echo $res_search["log_id"]; ?>&log_id=<?php echo $_GET['id']; ?>" class="btn btn-danger btn-sm swalDefaultSuccess"><i class="fas fa-trash"></i></a> -->
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -272,7 +272,7 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Operator</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Date/Time</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="">Action</th>
+                                            
                                         </tr>
                                     </tfoot>
                                 </table>
