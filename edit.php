@@ -383,17 +383,29 @@
                                                     placeholder="รายละเอียด"><?= $rr->detail; ?></textarea>
                                             </div>
 
-                                            
+                                                <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $contact_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM contact";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
+
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Owner<span
-                                                        class="text-danger">(ผู้รับผิดชอบ/แก้ไขงาน)*</span></label>
-                                                <input type="text" name="requester" class="form-control" value="<?= $rr->requester; ?>"
-                                                    id="exampleInputEmail1" placeholder="ผู้ร้องขอ" required>
+                                                <label>Owner<span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
+                                                <select class="form-control select2" name="requester"
+                                                    style="width: 100%;">
+                                                    <option selected="selected"><?= $rr->requester; ?></option>
+                                                    <option>On Process</option>
+                                                    <option>Done</option>
+                                                    <option>Pending</option>
+                                                    <option>Cancel</option>
+                                                    <option>Approve</option>
+                                                </select>
                                             </div>
                                             <!-- /.form-group -->
 
                                             <div class="form-group">
-                                                <label for="file_test">Image Test <span class="text-danger"> (แนบไฟล์ภาพผลการดำเนินการ >หากมี<)</span></label>
+                                                <label for="file_test">Image Test <span class="text-danger"> <small>(แนบไฟล์ภาพผลการดำเนินการ >หากมี<)</small></span></label>
                                                 <div class="custom-file">
 
                                                     <input type="file" class="custom-file-input" id="file_test" name="file_test">
@@ -413,7 +425,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Status<span class="text-danger">(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</span></label>
+                                                <label>Status<span class="text-danger"> <small>(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</small></span></label>
                                                 <select class="form-control select2" name="status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
@@ -428,12 +440,7 @@
 
 
 
-                                                 <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                             <?php
-                                            $contact_name = "";
-                                            $_sql_service = "SELECT DISTINCT * FROM contact";
-                                            $query_service = mysqli_query($conn, $_sql_service);
-                                            ?>
+                                             
                                                     <div class="form-group">
                                                         <label>Operation Staff <span class="text-danger"> <small>(บังคับเลือก*ชื่อผู้บันทึก*)</small></span></label>
                                                         <select class="custom-select select2 " required width=""
