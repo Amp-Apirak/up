@@ -435,7 +435,7 @@
                                             $query_service = mysqli_query($conn, $_sql_service);
                                             ?>
                                                     <div class="form-group">
-                                                        <label>Operation Staff <span class="text-danger">(บังคับเลือก*ชื่อผู้บันทึก*)</span></label>
+                                                        <label>Operation Staff <span class="text-danger"> <small>(บังคับเลือก*ชื่อผู้บันทึก*)</small></span></label>
                                                         <select class="custom-select select2 " required width=""
                                                             name="staff_edit">
                                                             <option selected="selected"></option>
