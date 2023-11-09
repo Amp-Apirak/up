@@ -84,7 +84,9 @@
 <!-- SimpleMDE -->
   <link rel="stylesheet" href="../up/code/plugins/simplemde/simplemde.min.css">
   
-  <style type="text/css">
+
+<!-- ความกว้างของตารางแสดงผล -->
+<style type="text/css">
 .mylayout_1{
     display:block;
     width:100px;

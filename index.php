@@ -610,7 +610,7 @@
                                                     if($res_search["add_task"] ==''){
                                                         echo " ";
                                                     }else{
-                                                        echo "<span class='badge badge-warning'>Comment: {$res_search["add_task"]}</span> <br>
+                                                        echo "<div><span class='badge badge-warning'><b><u>Comment:</b></u></span> <small>{$res_search["add_task"]}</small> </div>
                                                         <span class='badge badge-info'>{$res_search["staff_edit"]} | {$res_search["date_edit"]}</span>";
                                                     }
                                                     ?>
