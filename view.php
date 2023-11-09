@@ -422,7 +422,7 @@
                                     <div class="col col-12 ">
                                         <!-- textarea -->
                                         <div class="form-group">
-                                                <label>Update/Commect (Add Task)<span class="text-danger">*</span></label>
+                                                <label>Update/Commect <span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
                                                 <textarea class="form-control" name="add_task" id="add_task" rows="6" required placeholder="รายละเอียด"></textarea>
                                         </div>
                                     </div>
@@ -438,7 +438,7 @@
                                             $query_service = mysqli_query($conn, $_sql_service);
                                             ?>
 
-                                            <label>Operation Staff <span class="text-danger">*</span></label>
+                                            <label>Operation Staff <span class="text-danger"> <small>(บังคับเลือก*ชื่อผู้บันทึก*)</small></span></label>
                                                 <select class="custom-select select2 " required width="" name="staff_edit">
                                                     <option selected="selected"></option>
                                                         <?php while ($r = mysqli_fetch_array($query_service)) { ?>

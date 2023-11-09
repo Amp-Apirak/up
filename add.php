@@ -218,9 +218,9 @@
 
 
                                             <div class="form-group">
-                                                <label for="file_upfile">Image Example <span class="text-danger"> (Only
+                                                <label for="file_upfile">Image Example <span class="text-danger"> <small>(Only
                                                         picture
-                                                        and upload-max-filesize 20M*)</span></label>
+                                                        and upload-max-filesize 20M*)</small></span></label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="file_upfile"
                                                         name="file_upfile">
@@ -231,9 +231,9 @@
                                             <!-- /.form-group -->
 
                                             <div class="form-group">
-                                                <label for="file_test">Image Test <span class="text-danger"> (Only
+                                                <label for="file_test">Image Test <span class="text-danger"> <small>(Only
                                                         picture
-                                                        and upload-max-filesize 20M*)</span></label>
+                                                        and upload-max-filesize 20M*)</small></span></label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="file_test"
                                                         name="file_test">
