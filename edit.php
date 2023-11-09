@@ -114,7 +114,7 @@
 
                                         $sMessage .= "Category: ".$category." \n";
                                         $sMessage .= "Type: ".$work_type." \n";
-                                        $sMessage .= "Items: ".$tems." \n\n";
+                                        $sMessage .= "Items: ".$items." \n\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Status : ".$status."\n";
                                         $sMessage .= "-------------------------- \n";
@@ -122,7 +122,8 @@
                                         $sMessage .= "Subject : ".$subject."\n\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "คำแนะ/แก้ไข : ".$add_task."\n\n";
-                                        $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/pms/view.php?id=$_GET[id] \n";
+
+                                        $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n";
                             
                                         
                                         $chOne = curl_init(); 
