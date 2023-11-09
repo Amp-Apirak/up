@@ -236,7 +236,7 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $i++ ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="">
                                             <?php
-                                                    if($res_search["v_status"] =='Wiating for approve'){
+                                                    if($res_search["v_status"] =='Approve'){
                                                         echo "<span class='badge badge-primary'>{$res_search["v_status"]}</span>";
                                                     }elseif($res_search["v_status"] =='On Process'){
                                                         echo "<span class='badge badge-warning'>{$res_search["v_status"]}</span>";
@@ -411,8 +411,12 @@
                                                 <select class="form-control select2" name="v_status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
-                                                        <option>On Process</option>
-                                                        <option>Done</option>
+                                                    <option selected="selected">On Process</option>
+                                                    <option>On Process</option>
+                                                    <option>Approve</option>
+                                                    <option>Done</option>
+                                                    <option>Pending</option>
+                                                    <option>Cancel</option>
                                                 </select>
                                     </div>
                                             <!-- /.form-group -->
