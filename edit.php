@@ -394,7 +394,7 @@
                                                         <label>Owner <span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
                                                         <select class="custom-select select2 " required width=""
                                                             name="requester">
-                                                            <option selected="selected"></option>
+                                                            <option selected="selected"><?= $rr->requester; ?></option>
                                                             <?php while ($rm = mysqli_fetch_array($query_servicez)) { ?>
                                                             <option value="<?php echo $rm["contact_name"]; ?>"
                                                                 <?php if ($rm['contact_name'] == $contact_name) : ?>
