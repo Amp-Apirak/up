@@ -122,6 +122,10 @@
                                         $sMessage .= "Subject : ".$subject."\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "คำแนะ/แก้ไข : ".$add_task."\n\n";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9422dad6333ddcb572d99c5953fe14218ab12ec9
                                         $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n";
                             
                                         
