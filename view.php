@@ -256,10 +256,6 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["requester"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["staff_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["date_edit"]; ?></td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width="">
-                                                
-                                               
-                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
