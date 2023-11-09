@@ -386,8 +386,8 @@
                                                 <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
                                             <?php
                                             $contact_name = "";
-                                            $_sql_service = "SELECT DISTINCT * FROM contact";
-                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            $_sql_servicez = "SELECT DISTINCT * FROM contact";
+                                            $query_servicez = mysqli_query($conn, $_sql_servicez);
                                             ?>
 
                                             <div class="form-group">
@@ -395,11 +395,11 @@
                                                         <select class="custom-select select2 " required width=""
                                                             name="requester">
                                                             <option selected="selected"></option>
-                                                            <?php while ($r = mysqli_fetch_array($query_service)) { ?>
-                                                            <option value="<?php echo $r["contact_name"]; ?>"
-                                                                <?php if ($r['contact_name'] == $contact_name) : ?>
+                                                            <?php while ($rm = mysqli_fetch_array($query_servicez)) { ?>
+                                                            <option value="<?php echo $rm["contact_name"]; ?>"
+                                                                <?php if ($rm['contact_name'] == $contact_name) : ?>
                                                                 selected="selected" <?php endif; ?>>
-                                                                <?php echo $r["contact_name"]; ?>
+                                                                <?php echo $rm["contact_name"]; ?>
                                                             </option>
                                                             <?php } ?>
                                                         </select>
@@ -439,6 +439,13 @@
                                             </div>
                                             <!-- /.form-group -->
 
+
+                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                            <?php
+                                            $contact_name = "";
+                                            $_sql_service = "SELECT DISTINCT * FROM contact";
+                                            $query_service = mysqli_query($conn, $_sql_service);
+                                            ?>
 
 
                                              
