@@ -114,12 +114,12 @@
                         },1000);
                    </script>';
 
-                   $sToken = "K3zECl4gnTcqiFN5M6R2njKZROGcaYXKr3X8iHloa7A";
+                   $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
                    $sMessage = "".$staff_crt." **Open Ticket** \n\n";
 
                    $sMessage .= "Category: ".$category." \n";
                    $sMessage .= "Type: ".$work_type." \n";
-                   $sMessage .= "Items: ".$tems." \n\n";
+                   $sMessage .= "Items: ".$items." \n";
                    $sMessage .= "-------------------------- \n";
                    $sMessage .= "Status : ".$status."\n";
                    $sMessage .= "-------------------------- \n";

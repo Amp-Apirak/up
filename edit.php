@@ -108,7 +108,7 @@
                                         error_reporting(E_ALL);
                                         date_default_timezone_set("Asia/Bangkok");
                             
-                                        $sToken = "K3zECl4gnTcqiFN5M6R2njKZROGcaYXKr3X8iHloa7A";
+                                        $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
 
                                         $sMessage = "".$staff_edit." **Update Ticket**\n\n";
 
@@ -117,12 +117,15 @@
                                         $sMessage .= "Items: ".$items." \n\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Status : ".$status."\n";
-                                        $sMessage .= "-------------------------- \n";
+                                        $sMessage .= "-------------------------- \n\n";
                                         $sMessage .= "Owner: ".$requester." \n";
-                                        $sMessage .= "Subject : ".$subject."\n\n";
+                                        $sMessage .= "Subject : ".$subject."\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "คำแนะ/แก้ไข : ".$add_task."\n\n";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9422dad6333ddcb572d99c5953fe14218ab12ec9
                                         $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n";
                             
                                         

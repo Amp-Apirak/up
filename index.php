@@ -603,7 +603,7 @@
                                                     ?>
                                             </td>
 
-                                            <td  scope="col" class="text-nowrap " height="" width="100"> 
+                                            <td  scope="col" class="" id="mylayout_2" > 
                                                     <a href="view.php?id=<?php echo $res_search["work_id"]; ?>" > <?php echo $res_search["subject"]; ?></a> <p>
 
                                                     <?php
@@ -667,12 +667,12 @@
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["project_name"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100">
 
-                                                <a href="http://58.137.58.163/pms/example/<?php echo $res_search["file_upfile"]; ?>">
-                                                    http://58.137.58.163/pms/<?php echo $res_search["file_upfile"]; ?> 
+                                                <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
+                                                    http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?> 
                                                 </a> 
                                                     |
-                                                <a href="http://58.137.58.163/pms/test/<?php echo $res_search["file_test"]; ?>">
-                                                    http://58.137.58.163/pms/<?php echo $res_search["file_test"]; ?>
+                                                <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
+                                                    http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>
                                                 </a>
                                         
                                             </td>

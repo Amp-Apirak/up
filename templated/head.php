@@ -84,7 +84,18 @@
 <!-- SimpleMDE -->
   <link rel="stylesheet" href="../up/code/plugins/simplemde/simplemde.min.css">
   
-  
+  <style type="text/css">
+.mylayout_1{
+    display:block;
+    width:100px;
+    word-wrap:break-word;
+}
+td#mylayout_2{
+    display:block;
+    width:600px;
+    word-wrap:break-word;
+}
+</style>
 
 
 </head>
