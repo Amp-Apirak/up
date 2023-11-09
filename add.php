@@ -262,7 +262,7 @@
                                             <div class="row">
                                                 <div class="col col-5">
                                                     <div class="form-group">
-                                                        <label>Owner <span class="text-danger">*</span></label>
+                                                        <label>Owner <small class="text-danger">(ผู้รับผิดชอบ/แก้ไขงาน)</small><span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="requester">
                                                             <option selected="selected">คุณยุทธนา (พี่ตำรวจ)</option>
@@ -297,7 +297,7 @@
                                             ?>
                                                 <div class="col col-5">
                                                     <div class="form-group">
-                                                        <label>Operation Staff <span class="text-danger">*</span></label>
+                                                        <label>Operation Staff <small class="text-danger">(ผู้รับบันทึก หรือผู้แจ้งปัญหา/บริการ)</small> <span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="staff_crt">
                                                             <option selected="selected">คุณภัทราอร (ซีน)</option>

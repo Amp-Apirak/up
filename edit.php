@@ -386,7 +386,7 @@
                                             
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Owner<span
-                                                        class="text-danger">*</span></label>
+                                                        class="text-danger">(ผู้รับผิดชอบ/แก้ไขงาน)*</span></label>
                                                 <input type="text" name="requester" class="form-control" value="<?= $rr->requester; ?>"
                                                     id="exampleInputEmail1" placeholder="ผู้ร้องขอ" required>
                                             </div>
@@ -413,7 +413,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Status<span class="text-danger"> (กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</span></label>
+                                                <label>Status<span class="text-danger">(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</span></label>
                                                 <select class="form-control select2" name="status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
@@ -435,7 +435,7 @@
                                             $query_service = mysqli_query($conn, $_sql_service);
                                             ?>
                                                     <div class="form-group">
-                                                        <label>Operation Staff <span class="text-danger"> (บังคับเลือกชื่อ)*</span></label>
+                                                        <label>Operation Staff <span class="text-danger">(บังคับเลือก*ชื่อผู้บันทึก*)</span></label>
                                                         <select class="custom-select select2 " required width=""
                                                             name="staff_edit">
                                                             <option selected="selected"></option>
