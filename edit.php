@@ -421,6 +421,7 @@
                                                     <option>Done</option>
                                                     <option>Pending</option>
                                                     <option>Cancel</option>
+                                                    <option>Approve</option>
                                                 </select>
                                             </div>
                                             <!-- /.form-group -->
