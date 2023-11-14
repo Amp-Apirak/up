@@ -36,7 +36,6 @@
         $requester = $_POST['requester'];
         $staff_edit = $_POST['staff_edit'];
         $file_upfile2 = $_POST['file_upfile2'];
-        $file_test2 = $_POST['file_test2'];
         $service = $_POST['service_name'];
         $items = $_POST['items_name'];
         $category = $_POST['category_name'];
@@ -45,20 +44,14 @@
         $add_task = $_POST['add_task'];
         $work_id = $_POST['work_id'];
 
-
-
-
         $file_upfile = $_FILES['file_upfile']['name'];
         $file_test = $_FILES['file_test']['name'];
         
 
-           
-
-
-
         if($file_upfile !=''){
             $file_tmp = $_FILES['file_upfile']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+            move_uploaded_file($file_tmp, "../pms/example/$file_upfile");
+            
 
         }else {
 
@@ -66,8 +59,8 @@
             
         }if ($file_test !=''){
             $file_tmp = $_FILES['file_test']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/test/$file_test");
-        
+            move_uploaded_file($file_tmp, "../pms/test/$file_test");
+
         }else {
 
             
@@ -81,8 +74,8 @@
                             `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
 
-            $sqll =   "INSERT INTO `tb_log` (`work_id`, `add_task`,`staff_edit`,`v_status`)
-                            VALUES ($work_id, '$add_task', '$staff_edit', '$status')";
+            $sqll =   "INSERT INTO `tb_log` (`work_id`, `add_task`,`staff_edit`,`v_status`,`file_test`)
+                            VALUES ($work_id, '$add_task', '$staff_edit', '$status', '$file_test')";
                             $resultt = $conn->query($sqll);
 
                             
@@ -102,28 +95,27 @@
                                             },1000);
                                         </script>';
 
-
                                         ini_set('display_errors', 1);
                                         ini_set('display_startup_errors', 1);
                                         error_reporting(E_ALL);
                                         date_default_timezone_set("Asia/Bangkok");
                             
                                         $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
-
-                                        $sMessage = "".$staff_edit." **Update Ticket**\n\n";
+                                        $sMessage = "".$staff_edit." **Update Ticket** \n\n";
 
                                         $sMessage .= "Category: ".$category." \n";
                                         $sMessage .= "Type: ".$work_type." \n";
                                         $sMessage .= "Items: ".$items." \n\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Status : ".$status."\n";
-                                        $sMessage .= "-------------------------- \n\n";
+                                        $sMessage .= "-------------------------- \n";
                                         $sMessage .= "Owner: ".$requester." \n";
-                                        $sMessage .= "Subject : ".$subject."\n";
+                                        $sMessage .= "Subject : ".$subject."\n\n";
                                         $sMessage .= "-------------------------- \n";
                                         $sMessage .= "คำแนะ/แก้ไข : ".$add_task."\n\n";
 
-                                        $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n";
+                                        $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n\n";
+                                        $sMessage .= "@All \n";
                             
                                         
                                         $chOne = curl_init(); 
@@ -136,8 +128,7 @@
                                         curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
                                         curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
                                         $resultt1 = curl_exec( $chOne ); 
-                            
-                    
+
 
                                 //     // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
                                 } else {
@@ -383,15 +374,16 @@
                                                     placeholder="รายละเอียด"><?= $rr->detail; ?></textarea>
                                             </div>
 
-                                                <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                            <?php
+                                            
+                                              <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                              <?php
                                             $contact_name = "";
                                             $_sql_servicez = "SELECT DISTINCT * FROM contact";
                                             $query_servicez = mysqli_query($conn, $_sql_servicez);
                                             ?>
 
                                             <div class="form-group">
-                                                        <label>Owner <span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
+                                                        <label>Owner/Assign <span class="text-danger"> <small>(ผู้รับผิดชอบ/แก้ไขงาน)*</small></span></label>
                                                         <select class="custom-select select2 " required width=""
                                                             name="requester">
                                                             <option selected="selected"><?= $rr->requester; ?></option>
@@ -403,16 +395,16 @@
                                                             </option>
                                                             <?php } ?>
                                                         </select>
-                                                </div>
+                                            </div>
 
                                             <div class="form-group">
                                                 <label for="file_test">Image Test <span class="text-danger"> <small>(แนบไฟล์ภาพผลการดำเนินการ >หากมี<)</small></span></label>
                                                 <div class="custom-file">
 
                                                     <input type="file" class="custom-file-input" id="file_test" name="file_test">
-                                                    <label class="custom-file-label" for="file_test"><?= $rr->file_test; ?></label>
+                                                    <label class="custom-file-label" for="file_test"></label>
 
-                                                    <input type="hidden" class="custom-file-input" id="file_test2"  value="<?= $rr->file_test; ?>" name="file_test2">
+
                                                     <input type="hidden" class="custom-file-input" id="work_id"  value="<?= $rr->work_id; ?>" name="work_id">
                                                 </div>
                                             </div>
@@ -420,35 +412,33 @@
 
                                             <!-- textarea -->
                                             <div class="form-group">
-                                                <label>Update/Commect <span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
+                                                <label>Update/Commect (Add Task) <span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
                                                 <textarea class="form-control" name="add_task" id="add_task" rows="6"
                                                     placeholder=""></textarea>
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Status<span class="text-danger"> <small>(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</small></span></label>
+                                                <label>Status <span class="text-danger"> <small>(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</small></span></label>
                                                 <select class="form-control select2" name="status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
+                                                    <option>Approve</option>
                                                     <option>On Process</option>
                                                     <option>Done</option>
                                                     <option>Pending</option>
                                                     <option>Cancel</option>
-                                                    <option>Approve</option>
                                                 </select>
                                             </div>
                                             <!-- /.form-group -->
 
 
-                                            <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
-                                            <?php
+
+                                                 <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                             <?php
                                             $contact_name = "";
                                             $_sql_service = "SELECT DISTINCT * FROM contact";
                                             $query_service = mysqli_query($conn, $_sql_service);
                                             ?>
-
-
-                                             
                                                     <div class="form-group">
                                                         <label>Operation Staff <span class="text-danger"> <small>(บังคับเลือก*ชื่อผู้บันทึก*)</small></span></label>
                                                         <select class="custom-select select2 " required width=""
@@ -503,7 +493,7 @@
 
 
     <!----------------------------- start menu ------------------------------->
-    <?php include("../up/templated/footer.php"); ?>
+    <?php include("../pms/templated/footer.php"); ?>
     <!----------------------------- end menu --------------------------------->
 
     <!-- highlight -->

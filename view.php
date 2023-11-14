@@ -211,10 +211,11 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
 
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">#</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Status</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="">Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Update/Commect</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Operator</th>
@@ -240,20 +241,32 @@
                                                         echo "<span class='badge badge-primary'>{$res_search["v_status"]}</span>";
                                                     }elseif($res_search["v_status"] =='On Process'){
                                                         echo "<span class='badge badge-warning'>{$res_search["v_status"]}</span>";
-                                                    }elseif($res_search["v_status"] =='On-Hold'){
+                                                    }elseif($res_search["v_status"] =='Pending'){
                                                         echo "<span class='badge badge-info'>{$res_search["v_status"]}</span>";
                                                     }elseif($res_search["v_status"] =='Done'){
                                                         echo "<span class='badge badge-success'>{$res_search["v_status"]}</span>";
-                                                    }elseif($res_search["v_status"] =='Loss'){
+                                                    }elseif($res_search["v_status"] =='Cancel'){
                                                         echo "<span class='badge badge-danger'>{$res_search["v_status"]}</span>";
                                                     }
                                                 ?>
        
-                                        </td>
+                                            </td>
+                                            <td  scope="col" class="text-nowrap text-center" height="" width="100">
+                                                <a href="../pms/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../pms/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                                    <?php
+                                                        if($res_search["file_test"] ==''){
+                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                        }elseif($res_search["file_test"]){
+                                                            echo '<img class="imgx"  width="85" height="85" src="../pms/test/'.$res_search["file_test"].'"';
+                                                        }
+                                                    ?>
+                                                </a>
+                                                
+                                            </td>
                                             <td scope="col" class="  " height="" width="">
                                                 <?php echo $res_search["add_task"]; ?> 
                                             </td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["requester"]; ?></td>
+                                            <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["staff_crt"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["staff_edit"]; ?></td>
                                             <td scope="col" class="text-nowrap text-center " height="" width=""><?php echo $res_search["date_edit"]; ?></td>
                                         </tr>
@@ -264,11 +277,12 @@
                                         <tr>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">#</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Status</th>
+                                            <th scope="col" class="text-nowrap text-center " height="" width="">Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Update/Commect</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Owner</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Operator</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="">Date/Time</th>
-                                            
+                                           
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -334,14 +348,46 @@
     <?php
      if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
+        $status = $_POST['v_status'];
         $v_status = $_POST['v_status'];
         $add_task = $_POST['add_task'];
-        $work_id = $_POST['work_id'];
+        $work_id =  $_GET['id'];
         $staff_edit = $_POST['staff_edit'];
 
+        $target_dir1 = "../pms/test/";
+        $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
+        $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+        $file_test = $_FILES["file_test"]["name"] ;
+
+        if ($imageFileType1 == " " ) {
+
+            //echo "Sorry, your file was not uploaded.";
+            echo '<script>
+                    setTimeout(function(){
+                        swal({
+                            title: "Sorry, your file was not uploaded.",
+                            text: "Please check the file name.",
+                            type:"warning"
+                        }, function(){
+                            window.location = "doc_add.php";
+                        })
+                    },1000);
+                </script>';
+
+        } else {
+
+            $file_upfile1 = $_FILES['file_test']['name'];
+            $file_tmp1 = $_FILES['file_test']['tmp_name'];
+            move_uploaded_file($file_tmp1, "../pms/test/$file_upfile1");
+
+
     
-            $sql =  "INSERT INTO `tb_log` (`v_status`,`add_task`,`work_id`,`staff_edit` )  VALUES ('$v_status','$add_task','$work_id','$staff_edit')";
+            $sql =  "INSERT INTO `tb_log` (`v_status`,`add_task`,`work_id`,`staff_edit`,`file_test` )  VALUES ('$v_status','$add_task','$work_id','$staff_edit','$file_test')";
             $result = $conn->query($sql);
+
+            
+            $sqll =  "UPDATE `work` SET `status` = '$status' WHERE work_id=" . $_GET['id'];
+            $resultt = $conn->query($sqll);
 
             //print_r($sql);
 
@@ -374,6 +420,7 @@
                     </script>';
             //     echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
             }
+        }
     }
         
     ?>
@@ -403,16 +450,15 @@
                                   ?>
 
                                     <div class="col col-12 mb-4">
-                                                <label>Status<span class="text-danger"> (กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</span></label>
+                                                <label>Status <span class="text-danger"><small>(กรณีแก้ไขแล้วให้เปลี่ยนสถานะ เป็น Complated)</small></span></label>
                                                 <select class="form-control select2" name="v_status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
-                                                    <option selected="selected">On Process</option>
-                                                    <option>On Process</option>
-                                                    <option>Approve</option>
-                                                    <option>Done</option>
-                                                    <option>Pending</option>
-                                                    <option>Cancel</option>
+                                                        <option>Approve</option>
+                                                        <option>On Process</option>
+                                                        <option>Done</option>
+                                                        <option>Pending</option>
+                                                        <option>Cancel</option>
                                                 </select>
                                     </div>
                                             <!-- /.form-group -->
@@ -420,9 +466,22 @@
                                 </div>
                                 <div class="row">
                                     <div class="col col-12 ">
+                                        <div class="form-group">
+                                                <label for="file_test">Image Test <span class="text-danger"> <small>(Only
+                                                        picture
+                                                        and upload-max-filesize 20M*)</small></span></label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="file_test" name="file_test"> <label class="custom-file-label" for="file_test">Choose file</label>
+                                                </div>
+                                            </div>
+                                            <!-- /.form-group -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12 ">
                                         <!-- textarea -->
                                         <div class="form-group">
-                                                <label>Update/Commect <span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
+                                                <label>Update/Commect (Add Task)<span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
                                                 <textarea class="form-control" name="add_task" id="add_task" rows="6" required placeholder="รายละเอียด"></textarea>
                                         </div>
                                     </div>

@@ -265,7 +265,7 @@
                                                         <label>Owner <small class="text-danger">(ผู้รับผิดชอบ/แก้ไขงาน)</small><span class="text-danger">*</span></label>
                                                         <select class="custom-select select2 " width=""
                                                             name="requester">
-                                                            <option selected="selected">คุณยุทธนา (พี่ตำรวจ)</option>
+                                                            <option selected="selected">คุณสุรพันธ์ (พี่ขวัญ)</option>
                                                             <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                             <option value="<?php echo $r["contact_name"]; ?>"
                                                                 <?php if ($r['contact_name'] == $contact_name) : ?>
