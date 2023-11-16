@@ -16,6 +16,13 @@
     <?php include("../up/templated/menu.php"); ?>
     <!----------------------------- end menu --------------------------------->
 
+      <!----------------------------- start Time ------------------------------->
+    <?php
+    date_default_timezone_set('asia/bangkok');
+    $date = date("Y-m-d H:i:s");
+    ?>
+    <!----------------------------- start Time ------------------------------->
+
 
     <?php
     if (isset($_POST['submit1'])) { /* ถ้า POST มีการกด Submit1 ให้ทำส่วนล่าง */
@@ -353,6 +360,7 @@
         $add_task = $_POST['add_task'];
         $work_id =  $_GET['id'];
         $staff_edit = $_POST['staff_edit'];
+        $date_edit = $_POST['date_edit'];
 
         $target_dir1 = "../up/test/";
         $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
@@ -382,11 +390,11 @@
 
 
     
-            $sql =  "INSERT INTO `tb_log` (`v_status`,`add_task`,`work_id`,`staff_edit`,`file_test` )  VALUES ('$v_status','$add_task','$work_id','$staff_edit','$file_test')";
+            $sql =  "INSERT INTO `tb_log` (`v_status`,`add_task`,`work_id`,`staff_edit`,`file_test`,`date_edit` )  VALUES ('$v_status','$add_task','$work_id','$staff_edit','$file_test','$date_edit')";
             $result = $conn->query($sql);
 
             
-            $sqll =  "UPDATE `work` SET `status` = '$status' WHERE work_id=" . $_GET['id'];
+            $sqll =  "UPDATE `work` SET `status` = '$status',`staff_edit` = '$staff_edit', `date_edit` = '$date_edit', `add_task` = '$add_task' WHERE work_id=" . $_GET['id'];
             $resultt = $conn->query($sqll);
 
             //print_r($sql);
@@ -483,6 +491,7 @@
                                         <div class="form-group">
                                                 <label>Update/Commect (Add Task)<span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
                                                 <textarea class="form-control" name="add_task" id="add_task" rows="6" required placeholder="รายละเอียด"></textarea>
+                                                <input type="text" name="date_edit" class="form-control" value="<?php echo $date; ?>"  >
                                         </div>
                                     </div>
                                 </div>

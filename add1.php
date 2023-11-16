@@ -24,6 +24,7 @@
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
         $project_name = $_POST['project_name'];
+        $date_crt = $_POST['date_crt'];
 
 
 
@@ -88,10 +89,10 @@
 
 
 
-            $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`,
+            $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`, `date_crt`,
             `items`, `file_upfile`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
             `file_test`,`project_name`)
-            VALUES (NULL, '$work_type', '$service', '$category', '$items', '$file_upfile',
+            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_upfile',
              '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_test','$project_name')";
 
 
@@ -114,7 +115,7 @@
                         },1000);
                    </script>';
 
-                   $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
+                //    $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
                    $sMessage = "".$staff_crt." **Open Ticket** \n\n";
 
                    $sMessage .= "Category: ".$category." \n";
