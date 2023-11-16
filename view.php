@@ -252,12 +252,12 @@
        
                                             </td>
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="../pms/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../pms/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                                <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
                                                     <?php
                                                         if($res_search["file_test"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
                                                         }elseif($res_search["file_test"]){
-                                                            echo '<img class="imgx"  width="85" height="85" src="../pms/test/'.$res_search["file_test"].'"';
+                                                            echo '<img class="imgx"  width="85" height="85" src="../up/test/'.$res_search["file_test"].'"';
                                                         }
                                                     ?>
                                                 </a>
@@ -354,7 +354,7 @@
         $work_id =  $_GET['id'];
         $staff_edit = $_POST['staff_edit'];
 
-        $target_dir1 = "../pms/test/";
+        $target_dir1 = "../up/test/";
         $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
         $file_test = $_FILES["file_test"]["name"] ;
@@ -378,7 +378,7 @@
 
             $file_upfile1 = $_FILES['file_test']['name'];
             $file_tmp1 = $_FILES['file_test']['tmp_name'];
-            move_uploaded_file($file_tmp1, "../pms/test/$file_upfile1");
+            move_uploaded_file($file_tmp1, "../up/test/$file_upfile1");
 
 
     
