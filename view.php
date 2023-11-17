@@ -412,7 +412,39 @@
                             })
                         },1000);
                     </script>';
-                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+                    ini_set('display_errors', 1);
+                    ini_set('display_startup_errors', 1);
+                    error_reporting(E_ALL);
+                    date_default_timezone_set("Asia/Bangkok");
+        
+                    $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
+                    $sMessage = "👉 ".$staff_edit." **Update Ticket** \n\n";
+
+                    $sMessage .= "Category: ".$category." \n";
+                    $sMessage .= "Type: ".$work_type." \n";
+                    $sMessage .= "Items: ".$items." \n\n";
+                    $sMessage .= "-------------------------- \n";
+                    $sMessage .= "📌 Status : ".$status." 📌\n";
+                    $sMessage .= "-------------------------- \n";
+                    $sMessage .= "👉 Owner: ".$requester." \n";
+                    $sMessage .= "📢 Subject : ".$subject."\n\n";
+                    $sMessage .= "-------------------------- \n";
+                    $sMessage .= "✅ คำแนะ/แก้ไข : ".$add_task."\n\n";
+
+                    $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/view.php?id=$_GET[id] \n\n";
+                    $sMessage .= "@All \n";
+        
+                    
+                    $chOne = curl_init(); 
+                    curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+                    curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+                    curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+                    curl_setopt( $chOne, CURLOPT_POST, 1); 
+                    curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+                    $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+                    curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+                    curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+                    $resultt1 = curl_exec( $chOne ); 
             } else {
                 // <!-- sweetalert -->
                 echo '<script>
