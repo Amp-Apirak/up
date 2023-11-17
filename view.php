@@ -491,7 +491,7 @@
                                         <div class="form-group">
                                                 <label>Update/Commect (Add Task)<span class="text-danger"> <small>(อัพเดท หรือเขียนโน็ตสำหรับแท็กงานให้เจ้าหน้าที่ท่านอื่นได้ทราบ)*</small></span></label>
                                                 <textarea class="form-control" name="add_task" id="add_task" rows="6" required placeholder="รายละเอียด"></textarea>
-                                                <input type="text" name="date_edit" class="form-control" value="<?php echo $date; ?>"  >
+                                                <input type="Hidden" name="date_edit" class="form-control" value="<?php echo $date; ?>"  >
                                         </div>
                                     </div>
                                 </div>
