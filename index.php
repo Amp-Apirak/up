@@ -646,7 +646,24 @@
                                                                         <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="450" alt="">
                                                                         <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="450" alt=""><br>
                                                                         <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="450" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="450" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="450" alt=""><br>
+
+                                                                        <?php
+                                                                            if($res_search["file_im1"] ==''){
+                                                                                echo "<span class='badge badge-warning'>No Image</span>";
+                                                                            }elseif($res_search["file_im1"]){
+                                                                                echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_im1"].'"';
+                                                                            }
+                                                                        ?>
+
+                                                                         <?php
+                                                                            if($res_search["file_im2"] ==''){
+                                                                                echo "<span class='badge badge-warning'>No Image</span>";
+                                                                            }elseif($res_search["file_im2"]){
+                                                                                echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_im2"].'"';
+                                                                            }
+                                                                        ?>
+
                                                                         </div>
                                                                      </div>
                                                                 </div>
