@@ -643,10 +643,10 @@
                                                                 <div class="modal-body">
                                                                     <div class="div">
                                                                         <div class="col col-12">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="250" height="250" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="250" height="250" alt=""><br>
-                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="250" height="250" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="250" height="250" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="350" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="350" alt=""><br>
+                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="350" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="350" alt="">
                                                                         </div>
                                                                      </div>
                                                                 </div>
