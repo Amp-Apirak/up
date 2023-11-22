@@ -429,7 +429,11 @@
                                                     <?php } ?>
                                                     
                                                     <option>On Process</option>
+
+                                                    <?php if ($_SESSION["role"] == "b") { ?>
                                                     <option>Done</option>
+                                                    <?php } ?>
+
                                                     <option>Pending</option>
                                                     <option>Cancel</option>
                                                 </select>

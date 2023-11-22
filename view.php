@@ -516,11 +516,19 @@
                                                 <select class="form-control select2" name="v_status"
                                                     style="width: 100%;">
                                                     <option selected="selected"><?= $rr->status; ?></option>
-                                                        <option>Approve</option>
-                                                        <option>On Process</option>
-                                                        <option>Done</option>
-                                                        <option>Pending</option>
-                                                        <option>Cancel</option>
+                                                    
+                                                    <?php if ($_SESSION["role"] == "a") { ?>
+                                                    <option>Approve</option>
+                                                    <?php } ?>
+                                                    
+                                                    <option>On Process</option>
+
+                                                    <?php if ($_SESSION["role"] == "b") { ?>
+                                                    <option>Done</option>
+                                                    <?php } ?>
+
+                                                    <option>Pending</option>
+                                                    <option>Cancel</option>
                                                 </select>
                                     </div>
                                             <!-- /.form-group -->

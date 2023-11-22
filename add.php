@@ -199,7 +199,6 @@
                                                 <select class="form-control select2" name="status" style="width: 100%;">
                                                     <option selected="selected">On Process</option>
                                                     <option>On Process</option>
-                                                    <option>Done</option>
                                                     <option>Pending</option>
                                                     <option>Cancel</option>
                                                 </select>
