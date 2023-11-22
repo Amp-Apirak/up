@@ -109,6 +109,19 @@
                             <?php echo $res_search["project_name"]; ?>  
 
                             <div class="row ">
+                                <div class="col col-2">
+                                    <b>Service Cate :</b> <?php echo $res_search["service"]; ?>  
+                                </div>
+                                <div class="col col-2">
+                                    <b>Service Type :</b> <?php echo $res_search["category"]; ?>  
+                                </div>
+                                <div class="col col-2">
+                                    <b>Subcategory  :</b> <?php echo $res_search["items"]; ?>  
+                                </div>
+                            </div>
+                        <!-- <br> -->
+
+                            <div class="row ">
                                 <div class="col-sm-8 invoice-col">
                                 <b>Detail :</b><br>
                                     <address>
@@ -175,6 +188,15 @@
                                 </div>
                                 <!-- /.col -->
                             </div>
+
+
+                            <div class="row ">
+                                <div class="col col-2">
+                                    <b> Job Owner :</b> <?php echo $res_search["requester"]; ?>  
+                                </div>
+                            </div>
+
+                            
                             <!-- /.row -->
                         </div>
                         <!-- /.invoice -->
@@ -540,7 +562,7 @@
 
                                             <label>Operation Staff <span class="text-danger"> <small>(บังคับเลือก*ชื่อผู้บันทึก*)</small></span></label>
                                                 <select class="custom-select select2 " required width="" name="staff_edit">
-                                                    <option selected="selected"></option>
+                                                    <option selected="<?php echo ($_SESSION['contact_name']);?>"><?php echo ($_SESSION['contact_name']);?></option>
                                                         <?php while ($r = mysqli_fetch_array($query_service)) { ?>
                                                     <option value="<?php echo $r["contact_name"]; ?>"
                                                         <?php if ($r['contact_name'] == $contact_name) : ?> selected="selected" <?php endif; ?>>

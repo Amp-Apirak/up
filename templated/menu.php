@@ -7,7 +7,7 @@
         <span class="brand-text font-weight-light">Uplevel Management</span>
     </a>
 
-
+    <?php if (isset($_SESSION['contact_id'])) { ?>
     <!-- Sidebar -->
     <div
         class="sidebar os-host os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden os-theme-dark os-host-foreign os-theme-light os-host-scrollbar-vertical-hidden">
@@ -31,12 +31,12 @@
                             <img src="../up/img/002.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="">Administrator</a><br>
-                            <a href="profile.php" class="">Your Welcome</a><br>
-                            <a href="logout.php" class=""><i class="nav-icon fa fa-sign-in">Work details</i></a>
+                            <a href="profile.php" class=""><?php echo ($_SESSION['contact_name']);?></a><br>
+                            <a href="profile.php" class=""><?php echo ($_SESSION['position']);?></a><br>
+                            <a href="logout.php" class=""><i class="nav-icon fa fa-sign-in">Logout</i></a>
                         </div>
                     </div>
-                    
+                    <?php } ?>
 
 
                     <!-- Sidebar Menu -->
