@@ -621,15 +621,43 @@
                                             </td> 
                                             
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
-                                                            <?php
-                                                                if($res_search["file_upfile"] ==''){
-                                                                    echo "<span class='badge badge-warning'>No Image</span>";
-                                                                }elseif($res_search["file_upfile"]){
-                                                                    echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_upfile"].'"';
-                                                                }
-                                                            ?>
+                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-default<?php echo $res_search["work_id"]; ?>">
+                                                    <?php
+                                                        if($res_search["file_upfile"] ==''){
+                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                        }elseif($res_search["file_upfile"]){
+                                                            echo '<img class=""  width="40" height="25" src="../pms/img/camera.png"';
+                                                        }
+                                                    ?>
                                                 </a>
+
+                                                <div class="modal fade" id="modal-default<?php echo $res_search["work_id"]; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">IMAGE</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <?php
+                                                                    if($res_search["file_upfile"] ==''){
+                                                                        echo "<span class='badge badge-warning'>No Image</span>";
+                                                                    }elseif($res_search["file_upfile"]){
+                                                                        echo '<img class="imgx"  data-lightbox="image-1" width="400" height="300" src="../up/test/'.$res_search["file_test"].'"';
+                                                                    }
+                                                                ?>
+                                                                </div><br><br>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                </div>
+                                                <!-- /.modal -->
 
                                             </td> 
                                             
@@ -774,105 +802,29 @@
 
     <!----------------------------- start Modal Add user ------------------------------->
     
-    <div class="modal fade" id="editbtn">
-        <div class="modal-dialog editbtn">
+    <div class="modal fade" id="editbtn8">
+        <div class="modal-dialog editbtn8">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add User</h4>
+                    <h4 class="modal-title">Image</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form action="add.php" method="POST" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="fullname">Full Name<span class="text-danger">*</span></label>
-                                <input type="text" name="fullname" class="form-control" id="fullname" placeholder=""
-                                    required>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label for="project_name">Position<span class="text-danger">*</span></label>
-                                <input type="text" name="project_name" class="form-control" id="project_name"
-                                    placeholder="" required>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label>Team<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="project_product" required
-                                    style="width: 100%;">
-                                    <option selected="selected">Select</option>
-                                    <option>Innovation</option>
-                                    <option>Infrastructure</option>
-                                    <option>Projecting</option>
-                                    <option>Stock</option>
-                                    <option>Service Solution</option>
-                                    <option>Service bank</option>
-                                </select>
-
-                                <input type="hidden" name="user_crt" value="<?php echo $date; ?> " class="form-control datetimepicker-input" data-target="#reservationdate" />
-                                <input type="hidden" name="user_staff" class="form-control" value="<?php echo ($_SESSION['fullname']);?>" placeholder="">
-
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label>Role<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="project_status" required
-                                    style="width: 100%;">
-                                    <option selected="selected">Select</option>
-                                    <option>Administrator</option>
-                                    <option>Engineer</option>
-                                    <option>Viewer</option>
-                                </select>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Phone Number</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="tel" id="tel"
-                                        data-inputmask='"mask": "(999) 999-9999"' data-mask required>
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-
-                            <p>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    </div>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                                        required>
-                                </div>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Username</label>
-                                <input type="text" name="username" class="form-control" id="exampleInputEmail1"
-                                    placeholder="">
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputEmail1"
-                                    placeholder="">
-                            </div>
-                            <!-- /.form-group -->
-
-                        </div>
-
-                </div>
+                
+                <div>
+                    <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                        <?php
+                            if($res_search["file_test"] ==''){
+                                echo "<span class='badge badge-warning'>No Image</span>";
+                            }elseif($res_search["file_test"]){
+                                echo '<img class="imgx"  width="60" height="45" src="../up/test/'.$res_search["file_test"].'"';
+                            }
+                        ?>
+                    </a>
+                </div> 
+               
+                
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>

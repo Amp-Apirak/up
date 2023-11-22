@@ -216,13 +216,13 @@
 
 
                                             <div class="form-group">
-                                                <label for="file_upfile">Image Example <span class="text-danger"> <small>(Only
+                                                <label for="file_upfile[]">Image Example <span class="text-danger"> <small>(Only
                                                         picture
                                                         and upload-max-filesize 20M*)</small></span></label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="file_upfile"
-                                                        name="file_upfile">
-                                                    <label class="custom-file-label" for="file_upfile">Choose
+                                                    <input type="file" class="custom-file-input" id="file_upfile[]" multiple="true"
+                                                        name="file_upfile[]">
+                                                    <label class="custom-file-label" for="file_upfile[]">Choose
                                                         file</label>
                                                 </div>
                                             </div>
