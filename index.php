@@ -621,7 +621,7 @@
                                             </td> 
                                             
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-default<?php echo $res_search["work_id"]; ?>">
+                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-xl<?php echo $res_search["work_id"]; ?>">
                                                     <?php
                                                         if($res_search["file_im1"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
@@ -631,8 +631,8 @@
                                                     ?>
                                                 </a>
                                                 <!-- /.modal-content -->
-                                                <div class="modal fade" id="modal-default<?php echo $res_search["work_id"]; ?>">
-                                                        <div class="modal-dialog">
+                                                <div class="modal fade" id="modal-xl<?php echo $res_search["work_id"]; ?>">
+                                                        <div class="modal-dialog modal-xl">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h4 class="modal-title">IMAGE</h4>
@@ -643,10 +643,10 @@
                                                                 <div class="modal-body">
                                                                     <div class="div">
                                                                         <div class="col col-12">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="350" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="350" alt=""><br>
-                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="350" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="350" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="450" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="450" alt=""><br>
+                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="450" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="450" alt="">
                                                                         </div>
                                                                      </div>
                                                                 </div>
