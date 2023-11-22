@@ -29,15 +29,23 @@
 
 
         $target_dir = "../up/example/";
-        $target_file = $target_dir . basename($_FILES["file_upfile"]["name"]);
+        $target_file = $target_dir . basename($_FILES["file_im1"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        $target_dir1 = "../up/test/";
-        $target_file1 = $target_dir1 . basename($_FILES["file_test"]["name"]);
+        $target_dir1 = "../up/example/";
+        $target_file1 = $target_dir1 . basename($_FILES["file_im2"]["name"]);
         $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
-        $file_test = $_FILES["file_test"]["name"] ;
+        $file_im2 = $_FILES["file_im2"]["name"] ;
 
-
+        $target_dir3 = "../up/example/";
+        $target_file3 = $target_dir3 . basename($_FILES["file_im3"]["name"]);
+        $imageFileType3 = strtolower(pathinfo($target_file3, PATHINFO_EXTENSION));
+        $file_im3 = $_FILES["file_im3"]["name"] ;
+        
+        $target_dir4 = "../up/example/";
+        $target_file4 = $target_dir4 . basename($_FILES["file_im4"]["name"]);
+        $imageFileType4 = strtolower(pathinfo($target_file4, PATHINFO_EXTENSION));
+        $file_im4 = $_FILES["file_im4"]["name"] ;
 
 
         //printf($target_file1);
@@ -79,21 +87,29 @@
             // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
         } else {
 
-            $file_upfile = $_FILES['file_upfile']['name'];
-            $file_tmp = $_FILES['file_upfile']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+            $file_im1 = $_FILES['file_im1']['name'];
+            $file_tmp = $_FILES['file_im1']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_im1");
 
-            $file_upfile1 = $_FILES['file_test']['name'];
-            $file_tmp1 = $_FILES['file_test']['tmp_name'];
-            move_uploaded_file($file_tmp1, "../up/test/$file_upfile1");
+            $file_im2 = $_FILES['file_im2']['name'];
+            $file_tmp1 = $_FILES['file_im2']['tmp_name'];
+            move_uploaded_file($file_tmp1, "../up/test/$file_im2");
+
+            $file_im3 = $_FILES['file_im3']['name'];
+            $file_tmp3 = $_FILES['file_im3']['tmp_name'];
+            move_uploaded_file($file_tmp3, "../up/test/$file_im3");
+
+            $file_im4 = $_FILES['file_im4']['name'];
+            $file_tmp4 = $_FILES['file_im4']['tmp_name'];
+            move_uploaded_file($file_tmp4, "../up/test/$file_im4");
 
 
 
             $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`, `date_crt`,
-            `items`, `file_upfile`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
-            `file_test`,`project_name`)
-            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_upfile',
-             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_test','$project_name')";
+            `items`, `file_im1`, `subject`, `status`,`detail`,`requester`,`staff_crt`,
+            `file_im2`,`project_name`,`file_im3`,`file_im4`)
+            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_im1',
+             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_im2','$project_name','$file_im3','$file_im4')";
 
 
 

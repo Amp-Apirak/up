@@ -1,253 +1,191 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deleted Images</title>
-
-</head>
-<style>
-.col {
-    padding-right: 0px;
-    padding-left: 0px;
-}
-</style>
-
-<style type="text/css">
-@font-face {
-    font-family: title;
-    src: url('font/THSarabunNew.ttf');
-}
-
-.font1 {
-    font-family: title;
-    font-size: 25px;
-}
-</style>
 
 
-
-<body>
     <!-- Start Configrate  -->
     <?php
-    include('template.php');
-    include('connect.php');
-  
-
-
-
-    // /* การลบข้อมูล */
-    // if (isset($_GET['id_as'])) {
-
-    //     $result = $conn->query("DELETE FROM imas WHERE id_as=" . $_GET['id_as']);
-
-    //     if ($result) { /* ถ้า ตัวแปล $result  เชื่อมต่อฐานข้อมูล อ่านค่าเรียบร้อยให้ประกาศ */
-    //             echo "<script>alert('ลบ รูปภาพ เรียบร้อยแล้ว'); window.location='asset_up_image.php?id_as=$_GET[id_as]'</script>";
-    //     } else {
-            
-    //     }
-    // }
-    // /* การลบข้อมูล */
-
-
-
+    include("connection/connection.php");
     ?>
+    <!-- End Configrate  -->
 
-
-
-    <!-- start Back to.. () -->
-    <div class="container-fluid ">
-        <div class="row">
-            <div class="col col-sm-6  mr-5">
-                <a href="asset_view.php"><button type="button" class="btn btn-success "> >>> Back <<< </button></a>
-                <br>
-            </div>
-        </div>
-    </div>
-    <!-- End Back to.. () -->
-
-    <div class="container  table table-dark table-borderless insertdata border  mt-5 txte-center mx-auto">
-        <table class="table table-dark table-borderless insertdata ">
-            <thead>
-                <tr>
-                    <th scope="col">Asset Froms</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
 
     <?php
+    if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
 
-/* Start insert Data */
+        $work_type  = $_POST['work_type']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
+        $work_type = $_POST['work_type'];
+        $service = $_POST['service_name'];
+        $category = $_POST['category_name'];
+        $items = $_POST['items_name'];
+        $subject = $_POST['subject'];
+        $status = $_POST['status'];
+        $detail = $_POST['detail'];
+        $requester = $_POST['requester'];
+        $staff_crt = $_POST['staff_crt'];
+        $project_name = $_POST['project_name'];
+        $date_crt = $_POST['date_crt'];
 
-if(isset($_POST['submit'])){
 
-    $id_as  = $_POST['id_as'];
-    
-    $num =  count($_FILES['upfile']['name']);
 
-    for ($i=0;$i<$num;$i++){
-        $fp = fopen($_FILES["upfile"]["tmp_name"][$i],"r");
-        $ReadBinary = fread($fp,filesize($_FILES["upfile"]["tmp_name"][$i]));
-        fclose($fp);
-        $filedata = addslashes($ReadBinary);
+        $target_dir = "../up/example/";
+        $target_file = $target_dir . basename($_FILES["file_im1"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $file_im1 = $_FILES["file_im1"]["name"] ;
 
-        $filename = $_FILES['upfile']['name'][$i];
-        $filesize = $_FILES['upfile']['size'][$i];
-        $filetype = $_FILES['upfile']['type'][$i];
+        $target_dir2 = "../up/example/";
+        $target_file2 = $target_dir2 . basename($_FILES["file_im2"]["name"]);
+        $imageFileType2 = strtolower(pathinfo($target_file2, PATHINFO_EXTENSION));
+        $file_im2 = $_FILES["file_im2"]["name"] ;
 
-        $dir = "img/asset/";
-        $fileimage = $dir . basename($_FILES["upfile"]["name"][$i]);
+        $target_dir3 = "../up/example/";
+        $target_file3 = $target_dir3 . basename($_FILES["file_im3"]["name"]);
+        $imageFileType3 = strtolower(pathinfo($target_file3, PATHINFO_EXTENSION));
+        $file_im3 = $_FILES["file_im3"]["name"] ;
 
-        move_uploaded_file($_FILES["upfile"]["tmp_name"][$i],$fileimage);
-    
-        $sql =  "INSERT INTO `imas` (`id_imas`, `id_as`, `upfile`) VALUES (NULL, '$id_as', '$filename')";
-        $result = $conn->query($sql);
+        $target_dir4 = "../up/example/";
+        $target_file4 = $target_dir4 . basename($_FILES["file_im4"]["name"]);
+        $imageFileType4 = strtolower(pathinfo($target_file4, PATHINFO_EXTENSION));
+        $file_im4 = $_FILES["file_im4"]["name"] ;
 
-        if ($result) {
-            echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้ว'); window.location='asset_up_image.php?id_as=$_GET[id_as]'</script>";
+
+
+
+        //printf($target_file1);
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($imageFileType == " " ) {
+
+            //echo "Sorry, your file was not uploaded.";
+            echo '<script>
+                    setTimeout(function(){
+                        swal({
+                            title: "Sorry, your file was not uploaded.",
+                            text: "Please check the file name.",
+                            type:"warning"
+                        }, function(){
+                            window.location = "doc_add.php";
+                        })
+                    },1000);
+                </script>';
+            // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>
+        //}
+
+        // Check if file already exists
+        // if (file_exists($target_file)) {
+
+        //     //echo "Sorry, file already exists.";
+        //     // <!-- sweetalert -->
+        //     echo '<script>
+        //             setTimeout(function(){
+        //                 swal({
+        //                     title: "Sorry, file already exists.",
+        //                     text: "Please check the file name.",
+        //                     type:"warning"
+        //                 }, function(){
+        //                     window.location = "add.php";
+        //                 })
+        //             },1000);
+        //         </script>';
+            // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
         } else {
-            echo "<script>alert('เพิ่มข้อมูลไม่สำเร็จ');</script>";
-        }
-        //echo  $fileimage;
 
+            $file_upfile = $_FILES['file_im1']['name'];
+            $file_tmp = $_FILES['file_im1']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+
+            $file_upfile2 = $_FILES['file_im2']['name'];
+            $file_tmp2 = $_FILES['file_im2']['tmp_name'];
+            move_uploaded_file($file_tmp2, "../up/example/$file_upfile2");
+
+            $file_upfile3 = $_FILES['file_im3']['name'];
+            $file_tmp3 = $_FILES['file_im3']['tmp_name'];
+            move_uploaded_file($file_tmp3, "../up/example/$file_upfile3");
+
+            $file_upfile4 = $_FILES['file_im4']['name'];
+            $file_tmp4 = $_FILES['file_im4']['tmp_name'];
+            move_uploaded_file($file_tmp4, "../up/example/$file_upfile4");
+
+
+
+            $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`, `date_crt`,
+            `items`, `file_im1`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
+            `file_im2`,`project_name`)
+            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_im1',
+             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_im2','$project_name','$file_im3','$file_im4')";
+
+
+
+            $result = $conn->query($sql);
+
+            //print_r($sql);
+
+            if ($result) {
+                // <!-- sweetalert -->
+                echo '<script>
+                        setTimeout(function(){
+                            swal({
+                                title: "Save data successfully",
+                                text: "Thank You . ",
+                                type:"success"
+                            }, function(){
+                                window.location = "index.php";
+                            })
+                        },1000);
+                   </script>';
+
+                $sToken = ""; //0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi
+                $sMessage = "👉 ".$staff_crt." **Open Ticket** \n\n";
+
+                $sMessage .= "Category: ".$category." \n";
+                $sMessage .= "Type: ".$work_type." \n";
+                $sMessage .= "Items: ".$items." \n";
+                $sMessage .= "-------------------------- \n";
+                $sMessage .= "📌 Status : ".$status." 📌\n";
+                $sMessage .= "-------------------------- \n";
+                $sMessage .= "👉 Owner: ".$requester." \n";
+                $sMessage .= "📢 Subject : ".$subject."\n\n";
+
+                   
+       
+                   $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
+       
+       
+                   $chOne = curl_init(); 
+                   curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+                   curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+                   curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+                   curl_setopt( $chOne, CURLOPT_POST, 1); 
+                   curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+                   $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
+                   curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+                   curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+                   $resultt1 = curl_exec( $chOne ); 
+       
+                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+            } else {
+                // <!-- sweetalert -->
+                echo '<script>
+                                            setTimeout(function(){
+                                                swal({
+                                                    title: "Can Not Save Successfully!",
+                                                    text: "Checking Your Data",
+                                                    type:"warning"
+                                                }, function(){
+                                                    window.location = "add.php";
+                                                })
+                                            },1000);
+                                        </script>';
+                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+            }
+        }
     }
-}
     // echo '<pre>';
     // print_r($_POST);
     // print_r($_FILES);
     // echo '</pre>';
-/* End insert Data */
-
-?>
-    <!-- End Insert Data -->
+    ?>
 
 
-    <?php
-        if (isset($_GET['id_as'])) {
-        $result = $conn->query("SELECT * FROM imas WHERE id_as=" . $_GET['id_as']);   
-   
-     ?>
-
-
-
-
-    <form name="frmUpload" id="frmUpload" method="Post" action="#" enctype="multipart/form-data">
-        <div class="container table-borderless insertdata border  mt-3 mb-1">
-            <div class="row mt-3 ">
-                <div class="form-group col-md-1 ml-auto">
-                    <label for="id_as"></label>
-                    <input type="text" class="form-control" id="id_as" name="id_as" value="<?= $_GET['id_as'];?>">
-                </div>
-            </div>
-            <div class="row ">
-                <div class="form-group col-md-6 mt-3">
-                    <label for="">Uploads รูป (เลือกได้มากกว่า 1 ภาพ):</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="upfile[]" name="upfile[]" multiple="true">
-                        <label class="custom-file-label" for="upfile[]">Choose file</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group  ml-auto mt-2">
-                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Insert Form</button>
-                </div>
-                &nbsp;&nbsp;
-                <div class="form-group  mr-auto mt-2">
-                    <a href="asset_view.php?id_as=<?= $_GET['id_as'];?>"><button type="button" class="btn btn-warning">
-                            >>
-                            ข้าม << </button></a>
-                </div>
-
-            </div>
-        </div>
-        <div class="container  table table-dark table-borderless insertdata border  mt-1 txte-center mx-auto">
-            <table class="table table-dark table-borderless insertdata ">
-                <thead>
-                    <tr>
-                        <th scope="col">Asset Froms</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </form>
-
-
-
-
-
-
-    <div class="container">
-        <div class="row">
-            <table class="table table-bordered  mb-5  font1">
-                <thead>
-                    <tr class="table-active">
-                        <th scope="col" class="text-nowrap text-center " height="" width="10%">ID :</th>
-                        <th scope="col" class="text-nowrap text-center " height="" width="10%">ID :</th>
-                        <th scope="col" class="text-nowrap text-center " height="" width="60%">Image</th>
-                        <th scope="col" class="text-nowrap text-center " height="" width="20%">ลบ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php  while ($sr = $result->fetch_object()) {  ?>
-                    <tr>
-                        <th scope="row" class="text-nowrap text-center "><?= $sr->id_as; ?></th>
-                        <th scope="row" class="text-nowrap text-center "><?= $sr->id_imas; ?></th>
-
-
-                        <th scope="row" class="text-nowrap text-center "><a href="img/view-resolve/<?= $sr->upfile; ?>"
-                                data-lightbox="image-1" data-title="<?= $sr->upfile; ?>" class="img-thumbnail">
-                                <img width="200" height="200" src="img/asset/<?= $sr->upfile; ?>"></a></th>
-
-                        <th scope="row" class="text-nowrap text-center "><a
-                                href="asset_del.php?id_imas=<?= $sr->id_imas; ?>&id_as=<?= $sr->id_as; ?>"><button
-                                    type="button" class="btn btn-danger btn-sm"> ลบรูป </button></a></th>
-                    </tr>
-                    <?php } ?>
-                    <?php } ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-    </script>
-
-
-
-    <script>
-    $(document).ready(function() {
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    </script>
-
-</body>
-
-</html>
+<!-- sweetalert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>

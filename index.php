@@ -623,14 +623,14 @@
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
                                                 <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-default<?php echo $res_search["work_id"]; ?>">
                                                     <?php
-                                                        if($res_search["file_upfile"] ==''){
+                                                        if($res_search["file_im1"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
-                                                        }elseif($res_search["file_upfile"]){
+                                                        }elseif($res_search["file_im1"]){
                                                             echo '<img class=""  width="40" height="25" src="../pms/img/camera.png"';
                                                         }
                                                     ?>
                                                 </a>
-
+                                                <!-- /.modal-content -->
                                                 <div class="modal fade" id="modal-default<?php echo $res_search["work_id"]; ?>">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -641,14 +641,15 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <?php
-                                                                    if($res_search["file_upfile"] ==''){
-                                                                        echo "<span class='badge badge-warning'>No Image</span>";
-                                                                    }elseif($res_search["file_upfile"]){
-                                                                        echo '<img class="imgx"  data-lightbox="image-1" width="400" height="300" src="../up/test/'.$res_search["file_test"].'"';
-                                                                    }
-                                                                ?>
-                                                                </div><br><br>
+                                                                    <div class="div">
+                                                                        <div class="col col-12">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="250" height="250" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="250" height="250" alt=""><br>
+                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="250" height="250" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="250" height="250" alt="">
+                                                                        </div>
+                                                                     </div>
+                                                                </div>
                                                                 <div class="modal-footer justify-content-between">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                 </div>

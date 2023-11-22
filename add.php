@@ -214,34 +214,67 @@
                                             </div>
                                             <!-- /.form-group -->
 
-
-                                            <div class="form-group">
-                                                <label for="file_upfile[]">Image Example <span class="text-danger"> <small>(Only
-                                                        picture
-                                                        and upload-max-filesize 20M*)</small></span></label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="file_upfile[]" multiple="true"
-                                                        name="file_upfile[]">
-                                                    <label class="custom-file-label" for="file_upfile[]">Choose
-                                                        file</label>
+                                            <div class="row">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im1">Image (1) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im1" 
+                                                                name="file_im1">
+                                                            <label class="custom-file-label" for="file_im1">Choose
+                                                                file</label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
                                                 </div>
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im2">Image (2) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im2"
+                                                                name="file_im2">
+                                                            <label class="custom-file-label" for="file_im2">Choose
+                                                                file</label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div> 
                                             </div>
-                                            <!-- /.form-group -->
-
-                                            <div class="form-group">
-                                                <label for="file_test">Image Test <span class="text-danger"> <small>(Only
-                                                        picture
-                                                        and upload-max-filesize 20M*)</small></span></label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="file_test"
-                                                        name="file_test">
-                                                    <label class="custom-file-label" for="file_test">Choose
-                                                        file</label>
+                                            <div class="row">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="">Image (3) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im3" 
+                                                                name="file_im3">
+                                                            <label class="custom-file-label" for="file_im3">Choose
+                                                                file</label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
                                                 </div>
-                                            </div>
-                                            <!-- /.form-group -->
-
-
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im4">Image (4) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im4"
+                                                                name="file_im4">
+                                                            <label class="custom-file-label" for="file_im4">Choose
+                                                                file</label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div> 
+                                            </div>                        
+                                            
                                             <!-- textarea -->
                                             <div class="form-group">
                                                 <label>Descriptions</label>
