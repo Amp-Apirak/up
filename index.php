@@ -642,11 +642,44 @@
                                                                 <div class="modal-body">
                                                                     <div class="div">
                                                                         <div class="col col-12">
+
+                                                                        <a href="../up/example/<?php echo $res_search["file_im1"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im1"]; ?>  (<?php echo $res_search["file_im1"]; ?>)" class="img-fluid "   >
+                                                                                    <?php
+                                                                                        if($res_search["file_im1"] ==''){
+                                                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                                                        }elseif($res_search["file_im1"]){
+                                                                                            echo '<img class=""  width="300" height="450" src="../up/example/'.$res_search["file_im1"].'"'; //imgx
+                                                                                        }
+                                                                                    ?>
+                                                                        </a>
+                                                                        <a href="../up/example/<?php echo $res_search["file_im2"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im2"]; ?>  (<?php echo $res_search["file_im2"]; ?>)" class="img-fluid "   >
+                                                                                    <?php
+                                                                                        if($res_search["file_im2"] ==''){
+                                                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                                                        }elseif($res_search["file_im2"]){
+                                                                                            echo '<img class=""  width="300" height="450" src="../up/example/'.$res_search["file_im2"].'"'; //imgx
+                                                                                        }
+                                                                                    ?>
+                                                                        </a><br>
+                                                                        <a href="../up/example/<?php echo $res_search["file_im3"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im3"]; ?>  (<?php echo $res_search["file_im3"]; ?>)" class="img-fluid "   >
+                                                                                    <?php
+                                                                                        if($res_search["file_im3"] ==''){
+                                                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                                                        }elseif($res_search["file_im3"]){
+                                                                                            echo '<img class=""  width="300" height="450" src="../up/example/'.$res_search["file_im3"].'"'; //imgx
+                                                                                        }
+                                                                                    ?>
+                                                                        </a>
+                                                                        <a href="../up/example/<?php echo $res_search["file_im4"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im4"]; ?>  (<?php echo $res_search["file_im4"]; ?>)" class="img-fluid "   >
+                                                                                    <?php
+                                                                                        if($res_search["file_im4"] ==''){
+                                                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                                                        }elseif($res_search["file_im4"]){
+                                                                                            echo '<img class=""  width="300" height="450" src="../up/example/'.$res_search["file_im4"].'"'; //imgx
+                                                                                        }
+                                                                                    ?>
+                                                                        </a><br>
                                                                             
-                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="" width="300" height="450" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="" width="300" height="450" alt=""><br>
-                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="" width="300" height="450" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="" width="300" height="450" alt=""><br>
 
                                                                         </div>
                                                                      </div>
@@ -690,8 +723,16 @@
                                                                 <div class="modal-body">
                                                                     <div class="div">
                                                                         <div class="col col-12">
-                                                                            
-                                                                        <img src="../up/test/<?php echo $res_search["file_test"]; ?>" class="imgx" width="300" height="450" alt="">
+
+                                                                        <a href="../up/example/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                                                                    <?php
+                                                                                        if($res_search["file_test"] ==''){
+                                                                                            echo "<span class='badge badge-warning'>No Image</span>";
+                                                                                        }elseif($res_search["file_test"]){
+                                                                                            echo '<img class=""  width="300" height="450" src="../up/example/'.$res_search["file_test"].'"'; //imgx
+                                                                                        }
+                                                                                    ?>
+                                                                        </a>
 
                                                                         </div>
                                                                      </div>

@@ -161,24 +161,57 @@
                                     <div class="row">
                                         <div class="col-sm mt-3">
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="../up/example/<?php echo $res_search["file_im1"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im1"]; ?>  (<?php echo $res_search["file_im1"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="120" height="100" alt="">
-                                                <a href="../up/example/<?php echo $res_search["file_im2"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im2"]; ?>  (<?php echo $res_search["file_im2"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="120" height="100" alt="">
-                                                <a href="../up/example/<?php echo $res_search["file_im3"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im3"]; ?>  (<?php echo $res_search["file_im3"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="120" height="100" alt="">
-                                                <a href="../up/example/<?php echo $res_search["file_im4"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im4"]; ?>  (<?php echo $res_search["file_im4"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="120" height="100" alt="">
-                                                </a>
                                                 
-                                            </td> 
-                                        <td  scope="col" class="text-nowrap text-center" height="" width="120">
-                                            <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
-                                                <?php
-                                                    if($res_search["file_test"] ==''){
-                                                        echo "<span class='badge badge-warning'>No Image</span>";
-                                                    }elseif($res_search["file_test"]){
-                                                        echo '<img class="imgx"  width="120" height="100" src="../up/test/'.$res_search["file_test"].'"';
-                                                        }
-                                                ?>
-                                            </a>
-                                        </td>
+                                                    <a href="../up/example/<?php echo $res_search["file_im1"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im1"]; ?>  (<?php echo $res_search["file_im1"]; ?>)" class="img-fluid "   >
+                                                            <?php
+                                                                if($res_search["file_im1"] ==''){
+                                                                    echo "<span class='badge badge-warning'>No Image</span>";
+                                                                }elseif($res_search["file_im1"]){
+                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_im1"].'"'; //imgx
+                                                                }
+                                                            ?>
+                                                    </a>
+                                                    <a href="../up/example/<?php echo $res_search["file_im2"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im2"]; ?>  (<?php echo $res_search["file_im2"]; ?>)" class="img-fluid "   >
+                                                            <?php
+                                                                if($res_search["file_im2"] ==''){
+                                                                    echo "<span class='badge badge-warning'>No Image</span>";
+                                                                }elseif($res_search["file_im2"]){
+                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_im2"].'"'; //imgx
+                                                                }
+                                                            ?>
+                                                    </a>
+                                                    <a href="../up/example/<?php echo $res_search["file_im3"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im3"]; ?>  (<?php echo $res_search["file_im3"]; ?>)" class="img-fluid "   >
+                                                            <?php
+                                                                if($res_search["file_im3"] ==''){
+                                                                    echo "<span class='badge badge-warning'>No Image</span>";
+                                                                }elseif($res_search["file_im3"]){
+                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_im3"].'"'; //imgx
+                                                                }
+                                                            ?>
+                                                    </a>
+                                                    <a href="../up/example/<?php echo $res_search["file_im4"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im4"]; ?>  (<?php echo $res_search["file_im4"]; ?>)" class="img-fluid "   >
+                                                            <?php
+                                                                if($res_search["file_im4"] ==''){
+                                                                    echo "<span class='badge badge-warning'>No Image</span>";
+                                                                }elseif($res_search["file_im4"]){
+                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_im4"].'"'; //imgx
+                                                                }
+                                                            ?>
+                                                    </a>
+                                                
+                                            </td> <br>
+                                            <td  scope="col" class="text-nowrap text-center" height="" width="120">
+                                                
+                                                    <a href="../up/example/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                                        <?php
+                                                            if($res_search["file_test"] ==''){
+                                                                echo "<span class='badge badge-info'>No Image</span>";
+                                                                }elseif($res_search["file_test"]){
+                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_test"].'"'; //imgx
+                                                                }
+                                                        ?>
+                                                    </a>
+                                            </td>
                                         </div>
                                     </div>
                                 </div>
