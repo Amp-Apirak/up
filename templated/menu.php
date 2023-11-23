@@ -65,7 +65,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="nav-icon fa fa-folder-open" class="nav-link <?php if($menu=="doc"){echo "active";} ?>">
+                                <a href="#" class="nav-link <?php if($menu=="doc"){echo "active";} ?>">
                                     <i class="nav-icon fa fa-folder-open"></i>
                                     <p>
                                         Document
