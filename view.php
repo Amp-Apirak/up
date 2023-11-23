@@ -202,12 +202,12 @@
                                             </td> <br>
                                             <td  scope="col" class="text-nowrap text-center" height="" width="120">
                                                 
-                                                    <a href="../up/example/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
+                                                    <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
                                                         <?php
                                                             if($res_search["file_test"] ==''){
                                                                 echo "<span class='badge badge-info'>No Image</span>";
                                                                 }elseif($res_search["file_test"]){
-                                                                    echo '<img class=""  width="100" height="120" src="../up/example/'.$res_search["file_test"].'"'; //imgx
+                                                                    echo '<img class=""  width="100" height="120" src="../up/test/'.$res_search["file_test"].'"'; //imgx
                                                                 }
                                                         ?>
                                                     </a>
