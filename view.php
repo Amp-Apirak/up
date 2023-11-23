@@ -161,14 +161,10 @@
                                     <div class="row">
                                         <div class="col-sm mt-3">
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="../up/example/<?php echo $res_search["file_upfile"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_upfile"]; ?>  (<?php echo $res_search["file_upfile"]; ?>)" class="img-fluid "   >
-                                                    <?php
-                                                        if($res_search["file_upfile"] ==''){
-                                                            echo "<span class='badge badge-warning'>No Image</span>";
-                                                        }elseif($res_search["file_upfile"]){
-                                                            echo '<img class="imgx"  width="120" height="120" src="../up/example/'.$res_search["file_upfile"].'"';
-                                                        }
-                                                    ?>
+                                                <a href="../up/example/<?php echo $res_search["file_im1"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im1"]; ?>  (<?php echo $res_search["file_im1"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="120" height="100" alt="">
+                                                <a href="../up/example/<?php echo $res_search["file_im2"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im2"]; ?>  (<?php echo $res_search["file_im2"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="120" height="100" alt="">
+                                                <a href="../up/example/<?php echo $res_search["file_im3"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im3"]; ?>  (<?php echo $res_search["file_im3"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="120" height="100" alt="">
+                                                <a href="../up/example/<?php echo $res_search["file_im4"]; ?>" data-lightbox="image-1" data-title="../up/example/<?php echo $res_search["file_im4"]; ?>  (<?php echo $res_search["file_im4"]; ?>)" class="img-fluid "   >  <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="120" height="100" alt="">
                                                 </a>
                                                 
                                             </td> 
