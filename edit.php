@@ -35,29 +35,60 @@
         $detail = $_POST['detail'];
         $requester = $_POST['requester'];
         $staff_edit = $_POST['staff_edit'];
-        $file_upfile2 = $_POST['file_upfile2'];
+        $file_im11 = $_POST['file_im11'];
+        $file_im22 = $_POST['file_im22'];
+        $file_im33 = $_POST['file_im33'];
+        $file_im44 = $_POST['file_im44'];
         $service = $_POST['service_name'];
         $items = $_POST['items_name'];
         $category = $_POST['category_name'];
         $project_name = $_POST['project_name'];
         $date_edit = $_POST['date_edit'];
+        $device_name = $_POST['device_name'];
 
         $add_task = $_POST['add_task'];
         $work_id = $_POST['work_id'];
 
-        $file_upfile = $_FILES['file_upfile']['name'];
+        $file_im1 = $_FILES['file_im1']['name'];
+        $file_im2 = $_FILES['file_im2']['name'];
+        $file_im3 = $_FILES['file_im3']['name'];
+        $file_im4 = $_FILES['file_im4']['name'];
         $file_test = $_FILES['file_test']['name'];
         
 
-        if($file_upfile !=''){
-            $file_tmp = $_FILES['file_upfile']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
+        if($file_im1 !=''){
+            $file_tmp = $_FILES['file_im1']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_im1");
             
 
         }else {
 
-            $file_upfile = $file_upfile2;
+            $file_im1 = $file_im11;
             
+        }if ($file_im2 !=''){
+            $file_tmp = $_FILES['file_im2']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_im2");
+
+        }else {
+
+            $file_im2 = $file_im22;
+
+        }if ($file_im3 !=''){
+            $file_tmp = $_FILES['file_im3']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_im3");
+
+        }else {
+
+            $file_im3 = $file_im33;
+        
+        }if ($file_im4 !=''){
+            $file_tmp = $_FILES['file_im4']['tmp_name'];
+            move_uploaded_file($file_tmp, "../up/example/$file_im4");
+
+        }else {
+
+            $file_im4 = $file_im44;
+
         }if ($file_test !=''){
             $file_tmp = $_FILES['file_test']['tmp_name'];
             move_uploaded_file($file_tmp, "../up/test/$file_test");
@@ -70,13 +101,13 @@
 
 
 
-            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_test` = '$file_test',  `add_task` = '$add_task', `date_edit` = '$date_edit',
+            $sql =  "UPDATE `work` SET `work_type` = '$work_type', `subject` = '$subject', `status` = '$status', `file_im1` = '$file_im1',  `add_task` = '$add_task', `date_edit` = '$date_edit', `file_test` = '$file_test',
                             `detail` = '$detail', `requester` = '$requester',`project_name` = '$project_name', 
-                            `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_upfile` = '$file_upfile' WHERE work_id=" . $_GET['id'];
+                            `staff_edit` = '$staff_edit', `service` = '$service', `items` = '$items', `category` = '$category', `file_im2` = '$file_im2' , `file_im3` = '$file_im3' , `file_im4` = '$file_im4' , `device_name` = '$device_name' WHERE work_id=" . $_GET['id'];
                             $result = $conn->query($sql);
 
-            $sqll =   "INSERT INTO `tb_log` (`work_id`, `add_task`,`staff_edit`,`v_status`,`file_test`,`date_edit`)
-                            VALUES ($work_id, '$add_task', '$staff_edit', '$status', '$file_test', '$date_edit')";
+            $sqll =   "INSERT INTO `tb_log` (`work_id`, `add_task`,`staff_edit`,`v_status`,`date_edit`,`file_test`)
+                            VALUES ($work_id, '$add_task', '$staff_edit', '$status', '$date_edit', '$file_test')";
                             $resultt = $conn->query($sqll);
 
                             
@@ -101,7 +132,7 @@
                                         error_reporting(E_ALL);
                                         date_default_timezone_set("Asia/Bangkok");
                             
-                                        $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
+                                        $sToken = ""; //0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi
                                         $sMessage = "👉 ".$staff_edit." **Update Ticket** \n\n";
 
                                         $sMessage .= "Category: ".$category." \n";
@@ -345,28 +376,118 @@
                                             $rl = $conn->query("SELECT * FROM work WHERE work_id=" . $_GET['id']);
                                             $rr = $rl->fetch_object()
                                             ?>
-
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Subject<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="subject" class="form-control" value="<?= $rr->subject; ?>"
-                                                    id="exampleInputEmail1" placeholder="Document Name" required>
-                                            </div>
-                                            <!-- /.form-group -->
-
-
-                                            <div class="form-group">
-                                                <label for="file_upfile">Image <span class="text-danger"></span></label>
-                                                <div class="custom-file">
-                                                    
-                                                    <input type="file" class="custom-file-input" id="file_upfile" name="file_upfile" >
-                                                    <label class="custom-file-label" for="file_upfile"><?= $rr->file_upfile; ?></label>
-
-                                                    <input type="hidden" class="custom-file-input" id="file_upfile2"  value="<?= $rr->file_upfile; ?>" name="file_upfile2">
+                                            <div class="row">
+                                                <div class="col col-8">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Subject<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" name="subject" class="form-control" value="<?= $rr->subject; ?>"
+                                                            id="exampleInputEmail1" placeholder="Document Name" required>
+                                                    </div>
+                                                     <!-- /.form-group -->
                                                 </div>
+                                                   <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                   <?php
+                                                        $device_name = "";
+                                                        $_sql_device = "SELECT DISTINCT * FROM device";
+                                                        $query_device = mysqli_query($conn, $_sql_device);
+                                                        ?>
+                                                        <div class="col col-3">
+                                                            <div class="form-group">
+                                                                <label>Device <span class="text-danger">*</span></label>
+                                                                <select class="custom-select select2 " width=""
+                                                                    name="device_name">
+                                                                    <option selected="selected"><?= $rx->device_name; ?></option>
+                                                                    <?php while ($r = mysqli_fetch_array($query_device)) { ?>
+                                                                    <option value="<?php echo $r["device_name"]; ?>"
+                                                                        <?php if ($r['device_name'] == $device_name) : ?>
+                                                                        selected="selected" <?php endif; ?>>
+                                                                        <?php echo $r["device_name"]; ?>
+                                                                    </option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+                                                            <!-- Dropdown List Folder -->
+                                                        </div>
+                                                        <div class="col col">
+                                                            <div class="form-group">
+                                                                <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                        #1f5d09;></i></label><br>
+                                                                <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                                    data-target="#editbtn9"> <i
+                                                                        class="fas fa-pencil-alt"></i></a>
+                                                            </div>
+                                                            <!-- Add Folder -->
+                                                        </div>
                                             </div>
-                                            <!-- /.form-group -->
+
+                                            
+
+
+                                            <div class="row">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im1">Image (1) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im1" 
+                                                                name="file_im1">
+                                                            <label class="custom-file-label" for="file_im1"><?= $rr->file_im1; ?></label>
+
+                                                            <input type="hidden" class="custom-file-input" id="file_im11"  value="<?= $rr->file_im1; ?>" name="file_im11">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im2">Image (2) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im2"
+                                                                name="file_im2">
+                                                            <label class="custom-file-label" for="file_im2"><?= $rr->file_im2; ?></label>
+
+                                                            <input type="hidden" class="custom-file-input" id="file_im22"  value="<?= $rr->file_im2; ?>" name="file_im22">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div> 
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="">Image (3) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im3" 
+                                                                name="file_im3">
+                                                            <label class="custom-file-label" for="file_im3"><?= $rr->file_im3; ?></label>
+
+                                                            <input type="hidden" class="custom-file-input" id="file_im33"  value="<?= $rr->file_im3; ?>" name="file_im33">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <label for="file_im4">Image (4) <span class="text-danger"> <small>(Only
+                                                                picture
+                                                                and upload-max-filesize 20M*)</small></span></label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="file_im4"
+                                                                name="file_im4">
+                                                            <label class="custom-file-label" for="file_im4"><?= $rr->file_im3; ?></label>
+
+                                                                <input type="hidden" class="custom-file-input" id="file_im44"  value="<?= $rr->file_im3; ?>" name="file_im44">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div> 
+                                            </div>    
 
                                             <!-- textarea -->
                                             <div class="form-group">

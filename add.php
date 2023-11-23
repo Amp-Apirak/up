@@ -193,18 +193,59 @@
                                                     <!-- Add Folder -->
                                                 </div>
                                             </div>
+                                            
+                                            <div class="row">
+                                                <div class="col col-4">
+                                                    <div class="form-group">
+                                                        <label>Status<span class="text-danger">*</span></label>
+                                                        <select class="form-control select2" name="status" style="width: 100%;">
+                                                            <option selected="selected">On Process</option>
+                                                            <option>On Process</option>
+                                                            <option>Pending</option>
+                                                            <option>Cancel</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Status<span class="text-danger">*</span></label>
-                                                <select class="form-control select2" name="status" style="width: 100%;">
-                                                    <option selected="selected">On Process</option>
-                                                    <option>On Process</option>
-                                                    <option>Pending</option>
-                                                    <option>Cancel</option>
-                                                </select>
+                                                    <!-- ดึงข้อมูล Folder มาจาก folder_doc -->
+                                                <?php
+                                                $device_name = "";
+                                                $_sql_device = "SELECT DISTINCT * FROM device";
+                                                $query_device = mysqli_query($conn, $_sql_device);
+                                                ?>
+                                                <div class="col col-3">
+                                                    <div class="form-group">
+                                                        <label>Device <span class="text-danger">*</span></label>
+                                                        <select class="custom-select select2 " width=""
+                                                            name="device_name">
+                                                            <option selected="selected"></option>
+                                                            <?php while ($r = mysqli_fetch_array($query_device)) { ?>
+                                                            <option value="<?php echo $r["device_name"]; ?>"
+                                                                <?php if ($r['device_name'] == $device_name) : ?>
+                                                                selected="selected" <?php endif; ?>>
+                                                                <?php echo $r["device_name"]; ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Dropdown List Folder -->
+                                                </div>
+                                                <div class="col col">
+                                                    <div class="form-group">
+                                                        <label>Add <i class="nav-icon fas fa-plus style=" color:
+                                                                #1f5d09;></i></label><br>
+                                                        <a href="#" class="btn btn-info btn-sm " data-toggle="modal"
+                                                            data-target="#editbtn9"> <i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+                                                    <!-- Add Folder -->
+                                                </div>
+                                                
+                                                <div class="col col-3">
+                                                </div>
                                             </div>
-                                            <!-- /.form-group -->
-
+                                            
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Subject<span
@@ -414,6 +455,7 @@
         $category_name = "";
         $items_name = "";
         $contact_name = "";
+        $device_name = "";
 
         if ($service_name = $_POST['service_name']){
             $sql =  "INSERT INTO `service` ( `service_name`)  VALUES ('$service_name')";
@@ -523,8 +565,8 @@
                             }, 1000);
                         </script>';
             }
-        }if($contact_name = $_POST['contact_namee']){
-            $sql =  "INSERT INTO `contact` (`contact_name`)  VALUES ('$contact_name')";
+        }if($device_name = $_POST['device_name']){
+            $sql =  "INSERT INTO `device` (`device_name`)  VALUES ('$device_name')";
             $result = $conn->query($sql);
             if ($result) {
                 echo '<script>
@@ -705,6 +747,38 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type="text" name="contact_namee" class="form-control" id="contact_namee" placeholder=""
+                                    required>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Save</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+       <!----------------------------- end Modal Device --------------------------------->
+       <div class="modal fade" id="editbtn9">
+        <div class="modal-dialog editbtn9">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Device</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Device Name</label>
+                                <input type="text" name="device_name" class="form-control" id="device_name" placeholder=""
                                     required>
                             </div>
                             <!-- /.form-group -->

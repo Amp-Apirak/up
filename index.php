@@ -564,7 +564,6 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Project Name</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                         </tr>
                                     </thead>
@@ -643,26 +642,11 @@
                                                                 <div class="modal-body">
                                                                     <div class="div">
                                                                         <div class="col col-12">
+                                                                            
                                                                         <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="450" alt="">
                                                                         <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="450" alt=""><br>
                                                                         <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="450" alt="">
                                                                         <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="450" alt=""><br>
-
-                                                                        <?php
-                                                                            if($res_search["file_im1"] ==''){
-                                                                                echo "<span class='badge badge-warning'>No Image</span>";
-                                                                            }elseif($res_search["file_im1"]){
-                                                                                echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_im1"].'"';
-                                                                            }
-                                                                        ?>
-
-                                                                         <?php
-                                                                            if($res_search["file_im2"] ==''){
-                                                                                echo "<span class='badge badge-warning'>No Image</span>";
-                                                                            }elseif($res_search["file_im2"]){
-                                                                                echo '<img class="imgx"  width="60" height="45" src="../up/example/'.$res_search["file_im2"].'"';
-                                                                            }
-                                                                        ?>
 
                                                                         </div>
                                                                      </div>
@@ -683,17 +667,44 @@
                                             </td> 
 
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="../up/test/<?php echo $res_search["file_test"]; ?>" data-lightbox="image-1" data-title="../up/test/<?php echo $res_search["file_test"]; ?>  (<?php echo $res_search["file_test"]; ?>)" class="img-fluid "   >
-
+                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-xll<?php echo $res_search["work_id"]; ?>">
                                                     <?php
                                                         if($res_search["file_test"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
                                                         }elseif($res_search["file_test"]){
-                                                            echo '<img class="imgx"  width="60" height="45" src="../up/test/'.$res_search["file_test"].'"';
+                                                            echo '<img class=""  width="40" height="25" src="../pms/img/camera.png"';
                                                         }
                                                     ?>
-
                                                 </a>
+                                                <!-- /.modal-content -->
+                                                <div class="modal fade" id="modal-xll<?php echo $res_search["work_id"]; ?>">
+                                                        <div class="modal-dialog modal-xll">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">IMAGE TEST</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="div">
+                                                                        <div class="col col-12">
+                                                                            
+                                                                        <img src="../up/test/<?php echo $res_search["file_test"]; ?>" class="imgx" width="300" height="450" alt="">
+
+                                                                        </div>
+                                                                     </div>
+                                                                </div>
+                                                                <div class="modal-footer justify-content-between">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                </div>
+                                                <!-- /.modal -->
+
                                             </td> 
 
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["requester"]; ?></td>
@@ -720,17 +731,7 @@
                                         
                                             </td>
                                             <td scope="col" class="text-nowrap text-center " height="" width="100"><?php echo $res_search["project_name"]; ?></td>
-                                            <td scope="col" class="text-nowrap text-center " height="" width="100">
 
-                                                <a href="http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?>">
-                                                    http://58.137.58.163/up/example/<?php echo $res_search["file_upfile"]; ?> 
-                                                </a> 
-                                                    |
-                                                <a href="http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>">
-                                                    http://58.137.58.163/up/test/<?php echo $res_search["file_test"]; ?>
-                                                </a>
-                                        
-                                            </td>
 
                                             <td>
                                                 <!-- <a href="copy.php?id=<?php echo $res_search["work_id"]; ?>" class="btn btn-success btn-sm "><i class="fas fa-copy"></i></a> -->
@@ -759,7 +760,6 @@
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Last Update</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Detail</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Project Name</th>
-                                            <th scope="col" class="text-nowrap text-center " height="" width="100">Link Image</th>
                                             <th scope="col" class="text-nowrap text-center " height="" width="100">Action</th>
                                 </table>
                             </div>

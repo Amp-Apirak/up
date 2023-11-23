@@ -21,6 +21,7 @@
         $subject = $_POST['subject'];
         $status = $_POST['status'];
         $detail = $_POST['detail'];
+        $device_name = $_POST['device_name'];
         $requester = $_POST['requester'];
         $staff_crt = $_POST['staff_crt'];
         $project_name = $_POST['project_name'];
@@ -93,22 +94,22 @@
 
             $file_im2 = $_FILES['file_im2']['name'];
             $file_tmp1 = $_FILES['file_im2']['tmp_name'];
-            move_uploaded_file($file_tmp1, "../up/test/$file_im2");
+            move_uploaded_file($file_tmp1, "../up/example/$file_im2");
 
             $file_im3 = $_FILES['file_im3']['name'];
             $file_tmp3 = $_FILES['file_im3']['tmp_name'];
-            move_uploaded_file($file_tmp3, "../up/test/$file_im3");
+            move_uploaded_file($file_tmp3, "../up/example/$file_im3");
 
             $file_im4 = $_FILES['file_im4']['name'];
             $file_tmp4 = $_FILES['file_im4']['tmp_name'];
-            move_uploaded_file($file_tmp4, "../up/test/$file_im4");
+            move_uploaded_file($file_tmp4, "../up/example/$file_im4");
 
 
 
             $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`, `date_crt`,
-            `items`, `file_im1`, `subject`, `status`,`detail`,`requester`,`staff_crt`,
+            `items`, `file_im1`,`device_name`, `subject`, `status`,`detail`,`requester`,`staff_crt`,
             `file_im2`,`project_name`,`file_im3`,`file_im4`)
-            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_im1',
+            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_im1', '$device_name',
              '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_im2','$project_name','$file_im3','$file_im4')";
 
 
@@ -131,7 +132,7 @@
                         },1000);
                    </script>';
 
-                $sToken = "0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi";
+                $sToken = ""; //0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi
                 $sMessage = "👉 ".$staff_crt." **Open Ticket** \n\n";
 
                 $sMessage .= "Category: ".$category." \n";
