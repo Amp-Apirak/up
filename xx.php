@@ -1,191 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php $menu = "index"; ?>
 
 
-    <!-- Start Configrate  -->
-    <?php
-    include("connection/connection.php");
-    ?>
-    <!-- End Configrate  -->
-
-    <!-- sweetalert -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRA | Dashboard</title>
 
 
-    <?php
-    if (isset($_POST['submit'])) { /* ถ้า POST มีการกด Submit ให้ทำส่วนล่าง */
+    <!----------------------------- start header ------------------------------->
+    <?php include ("../its/templated/head.php");?>
+    <!----------------------------- end header --------------------------------->
 
-        $work_type  = $_POST['work_type']; /* ประกาศตัวแปลเก็บค่า  POST ที่รับมาจาก INPUT  */
-        $work_type = $_POST['work_type'];
-        $service = $_POST['service_name'];
-        $category = $_POST['category_name'];
-        $items = $_POST['items_name'];
-        $subject = $_POST['subject'];
-        $status = $_POST['status'];
-        $detail = $_POST['detail'];
-        $requester = $_POST['requester'];
-        $staff_crt = $_POST['staff_crt'];
-        $project_name = $_POST['project_name'];
-        $date_crt = $_POST['date_crt'];
+    <!----------------------------- start menu ------------------------------->
+    <?php include ("../its/templated/menu.php");?>
+    <!----------------------------- end menu --------------------------------->
 
 
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard </li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-        $target_dir = "../up/example/";
-        $target_file = $target_dir . basename($_FILES["file_im1"]["name"]);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $file_im1 = $_FILES["file_im1"]["name"] ;
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <!-- Qeury All Ticket -->
+                            <?php 
+                                $query = "SELECT tiket_number FROM tb_ticket ORDER BY id_ticket";
+                                $result = mysqli_query($conn, $query);
+                                $row = mysqli_num_rows($result);                                  
+                             ?>
 
-        $target_dir2 = "../up/example/";
-        $target_file2 = $target_dir2 . basename($_FILES["file_im2"]["name"]);
-        $imageFileType2 = strtolower(pathinfo($target_file2, PATHINFO_EXTENSION));
-        $file_im2 = $_FILES["file_im2"]["name"] ;
+                            <div class="inner">
+                                <h3><?php  echo $row; ?></h3>
 
-        $target_dir3 = "../up/example/";
-        $target_file3 = $target_dir3 . basename($_FILES["file_im3"]["name"]);
-        $imageFileType3 = strtolower(pathinfo($target_file3, PATHINFO_EXTENSION));
-        $file_im3 = $_FILES["file_im3"]["name"] ;
+                                <p>All Ticket</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <a href="ticket.php" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <!-- Qeury Count All Knowledge -->
+                            <?php 
+                                $query = "SELECT km_id FROM tb_km ORDER BY km_id";
+                                $result = mysqli_query($conn, $query);
+                                $row_ = mysqli_num_rows($result);                                  
+                             ?>
 
-        $target_dir4 = "../up/example/";
-        $target_file4 = $target_dir4 . basename($_FILES["file_im4"]["name"]);
-        $imageFileType4 = strtolower(pathinfo($target_file4, PATHINFO_EXTENSION));
-        $file_im4 = $_FILES["file_im4"]["name"] ;
+                            <div class="inner">
+                                <h3><?php  echo $row_; ?></h3>
+
+                                <p>Count All Knowledge</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="km.php" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+
+                            <!-- Qeury Count All Service -->
+                            <?php 
+                                $query = "SELECT service_id FROM tb_service ORDER BY service_id";
+                                $result = mysqli_query($conn, $query);
+                                $rs = mysqli_num_rows($result);                                  
+                             ?>
+
+                            <div class="inner">
+                                <h3><?php  echo $rs; ?></h3>
+
+                                <p>Count All Service</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="service.php" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+
+                            <!-- Qeury Count All Service -->
+                            <?php 
+                                $query = "SELECT id_report FROM tb_report ORDER BY id_report";
+                                $result = mysqli_query($conn, $query);
+                                $ls = mysqli_num_rows($result);                                  
+                             ?>
+
+                            <div class="inner">
+                                <h3><?php  echo $ls; ?></h3>
+
+                                <p>Count All Report</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="report.php" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- AREA CHART -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Ticket Status Chart</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart" anign="center">
+                                        <div id="chart_div"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+
+                        </div>
+                        <!-- /.col (LEFT) -->
+                        <div class="col-md-6">
+                            <!-- LINE CHART -->
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <h3 class="card-title">Tickets per Technician</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart" anign="center">
+                                        <div id="Anthony_chart_div"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+
+
+                        </div>
+                        <!-- /.col (RIGHT) -->
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+
+
+
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Daily ticket</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div id="Anthony_chart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
 
 
 
 
-        //printf($target_file1);
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($imageFileType == " " ) {
-
-            //echo "Sorry, your file was not uploaded.";
-            echo '<script>
-                    setTimeout(function(){
-                        swal({
-                            title: "Sorry, your file was not uploaded.",
-                            text: "Please check the file name.",
-                            type:"warning"
-                        }, function(){
-                            window.location = "doc_add.php";
-                        })
-                    },1000);
-                </script>';
-            // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>
-        //}
-
-        // Check if file already exists
-        // if (file_exists($target_file)) {
-
-        //     //echo "Sorry, file already exists.";
-        //     // <!-- sweetalert -->
-        //     echo '<script>
-        //             setTimeout(function(){
-        //                 swal({
-        //                     title: "Sorry, file already exists.",
-        //                     text: "Please check the file name.",
-        //                     type:"warning"
-        //                 }, function(){
-        //                     window.location = "add.php";
-        //                 })
-        //             },1000);
-        //         </script>';
-            // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-        } else {
-
-            $file_upfile = $_FILES['file_im1']['name'];
-            $file_tmp = $_FILES['file_im1']['tmp_name'];
-            move_uploaded_file($file_tmp, "../up/example/$file_upfile");
-
-            $file_upfile2 = $_FILES['file_im2']['name'];
-            $file_tmp2 = $_FILES['file_im2']['tmp_name'];
-            move_uploaded_file($file_tmp2, "../up/example/$file_upfile2");
-
-            $file_upfile3 = $_FILES['file_im3']['name'];
-            $file_tmp3 = $_FILES['file_im3']['tmp_name'];
-            move_uploaded_file($file_tmp3, "../up/example/$file_upfile3");
-
-            $file_upfile4 = $_FILES['file_im4']['name'];
-            $file_tmp4 = $_FILES['file_im4']['tmp_name'];
-            move_uploaded_file($file_tmp4, "../up/example/$file_upfile4");
 
 
 
-            $sql = "INSERT INTO `work` (`work_id`, `work_type`,`service`, `category`, `date_crt`,
-            `items`, `file_im1`,  `subject`, `status`,`detail`,`requester`,`staff_crt`,
-            `file_im2`,`project_name`)
-            VALUES (NULL, '$work_type', '$service', '$category', '$date_crt', '$items', '$file_im1',
-             '$subject', '$status', '$detail', '$requester', '$staff_crt','$file_im2','$project_name','$file_im3','$file_im4')";
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
 
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawAnthonyChart);
+    google.charts.setOnLoadCallback(drawAnthony);
 
+    function drawChart() {
 
-            $result = $conn->query($sql);
-
-            //print_r($sql);
-
-            if ($result) {
-                // <!-- sweetalert -->
-                echo '<script>
-                        setTimeout(function(){
-                            swal({
-                                title: "Save data successfully",
-                                text: "Thank You . ",
-                                type:"success"
-                            }, function(){
-                                window.location = "index.php";
-                            })
-                        },1000);
-                   </script>';
-
-                $sToken = ""; //0BQC5bXVxHFLoFUn3GL66B93UL4rProwuATOIZ7w6hi
-                $sMessage = "👉 ".$staff_crt." **Open Ticket** \n\n";
-
-                $sMessage .= "Category: ".$category." \n";
-                $sMessage .= "Type: ".$work_type." \n";
-                $sMessage .= "Items: ".$items." \n";
-                $sMessage .= "-------------------------- \n";
-                $sMessage .= "📌 Status : ".$status." 📌\n";
-                $sMessage .= "-------------------------- \n";
-                $sMessage .= "👉 Owner: ".$requester." \n";
-                $sMessage .= "📢 Subject : ".$subject."\n\n";
-
-                   
-       
-                   $sMessage .= "ติดตามงานได้ที่ Link Web: http://58.137.58.163/up/index.php \n";
-       
-       
-                   $chOne = curl_init(); 
-                   curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-                   curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-                   curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-                   curl_setopt( $chOne, CURLOPT_POST, 1); 
-                   curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
-                   $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
-                   curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-                   curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-                   $resultt1 = curl_exec( $chOne ); 
-       
-                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
-            } else {
-                // <!-- sweetalert -->
-                echo '<script>
-                                            setTimeout(function(){
-                                                swal({
-                                                    title: "Can Not Save Successfully!",
-                                                    text: "Checking Your Data",
-                                                    type:"warning"
-                                                }, function(){
-                                                    window.location = "add.php";
-                                                })
-                                            },1000);
-                                        </script>';
-                // echo "<script>alert('ยินดีตอนรับ Admin เข้าสู่ระบบ'); window.location='../index.php'</script>";
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Status', 'Amount'],
+            <?php 
+            $query ="SELECT `status_ticket`, COUNT(*) AS totalStatus
+            FROM tb_ticket
+            GROUP BY status_ticket
+            ORDER BY status_ticket;";
+            $result = mysqli_query($conn, $query);
+            while ($re = mysqli_fetch_array($result)){
+                echo"['".$re['status_ticket']."',".$re['totalStatus']."],";
             }
-        }
+        ?>
+        ]);
+
+
+        var options = {
+            'title': 'สถานะการเปิดงาน',
+            'is3D': true, //3D
+            'legend': '', //ตัวหนังสือซ้ายหรือขวา
+            'width': 750,
+            'height': 300,
+            'pieHole': 0.4, //,มีรู
+
+
+
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
     }
-    // echo '<pre>';
-    // print_r($_POST);
-    // print_r($_FILES);
-    // echo '</pre>';
-    ?>
+
+    // Callback that draws the pie chart for Anthony's pizza.
+    function drawAnthonyChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = google.visualization.arrayToDataTable([
+            ['Name', 'Amount'],
+            <?php 
+            $query ="SELECT `id_name`, COUNT(*) AS totalStatus
+            FROM tb_ticket
+            GROUP BY id_name
+            ORDER BY id_name;";
+            $result = mysqli_query($conn, $query);
+            while ($re = mysqli_fetch_array($result)){
+                echo"['".$re['id_name']."',".$re['totalStatus']."],";
+            }
+        ?>
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {
+            title: 'จำนวนการเปิดงานรายบุคคล',
+            is3D: true, //3D
+            width: 700,
+            height: 300
+        };
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.BarChart(document.getElementById('Anthony_chart_div'));
+        chart.draw(data, options);
+    }
+
+    // Callback that draws the pie chart for Anthony's pizza.
+    function drawAnthony() {
+
+        // Create the data table for Anthony's pizza.
+        var data = google.visualization.arrayToDataTable([
+            ['Name', 'Amount'],
+            <?php 
+                $query ="SELECT `date_crt`, COUNT(*) AS totalStatus
+                FROM tb_ticket
+                GROUP BY date_crt
+                ORDER BY date_crt;";
+                $result = mysqli_query($conn, $query);
+                while ($re = mysqli_fetch_array($result)){
+        echo"['".$re['date_crt']."',".$re['totalStatus']."],";
+    }
+?>
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {
+            title: 'จำนวนการเปิดงานรายวัน.',
+            width: 700,
+            height: 300
+        };
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.ColumnChart(document.getElementById('Anthony_chart'));
+        chart.draw(data, options);
+    }
+    </script>
 
 
-<!-- sweetalert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
+    <!----------------------------- start menu ------------------------------->
+    <?php include ("../its/templated/footer.php");?>
+    <!----------------------------- end menu --------------------------------->

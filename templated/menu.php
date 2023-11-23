@@ -47,6 +47,15 @@
                with font-awesome or any other icon font library -->
 
                             <li class="nav-item">
+                                <a href="dash.php" class="nav-link <?php if($menu=="dash"){echo "active";} ?>">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a href="index.php" class="nav-link <?php if($menu=="index"){echo "active";} ?>">
                                     <i class="nav-icon fa fa-desktop"></i>
                                     <p>
@@ -54,6 +63,16 @@
                                     </p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="nav-icon fa fa-folder-open" class="nav-link <?php if($menu=="doc"){echo "active";} ?>">
+                                    <i class="nav-icon fa fa-folder-open"></i>
+                                    <p>
+                                        Document
+                                    </p>
+                                </a>
+                            </li>
+
 
 
                         </ul>
