@@ -625,7 +625,7 @@
                                                         if($res_search["file_im1"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
                                                         }elseif($res_search["file_im1"]){
-                                                            echo '<img class=""  width="40" height="25" src="../pms/img/camera.png"';
+                                                            echo '<img class=""  width="40" height="25" src="../up/img/camera.png"';
                                                         }
                                                     ?>
                                                 </a>
@@ -672,7 +672,7 @@
                                                         if($res_search["file_test"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
                                                         }elseif($res_search["file_test"]){
-                                                            echo '<img class=""  width="40" height="25" src="../pms/img/camera.png"';
+                                                            echo '<img class=""  width="40" height="25" src="../up/img/camera.png"';
                                                         }
                                                     ?>
                                                 </a>
