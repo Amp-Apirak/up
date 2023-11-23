@@ -643,17 +643,17 @@
                                                                     <div class="div">
                                                                         <div class="col col-12">
                                                                             
-                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="imgx" width="300" height="450" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="imgx" width="300" height="450" alt=""><br>
-                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="imgx" width="300" height="450" alt="">
-                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="imgx" width="300" height="450" alt=""><br>
+                                                                        <img src="../up/example/<?php echo $res_search["file_im1"]; ?>" class="" width="300" height="450" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im2"]; ?>" class="" width="300" height="450" alt=""><br>
+                                                                        <img src="../up/example/<?php echo $res_search["file_im3"]; ?>" class="" width="300" height="450" alt="">
+                                                                        <img src="../up/example/<?php echo $res_search["file_im4"]; ?>" class="" width="300" height="450" alt=""><br>
 
                                                                         </div>
                                                                      </div>
                                                                 </div>
                                                                 <div class="modal-footer justify-content-between">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                </div>
+                                                                </div> 
                                                             </div>
                                                             <!-- /.modal-content -->
                                                         </div>
@@ -667,12 +667,13 @@
                                             </td> 
 
                                             <td  scope="col" class="text-nowrap text-center" height="" width="100">
-                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-xll<?php echo $res_search["work_id"]; ?>">
+                                                <a href="" class="img-fluid" data-toggle="modal" data-target="#modal-xll<?php echo $res_search["work_id"]; ?>"> 
                                                     <?php
                                                         if($res_search["file_test"] ==''){
                                                             echo "<span class='badge badge-warning'>No Image</span>";
                                                         }elseif($res_search["file_test"]){
-                                                            echo '<img class=""  width="40" height="25" src="../up/img/camera.png"';
+                                                            echo '<img class=""  width="40" height="25" src="../up/img/camera.png"'; //imgx
+
                                                         }
                                                     ?>
                                                 </a>
